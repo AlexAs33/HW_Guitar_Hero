@@ -22,11 +22,10 @@
 #define MONITOR_FIFO 2
 #define MONITOR_GE 3
 
-static int notas_restantes = 30;
+static int notas_restantes =  5;//30;
 static int leds = 0;
 static int periodo_leds = 0;
 static int en_partida = 0;          // 1 en partida
-static int fin = 0;
 static int led_1_encendido = 0;
 static int led_2_encendido = 0;
 static int acierto = 0;
@@ -73,7 +72,9 @@ void sec_fin_gh(){   // Numleds --- 1
 void manejador_interrupcion_botones_fin(int32_t id_pin, int32_t id_boton) {
     //TODO boton 3 o 4 pulsados 3 segundos
 
-    fin = 1;
+    sec_fin_gh();
+
+    while(1);   //! como fin --> wdt nos sacara
 }
 
 void manejador_interrupcion_botones_juego(int32_t id_pin, int32_t id_boton) {
@@ -115,6 +116,7 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void)evento;
 
     if(notas_restantes <= 0){
+        rt_FIFO_encolar(ev_FIN_GUITAR_HERO, 0);
         return;
     }
 
@@ -122,9 +124,10 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
         uint8_t l1, l2;
 
         if(num_partidas == 0){
-            obtener_notas(&l1, &l2);
+            obtener_notas(&l1, &l2);    //primera partitura codificada
         }
         else{
+            obtener_notas(&l1, &l2);
             //TODO partitura aleatoria
         }
         notas_restantes --;
@@ -152,7 +155,7 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
             if(puntuacion < 0){ //*QUIZA ampliar logica con notas pulsadas etc
                 //GAME OVER //? secuencia especial??
-                notas_restantes = 0;
+                //notas_restantes = 0;
             }
             //*QUIZA ampliar logica de fallo, muchos fallos mas pierdes yo q se
         }
@@ -182,6 +185,24 @@ void estadisticas_guitar_hero(){
     //TODO
 }
 
+void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
+    (void) evento;
+    (void) auxData;
+	
+		//matar alarma ev_LEDS_GUITAR_HERO
+    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
+		svc_alarma_activar(flags_cancelar, ev_LEDS_GUITAR_HERO, 0);
+
+    //Acabar cosas de partida --> //? podría meterse en la funcion de partida en el caso base
+    en_partida = 0;
+    num_partidas ++;
+
+    estadisticas_guitar_hero();  //TODO
+
+    //TODO definir características nueva partida
+    partida_guitar_hero();
+}
+
 void guitar_hero(unsigned int num_leds){
     leds = num_leds;
     periodo_leds = PERIODO_LEDS;
@@ -198,26 +219,8 @@ void guitar_hero(unsigned int num_leds){
 
     drv_botones_iniciar(manejador_interrupcion_botones_gh);
 
-    do{
-        //TODO definir características partida en base a num_partidas --> modificar periodo_leds, algo de puntuacion (acierto, fallo) etc.
+    svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, fin_partida_guitar_hero);
 
-        partida_guitar_hero();
-
-        while(notas_restantes > 0){	//!NO LLEGA, se queda en lanzador
-            drv_consumo_esperar();
-        }
-
-        //Acabar cosas de partida --> //? podría meterse en la funcion de partida en el caso base
-        en_partida = 0;
-        num_partidas ++;
-
-        //matar alarma ev_LEDS_GUITAR_HERO
-        uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-				svc_alarma_activar(flags_cancelar, ev_LEDS_GUITAR_HERO, 0);
-
-        estadisticas_guitar_hero();  //TODO
-        
-    }while (!fin); // fin == 1 si boton 3 / 4 pulsado 3"
-
-    sec_fin_gh();
+    //? características iniciales en defines, si eso se cambian luego
+    partida_guitar_hero();
 }
