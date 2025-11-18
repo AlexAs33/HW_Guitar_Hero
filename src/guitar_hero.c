@@ -22,6 +22,20 @@
 #define MONITOR_FIFO 2
 #define MONITOR_GE 3
 
+//----------DEFINICIONES DE PARTITURA----------
+#define partitura \
+(uint8_t[]){ \
+    0b11, 0b01, 0b10, 0b01, \
+    0b10, 0b01, 0b10, 0b01, \
+    0b10, 0b01, 0b10, 0b01, \
+    0b10, 0b01, 0b10, 0b01, \
+    0b10, 0b01, 0b10, 0b01, \
+    0b10, 0b01, 0b10, 0b01, \
+    0b10, 0b01, 0b10, 0b01, \
+    0b10, 0b01 \
+}
+
+//----------DEFINICIONES DE STATICS----------
 static int notas_restantes = TAM_PARTITURA;
 static int leds = 0;
 static int periodo_leds = 0;
@@ -34,20 +48,7 @@ static int fallo = 0;
 static int num_partidas = 0;
 static int puntuacion = 0;
 
-#define partitura \
-(uint8_t[]){ \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01 \
-}
-
-
-
+//----------SECUENCIAS LEDS----------
 void sec_inicio_gh(){   // 1 --- Numleds
     for(int i = 1; i <= leds; i++) {
 		drv_led_establecer(i, LED_ON);
@@ -69,6 +70,7 @@ void sec_fin_gh(){   // Numleds --- 1
 		drv_led_establecer(i, LED_OFF);
 }
 
+//----------MANEJADORES BOTONES----------
 void manejador_interrupcion_botones_fin(int32_t id_pin, int32_t id_boton) {
     //TODO boton 3 o 4 pulsados 3 segundos
 
@@ -96,6 +98,7 @@ void manejador_interrupcion_botones_gh(int32_t id_pin, int32_t id_boton) {
     }
 }
 
+//----------AUXILIARES EVENTO DE PARTIDA----------
 //devuelve 1 si acierto
 int comprobar_acierto(uint32_t boton){
     return (led_1_encendido && boton == 1) || (led_2_encendido && boton == 2);      //logica para recibir un solo boton. 2 aciertos, 2 fallos o 1 y 1 si 2 botones
@@ -130,6 +133,7 @@ void modificar_puntuacion(uint32_t boton){
 		}
 }
 
+//----------PRINCIPAL EVENTO DE PARTIDA----------
 void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
     if(notas_restantes <= 0){
@@ -187,6 +191,7 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
     }
 }
 
+//----------INICIO Y FIN DE PARTIDA----------
 void partida_guitar_hero(){
 	//sec_inicio_gh();		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establecer
 	
@@ -229,6 +234,7 @@ void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     partida_guitar_hero();
 }
 
+//----------MAIN----------
 void guitar_hero(unsigned int num_leds){
     leds = num_leds;
     periodo_leds = PERIODO_LEDS;
