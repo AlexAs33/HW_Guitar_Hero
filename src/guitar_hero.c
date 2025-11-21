@@ -25,7 +25,7 @@
 //----------DEFINICIONES DE PARTITURA----------
 #define partitura \
 (uint8_t[]){ \
-    0b11, 0b01, 0b10, 0b01, \
+    0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
@@ -36,17 +36,24 @@
 }
 
 //----------DEFINICIONES DE STATICS----------
-static int notas_restantes = TAM_PARTITURA;
-static int leds = 0;
-static int periodo_leds = 0;
-static int margen_pulsar = 0;
-static int en_partida = 0;          // 1 en partida
-static int led_1_encendido = 0;
-static int led_2_encendido = 0;
-static int acierto = 0;
-static int fallo = 0;
-static int num_partidas = 0;
-static int puntuacion = 0;
+//Control de leds
+static int leds = 0;                        //Numero de leds
+static int periodo_leds = 0;                //ms cada los que se encienden los leds
+static int led_1_encendido = 0;             //1 si led 1 encendido
+static int led_2_encendido = 0;             //1 si led 2 encendido
+//Control partida
+static int notas_restantes = TAM_PARTITURA; //Acordes que tiene una partitura
+static int margen_pulsar = 0;               //ms maximos antes del siguiente acorde para pulsar
+static int en_partida = 0;                  // 1 en partida
+static int num_partidas = 0;                //num partidas jugadas
+//Control puntuacion
+static int puntos_acierto = 0;                     //puntos por acierto
+static int puntos_fallo = 0;                       //puntos por fallo
+static int puntuacion = 0;                  //puntuacion en una partida
+static int aciertos = 0;                    //aciertos en una partida
+static int fallos = 0;                      //fallos en una partida
+static int puntuacion_total = 0;            //puntuacion total
+static int racha = 0;                       //aciertos encadenados en una partida
 
 //----------SECUENCIAS LEDS----------
 void sec_inicio_gh(){   // 1 --- Numleds
@@ -119,18 +126,31 @@ void obtener_notas(uint8_t *l1, uint8_t *l2) {
 void modificar_puntuacion(uint32_t boton){
 	//ver acierto / fallo y modificar puntuación
 	if(boton == 255 || !comprobar_acierto(boton)){	//FALLO
-		puntuacion -= fallo;
+        racha = 0;
+        fallos++;
+        if(boton == 255){   //Fallo de no pulsar nada cuenta por dos
+            puntuacion -= puntos_fallo*2;
+        }
+        else{
+            puntuacion -= puntos_fallo;
+        }
 
-    if(puntuacion < 0){ //*QUIZA ampliar logica con notas pulsadas etc
-        //GAME OVER //? secuencia especial??
-        //notas_restantes = 0;
-    }
-    //*QUIZA ampliar logica de fallo, muchos fallos mas pierdes yo q se. diferenciar falo de no dar de equivocarse ...
+        if(puntuacion < (puntos_acierto * (TAM_PARTITURA - notas_restantes))/2){    //s no llevamos la mitad de los puntos posibles perdemos
+            //GAME OVER
+            notas_restantes = 0;
+            //?secuencia game over distinta a la de apagar??
+        }
 	}
 	else{//ACIERTO
-			puntuacion += acierto;
-			//*QUIZA ampliar logica de acierto, rachas etc
-		}
+        racha ++;
+        if(racha >= 5){
+            puntuacion += puntos_acierto * racha;
+        }
+        else{
+            puntuacion += puntos_acierto;
+        }
+        aciertos ++;    
+	}
 }
 
 //----------PRINCIPAL EVENTO DE PARTIDA----------
@@ -209,6 +229,9 @@ void partida_guitar_hero(){
 //? solo esto o  separar de puntuacion
 void estadisticas_guitar_hero(){
 		(void)puntuacion;
+        (void) aciertos;
+        (void) fallos;
+        (void) puntuacion_total;
     //TODO
 }
 
@@ -226,7 +249,9 @@ void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     //Acabar cosas de partida --> //? podría meterse en la funcion de partida en el caso base
     en_partida = 0;
     num_partidas ++;
+    puntuacion_total += puntuacion;
 	notas_restantes = TAM_PARTITURA;
+    puntuacion = 0;
 
     estadisticas_guitar_hero();  //TODO
 
@@ -239,8 +264,8 @@ void guitar_hero(unsigned int num_leds){
     leds = num_leds;
     periodo_leds = PERIODO_LEDS;
     margen_pulsar = MARGEN_PULSAR;
-    acierto = ACIERTO;
-    fallo = FALLO;
+    puntos_acierto = ACIERTO;
+    puntos_fallo = FALLO;
     //Poner en marcha lo necesario del background
     drv_monitor_iniciar();
     drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
