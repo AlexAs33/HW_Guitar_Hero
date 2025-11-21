@@ -55,15 +55,29 @@ static int fallos = 0;                      //fallos en una partida
 static int puntuacion_total = 0;            //puntuacion total
 static int racha = 0;                       //aciertos encadenados en una partida
 
+
+void evento_guitar_hero(EVENTO_T evento, uint32_t auxData);
 //----------SECUENCIAS LEDS----------
+static int palpitaciones = 0;
 void sec_inicio_gh(){   // 1 --- Numleds
-    for(int i = 1; i <= leds; i++) {
-		drv_led_establecer(i, LED_ON);
-		for (int j = 0; j <= SEC_INI_FIN; j++)
-			drv_consumo_esperar();
-		}
-		for(int i = 1; i <= leds; i++)
-			drv_led_establecer(i, LED_OFF);
+    if(palpitaciones < leds){
+        drv_led_establecer(palpitaciones +1, LED_ON);
+        palpitaciones ++;
+    }
+    else{
+        uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
+	    svc_alarma_activar(flags_cancelar, ev_SEC_INI_FIN, 0);
+				svc_GE_cancelar(ev_SEC_INI_FIN, sec_inicio_gh);
+        for(int i = 1; i <= leds; i++)
+		    drv_led_establecer(i, LED_OFF);
+				en_partida = 1;
+    //activar alarma --> periodo_leds
+    uint32_t alarmaGH = svc_alarma_codificar(true, periodo_leds, 0);
+    svc_alarma_activar(alarmaGH, ev_LEDS_GUITAR_HERO, 0);
+
+    //suscribir a alarma
+    svc_GE_suscribir(ev_LEDS_GUITAR_HERO, 0, evento_guitar_hero);	//Atender a eventos del juego
+    }
 }
 
 void sec_fin_gh(){   // Numleds --- 1
@@ -75,6 +89,15 @@ void sec_fin_gh(){   // Numleds --- 1
 	
 	for(int i = 1; i <= leds; i++)
 		drv_led_establecer(i, LED_OFF);
+}
+
+//Pre modo = 0 --> inicio. 1 --> fin
+void main_secuencias_gh(int modo){
+    uint32_t alarma_sec_inicio = svc_alarma_codificar(true, SEC_INI_FIN, 0);
+    svc_alarma_activar(alarma_sec_inicio, ev_SEC_INI_FIN, 0);
+    palpitaciones = 0;
+    if(modo == 0) svc_GE_suscribir(ev_SEC_INI_FIN, 0, sec_inicio_gh);
+    else if (modo == 1) svc_GE_suscribir(ev_SEC_INI_FIN, 0, sec_fin_gh);
 }
 
 //----------MANEJADORES BOTONES----------
@@ -213,15 +236,7 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
 //----------INICIO Y FIN DE PARTIDA----------
 void partida_guitar_hero(){
-	//sec_inicio_gh();		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establecer
-	
-    en_partida = 1;
-    //activar alarma --> periodo_leds
-    uint32_t alarmaGH = svc_alarma_codificar(true, periodo_leds, 0);
-    svc_alarma_activar(alarmaGH, ev_LEDS_GUITAR_HERO, 0);
-
-    //suscribir a alarma
-    svc_GE_suscribir(ev_LEDS_GUITAR_HERO, 0, evento_guitar_hero);	//Atender a eventos del juego
+	main_secuencias_gh(0);		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establece
 	
 	rt_GE_lanzador(); //guarrada antologica. 1 ge una partida y asi
 }
