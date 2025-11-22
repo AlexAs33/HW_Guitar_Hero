@@ -591,6 +591,21 @@
               <FileType>5</FileType>
               <FilePath>..\..\src\guitar_hero.h</FilePath>
             </File>
+            <File>
+              <FileName>drv_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_uart.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -640,6 +655,11 @@
               <FileName>hal_random_lpc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src_lpc\hal_random_lpc.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_uart_lpc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_lpc\hal_uart_lpc.c</FilePath>
             </File>
           </Files>
         </Group>

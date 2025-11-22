@@ -12,6 +12,7 @@
 ".\objects\drv_sc.o"
 ".\objects\drv_wdt.o"
 ".\objects\guitar_hero.o"
+".\objects\drv_uart.o"
 ".\objects\hal_gpio_lpc.o"
 ".\objects\hal_tiempo_lpc.o"
 ".\objects\hal_consumo_lpc.o"
@@ -19,6 +20,7 @@
 ".\objects\hal_sc_lpc.o"
 ".\objects\hal_wdt_lpc.o"
 ".\objects\hal_random_lpc.o"
+".\objects\hal_uart_lpc.o"
 ".\objects\startup.o"
 --strict --scatter ".\Objects\blink_lpc.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

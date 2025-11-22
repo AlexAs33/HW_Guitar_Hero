@@ -19,6 +19,7 @@
 .\objects\guitar_hero.o: ..\..\src\drv_leds.h
 .\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\guitar_hero.o: ..\..\src\drv_wdt.h
+.\objects\guitar_hero.o: ..\..\src\drv_uart.h
 .\objects\guitar_hero.o: ..\..\src\random.h
 .\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

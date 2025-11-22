@@ -11,6 +11,7 @@
 #include "drv_consumo.h"
 #include "drv_leds.h"
 #include "drv_wdt.h"
+#include "drv_uart.h"
 
 #include "random.h"
 
@@ -25,7 +26,7 @@
 //----------DEFINICIONES DE PARTITURA----------
 #define partitura \
 (uint8_t[]){ \
-    0b11, 0b01, 0b10, 0b11, \
+    0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
@@ -235,7 +236,6 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
 //----------INICIO Y FIN DE PARTIDA----------
 void partida_guitar_hero(){
-	cuenta_fin = 0;
 	main_secuencias_gh(0);		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establece
 	
 	rt_GE_lanzador(); //guarrada antologica. 1 ge una partida y asi
@@ -243,11 +243,14 @@ void partida_guitar_hero(){
 
 //? solo esto o  separar de puntuacion
 void estadisticas_guitar_hero(){
-		(void)puntuacion;
-        (void) aciertos;
-        (void) fallos;
-        (void) puntuacion_total;
-    //TODO
+		drv_uart_puts("Tu desempeno en esta partida ha sido el siguiente\r\n");
+		drv_uart_puts("Con "); drv_uart_putint(aciertos); drv_uart_puts(" aciertos\r\n");
+		drv_uart_puts("Y "); drv_uart_putint(fallos); drv_uart_puts(" fallos\r\n");
+		//TODO contar rachas y poner
+		drv_uart_puts("Has conseguido una puntuacion de "); drv_uart_putint(puntuacion); drv_uart_puts(" puntos\r\n");
+			drv_uart_puts("Lo que en tus "); drv_uart_putint(num_partidas); drv_uart_puts(" partidas, suma un total de "); drv_uart_putint(puntuacion_total); drv_uart_puts("puntos\r\n");
+
+    //TODO hay que poner cosas de estadistica de rendimiento???
 }
 
 void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
@@ -266,10 +269,11 @@ void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     num_partidas ++;
     puntuacion_total += puntuacion;
 	notas_restantes = TAM_PARTITURA;
-    puntuacion = 0;
+    
 
     estadisticas_guitar_hero();  //TODO
 
+		puntuacion = 0;
     //TODO definir características nueva partida
     partida_guitar_hero();
 }
@@ -294,6 +298,8 @@ void guitar_hero(unsigned int num_leds){
 
     svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, fin_partida_guitar_hero);
 		svc_GE_suscribir(ev_TIMEOUT_LED, 0, evento_guitar_hero);
+	
+		drv_uart_init(9600);
 
     //? características iniciales en defines, si eso se cambian luego
     partida_guitar_hero();
