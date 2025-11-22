@@ -17,4 +17,5 @@
 .\objects\main.o: ..\..\src\drv_botones.h
 .\objects\main.o: ..\..\src\drv_sc.h
 .\objects\main.o: ..\..\src\drv_wdt.h
+.\objects\main.o: ..\..\src\guitar_hero.h
 .\objects\main.o: ..\..\src\bit_counter_strike.h

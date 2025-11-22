@@ -15,7 +15,6 @@
 
   <project>
     <PathAndName>.\nrf\keil\blink_nrf.uvprojx</PathAndName>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
 </ProjectWorkspace>

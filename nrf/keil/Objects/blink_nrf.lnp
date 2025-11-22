@@ -11,6 +11,7 @@
 ".\objects\bit_counter_strike.o"
 ".\objects\drv_sc.o"
 ".\objects\drv_wdt.o"
+".\objects\drv_uart.o"
 ".\objects\hal_gpio_nrf.o"
 ".\objects\hal_tiempo_nrf.o"
 ".\objects\hal_consumo_nrf.o"

@@ -107,7 +107,9 @@ void main_secuencias_gh(int modo){
 //----------MANEJADORES BOTONES----------
 void manejador_interrupcion_botones_fin(int32_t id_pin, int32_t id_boton) {
     //TODO boton 3 o 4 pulsados 3 segundos
-		sec_fin_gh();
+		EVENTO_T ev; 
+		uint32_t auxData;
+		sec_fin_gh(ev, auxData);
 
 		while(1);   //! como fin --> wdt nos sacara
 }
@@ -119,7 +121,9 @@ void manejador_interrupcion_botones_juego(int32_t id_pin, int32_t id_boton) {
     }
     else{   //admitira 3 en nrf --> //?importante ?????
         notas_restantes = 0;
-        sec_fin_gh();
+				EVENTO_T ev; 
+				uint32_t auxData;
+				sec_fin_gh(ev, auxData);
     }
 }
 
