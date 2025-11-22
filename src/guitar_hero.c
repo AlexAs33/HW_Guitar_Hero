@@ -60,7 +60,10 @@ static int racha = 0;                       //aciertos encadenados en una partid
 void evento_guitar_hero(EVENTO_T evento, uint32_t auxData);
 //----------SECUENCIAS LEDS----------
 static int palpitaciones = 0;
-void sec_inicio_gh(){   // 1 --- Numleds
+void sec_inicio_gh(EVENTO_T ev, uint32_t auxData){   // 1 --- Numleds
+		(void)ev;
+		(void)auxData;
+
     if(palpitaciones < leds){
         drv_led_establecer(palpitaciones +1, LED_ON);
         palpitaciones ++;
@@ -81,7 +84,7 @@ void sec_inicio_gh(){   // 1 --- Numleds
     }
 }
 
-void sec_fin_gh(){   // Numleds --- 1
+void sec_fin_gh(EVENTO_T ev, uint32_t auxData){   // Numleds --- 1
     for(int i = leds; i <= 1; i--) {
 		drv_led_establecer(i, LED_ON);
 		for (int j = 0; j <= SEC_INI_FIN; j++)
@@ -190,7 +193,7 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
         uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
 	    svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 
-        drv_led_establecer(1, LED_OFF); drv_led_establecer(2, LED_OFF);
+        drv_led_establecer((LED_id_t)1, LED_OFF); drv_led_establecer((LED_id_t)2, LED_OFF);
     }
 
     else if(auxData == 0){   //toca led
@@ -207,11 +210,11 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
         //encender led(s) que toca
         if(l1){
-            drv_led_establecer(1, LED_ON);
+            drv_led_establecer((LED_id_t)1, LED_ON);
             led_1_encendido = 1;
         }
         if(l2){
-            drv_led_establecer(2, LED_ON);
+            drv_led_establecer((LED_id_t)2, LED_ON);
             led_2_encendido = 1;
         }
         
@@ -237,7 +240,6 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 //----------INICIO Y FIN DE PARTIDA----------
 void partida_guitar_hero(){
 	main_secuencias_gh(0);		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establece
-	
 	rt_GE_lanzador(); //guarrada antologica. 1 ge una partida y asi
 }
 
@@ -285,6 +287,7 @@ void guitar_hero(unsigned int num_leds){
     margen_pulsar = MARGEN_PULSAR;
     puntos_acierto = ACIERTO;
     puntos_fallo = FALLO;
+
     //Poner en marcha lo necesario del background
     drv_monitor_iniciar();
     drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
@@ -292,14 +295,14 @@ void guitar_hero(unsigned int num_leds){
     rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
 
     //sec_inicio_gh();	//!como no esta lanzado ge solo enciende 1
-		drv_wdt_iniciar(PERIODO_WDT);
+	drv_wdt_iniciar(PERIODO_WDT);
 
     drv_botones_iniciar(manejador_interrupcion_botones_gh);
 
     svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, fin_partida_guitar_hero);
 		svc_GE_suscribir(ev_TIMEOUT_LED, 0, evento_guitar_hero);
-	
-		drv_uart_init(9600);
+
+    drv_uart_init(9600);
 
     //? características iniciales en defines, si eso se cambian luego
     partida_guitar_hero();
