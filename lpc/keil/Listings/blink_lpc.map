@@ -238,6 +238,7 @@ Section Cross References
     guitar_hero.o(i.main_secuencias_gh) refers to guitar_hero.o(i.sec_inicio_gh) for sec_inicio_gh
     guitar_hero.o(i.main_secuencias_gh) refers to guitar_hero.o(i.sec_fin_gh) for sec_fin_gh
     guitar_hero.o(i.manejador_interrupcion_botones_fin) refers to guitar_hero.o(i.sec_fin_gh) for sec_fin_gh
+    guitar_hero.o(i.manejador_interrupcion_botones_fin) refers to guitar_hero.o(.data) for cuenta_fin
     guitar_hero.o(i.manejador_interrupcion_botones_gh) refers to guitar_hero.o(i.manejador_interrupcion_botones_juego) for manejador_interrupcion_botones_juego
     guitar_hero.o(i.manejador_interrupcion_botones_gh) refers to guitar_hero.o(i.manejador_interrupcion_botones_fin) for manejador_interrupcion_botones_fin
     guitar_hero.o(i.manejador_interrupcion_botones_gh) refers to guitar_hero.o(.data) for en_partida
@@ -251,6 +252,7 @@ Section Cross References
     guitar_hero.o(i.obtener_notas) refers to guitar_hero.o(.data) for notas_restantes
     guitar_hero.o(i.partida_guitar_hero) refers to guitar_hero.o(i.main_secuencias_gh) for main_secuencias_gh
     guitar_hero.o(i.partida_guitar_hero) refers to rt_ge.o(i.rt_GE_lanzador) for rt_GE_lanzador
+    guitar_hero.o(i.partida_guitar_hero) refers to guitar_hero.o(.data) for cuenta_fin
     guitar_hero.o(i.sec_fin_gh) refers to drv_leds.o(i.drv_led_establecer) for drv_led_establecer
     guitar_hero.o(i.sec_fin_gh) refers to drv_consumo.o(i.drv_consumo_esperar) for drv_consumo_esperar
     guitar_hero.o(i.sec_fin_gh) refers to guitar_hero.o(.data) for leds
@@ -500,8 +502,8 @@ Image Symbol Table
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
-    ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv_div0.o ABSOLUTE
     ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv.o ABSOLUTE
+    ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv_div0.o ABSOLUTE
     ../clib/divrt.s                          0x00000000   Number         0  divrt_7tdmi_div0.o ABSOLUTE
     ../clib/divrt.s                          0x00000000   Number         0  divrt_7tdmi.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
@@ -643,74 +645,74 @@ Image Symbol Table
     i.drv_wdt_iniciar                        0x00000e00   Section        0  drv_wdt.o(i.drv_wdt_iniciar)
     i.estadisticas_guitar_hero               0x00000e20   Section        0  guitar_hero.o(i.estadisticas_guitar_hero)
     i.evento_guitar_hero                     0x00000e24   Section        0  guitar_hero.o(i.evento_guitar_hero)
-    i.fin_partida_guitar_hero                0x00000fb4   Section        0  guitar_hero.o(i.fin_partida_guitar_hero)
-    i.guitar_hero                            0x0000106c   Section        0  guitar_hero.o(i.guitar_hero)
-    i.hal_consumo_dormir                     0x00001124   Section        0  hal_consumo_lpc.o(i.hal_consumo_dormir)
-    i.hal_consumo_esperar                    0x00001154   Section        0  hal_consumo_lpc.o(i.hal_consumo_esperar)
-    i.hal_consumo_iniciar                    0x00001178   Section        0  hal_consumo_lpc.o(i.hal_consumo_iniciar)
-    i.hal_ext_int_clear                      0x0000118c   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_clear)
-    i.hal_ext_int_clear_flag                 0x000011a0   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_clear_flag)
-    i.hal_ext_int_deshabilitar_int           0x000011d8   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_deshabilitar_int)
-    i.hal_ext_int_habilitar_despertar        0x00001210   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_despertar)
-    i.hal_ext_int_habilitar_int              0x00001250   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_int)
-    i.hal_ext_int_iniciar                    0x00001288   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_iniciar)
-    i.hal_gpio_escribir                      0x00001344   Section        0  hal_gpio_lpc.o(i.hal_gpio_escribir)
-    i.hal_gpio_iniciar                       0x00001374   Section        0  hal_gpio_lpc.o(i.hal_gpio_iniciar)
-    i.hal_gpio_leer                          0x00001388   Section        0  hal_gpio_lpc.o(i.hal_gpio_leer)
-    i.hal_gpio_sentido                       0x000013bc   Section        0  hal_gpio_lpc.o(i.hal_gpio_sentido)
-    i.hal_iniciar_T0                         0x00001408   Section        0  hal_tiempo_lpc.o(i.hal_iniciar_T0)
-    i.hal_sc_disable                         0x00001424   Section        0  hal_sc_lpc.o(i.hal_sc_disable)
-    i.hal_sc_restaurar                       0x00001438   Section        0  hal_sc_lpc.o(i.hal_sc_restaurar)
-    i.hal_tiempo_actual_tick64               0x00001448   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_actual_tick64)
-    i.hal_tiempo_iniciar_tick                0x000014b4   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_iniciar_tick)
-    i.hal_tiempo_periodico_config_tick       0x00001550   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_periodico_config_tick)
-    i.hal_tiempo_periodico_enable            0x000015a0   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_periodico_enable)
-    i.hal_tiempo_periodico_set_callback      0x000015f4   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_periodico_set_callback)
-    i.hal_tiempo_reloj_periodico_tick        0x00001604   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_reloj_periodico_tick)
-    i.hal_wdt_feed                           0x00001650   Section        0  hal_wdt_lpc.o(i.hal_wdt_feed)
-    i.hal_wdt_iniciar                        0x00001668   Section        0  hal_wdt_lpc.o(i.hal_wdt_iniciar)
-    i.hw_level_from_state                    0x00001698   Section        0  drv_monitor.o(i.hw_level_from_state)
-    hw_level_from_state                      0x00001698   ARM Code      28  drv_monitor.o(i.hw_level_from_state)
-    i.hw_level_from_status                   0x000016b4   Section        0  drv_leds.o(i.hw_level_from_status)
-    hw_level_from_status                     0x000016b4   ARM Code      28  drv_leds.o(i.hw_level_from_status)
-    i.led_id_valido                          0x000016d0   Section        0  drv_leds.o(i.led_id_valido)
-    led_id_valido                            0x000016d0   ARM Code      36  drv_leds.o(i.led_id_valido)
-    i.main                                   0x000016f4   Section        0  main.o(i.main)
-    i.main_secuencias_gh                     0x00001734   Section        0  guitar_hero.o(i.main_secuencias_gh)
-    i.manejador_interrupcion_botones_fin     0x000017b4   Section        0  guitar_hero.o(i.manejador_interrupcion_botones_fin)
-    i.manejador_interrupcion_botones_gh      0x000017c0   Section        0  guitar_hero.o(i.manejador_interrupcion_botones_gh)
-    i.manejador_interrupcion_botones_juego   0x0000180c   Section        0  guitar_hero.o(i.manejador_interrupcion_botones_juego)
-    i.modificar_puntuacion                   0x00001860   Section        0  guitar_hero.o(i.modificar_puntuacion)
-    i.monitor_id_valido                      0x000019c0   Section        0  drv_monitor.o(i.monitor_id_valido)
-    monitor_id_valido                        0x000019c0   ARM Code      36  drv_monitor.o(i.monitor_id_valido)
-    i.obtener_notas                          0x000019e4   Section        0  guitar_hero.o(i.obtener_notas)
-    i.partida_guitar_hero                    0x00001a5c   Section        0  guitar_hero.o(i.partida_guitar_hero)
-    i.pin_a_eint                             0x00001a74   Section        0  hal_ext_int_lpc.o(i.pin_a_eint)
-    pin_a_eint                               0x00001a74   ARM Code      72  hal_ext_int_lpc.o(i.pin_a_eint)
-    i.pin_to_eint                            0x00001abc   Section        0  hal_ext_int_lpc.o(i.pin_to_eint)
-    i.pin_to_gpio                            0x00001b20   Section        0  hal_ext_int_lpc.o(i.pin_to_gpio)
-    i.rt_FIFO_encolar                        0x00001b84   Section        0  rt_fifo.o(i.rt_FIFO_encolar)
-    i.rt_FIFO_extraer                        0x00001c50   Section        0  rt_fifo.o(i.rt_FIFO_extraer)
-    i.rt_FIFO_inicializar                    0x00001cdc   Section        0  rt_fifo.o(i.rt_FIFO_inicializar)
-    i.rt_GE_actualizar                       0x00001d60   Section        0  rt_ge.o(i.rt_GE_actualizar)
-    i.rt_GE_iniciar                          0x00001e34   Section        0  rt_ge.o(i.rt_GE_iniciar)
-    i.rt_GE_lanzador                         0x00001ee8   Section        0  rt_ge.o(i.rt_GE_lanzador)
-    i.sec_fin_gh                             0x00001fe4   Section        0  guitar_hero.o(i.sec_fin_gh)
-    i.sec_inicio_gh                          0x00002058   Section        0  guitar_hero.o(i.sec_inicio_gh)
-    i.svc_GE_cancelar                        0x00002160   Section        0  rt_ge.o(i.svc_GE_cancelar)
-    i.svc_GE_suscribir                       0x00002240   Section        0  rt_ge.o(i.svc_GE_suscribir)
-    i.svc_alarma_activar                     0x00002338   Section        0  svc_alarma.o(i.svc_alarma_activar)
-    i.svc_alarma_actualizar                  0x000024ac   Section        0  svc_alarma.o(i.svc_alarma_actualizar)
-    i.svc_alarma_codificar                   0x000025ac   Section        0  svc_alarma.o(i.svc_alarma_codificar)
-    i.svc_alarma_iniciar                     0x000025cc   Section        0  svc_alarma.o(i.svc_alarma_iniciar)
-    i.vic_channel                            0x00002648   Section        0  hal_ext_int_lpc.o(i.vic_channel)
-    vic_channel                              0x00002648   ARM Code      72  hal_ext_int_lpc.o(i.vic_channel)
-    .constdata                               0x00002690   Section       12  drv_leds.o(.constdata)
-    s_led_list                               0x00002690   Data          12  drv_leds.o(.constdata)
-    .constdata                               0x0000269c   Section       16  drv_monitor.o(.constdata)
-    s_monitor_list                           0x0000269c   Data          16  drv_monitor.o(.constdata)
-    .constdata                               0x000026ac   Section       12  drv_botones.o(.constdata)
-    lista_botones                            0x000026ac   Data          12  drv_botones.o(.constdata)
+    i.fin_partida_guitar_hero                0x00000fc4   Section        0  guitar_hero.o(i.fin_partida_guitar_hero)
+    i.guitar_hero                            0x0000107c   Section        0  guitar_hero.o(i.guitar_hero)
+    i.hal_consumo_dormir                     0x00001134   Section        0  hal_consumo_lpc.o(i.hal_consumo_dormir)
+    i.hal_consumo_esperar                    0x00001164   Section        0  hal_consumo_lpc.o(i.hal_consumo_esperar)
+    i.hal_consumo_iniciar                    0x00001188   Section        0  hal_consumo_lpc.o(i.hal_consumo_iniciar)
+    i.hal_ext_int_clear                      0x0000119c   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_clear)
+    i.hal_ext_int_clear_flag                 0x000011b0   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_clear_flag)
+    i.hal_ext_int_deshabilitar_int           0x000011e8   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_deshabilitar_int)
+    i.hal_ext_int_habilitar_despertar        0x00001220   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_despertar)
+    i.hal_ext_int_habilitar_int              0x00001260   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_int)
+    i.hal_ext_int_iniciar                    0x00001298   Section        0  hal_ext_int_lpc.o(i.hal_ext_int_iniciar)
+    i.hal_gpio_escribir                      0x00001354   Section        0  hal_gpio_lpc.o(i.hal_gpio_escribir)
+    i.hal_gpio_iniciar                       0x00001384   Section        0  hal_gpio_lpc.o(i.hal_gpio_iniciar)
+    i.hal_gpio_leer                          0x00001398   Section        0  hal_gpio_lpc.o(i.hal_gpio_leer)
+    i.hal_gpio_sentido                       0x000013cc   Section        0  hal_gpio_lpc.o(i.hal_gpio_sentido)
+    i.hal_iniciar_T0                         0x00001418   Section        0  hal_tiempo_lpc.o(i.hal_iniciar_T0)
+    i.hal_sc_disable                         0x00001434   Section        0  hal_sc_lpc.o(i.hal_sc_disable)
+    i.hal_sc_restaurar                       0x00001448   Section        0  hal_sc_lpc.o(i.hal_sc_restaurar)
+    i.hal_tiempo_actual_tick64               0x00001458   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_actual_tick64)
+    i.hal_tiempo_iniciar_tick                0x000014c4   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_iniciar_tick)
+    i.hal_tiempo_periodico_config_tick       0x00001560   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_periodico_config_tick)
+    i.hal_tiempo_periodico_enable            0x000015b0   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_periodico_enable)
+    i.hal_tiempo_periodico_set_callback      0x00001604   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_periodico_set_callback)
+    i.hal_tiempo_reloj_periodico_tick        0x00001614   Section        0  hal_tiempo_lpc.o(i.hal_tiempo_reloj_periodico_tick)
+    i.hal_wdt_feed                           0x00001660   Section        0  hal_wdt_lpc.o(i.hal_wdt_feed)
+    i.hal_wdt_iniciar                        0x00001678   Section        0  hal_wdt_lpc.o(i.hal_wdt_iniciar)
+    i.hw_level_from_state                    0x000016a8   Section        0  drv_monitor.o(i.hw_level_from_state)
+    hw_level_from_state                      0x000016a8   ARM Code      28  drv_monitor.o(i.hw_level_from_state)
+    i.hw_level_from_status                   0x000016c4   Section        0  drv_leds.o(i.hw_level_from_status)
+    hw_level_from_status                     0x000016c4   ARM Code      28  drv_leds.o(i.hw_level_from_status)
+    i.led_id_valido                          0x000016e0   Section        0  drv_leds.o(i.led_id_valido)
+    led_id_valido                            0x000016e0   ARM Code      36  drv_leds.o(i.led_id_valido)
+    i.main                                   0x00001704   Section        0  main.o(i.main)
+    i.main_secuencias_gh                     0x00001744   Section        0  guitar_hero.o(i.main_secuencias_gh)
+    i.manejador_interrupcion_botones_fin     0x000017c4   Section        0  guitar_hero.o(i.manejador_interrupcion_botones_fin)
+    i.manejador_interrupcion_botones_gh      0x0000180c   Section        0  guitar_hero.o(i.manejador_interrupcion_botones_gh)
+    i.manejador_interrupcion_botones_juego   0x00001858   Section        0  guitar_hero.o(i.manejador_interrupcion_botones_juego)
+    i.modificar_puntuacion                   0x000018ac   Section        0  guitar_hero.o(i.modificar_puntuacion)
+    i.monitor_id_valido                      0x000019d0   Section        0  drv_monitor.o(i.monitor_id_valido)
+    monitor_id_valido                        0x000019d0   ARM Code      36  drv_monitor.o(i.monitor_id_valido)
+    i.obtener_notas                          0x000019f4   Section        0  guitar_hero.o(i.obtener_notas)
+    i.partida_guitar_hero                    0x00001a6c   Section        0  guitar_hero.o(i.partida_guitar_hero)
+    i.pin_a_eint                             0x00001a90   Section        0  hal_ext_int_lpc.o(i.pin_a_eint)
+    pin_a_eint                               0x00001a90   ARM Code      72  hal_ext_int_lpc.o(i.pin_a_eint)
+    i.pin_to_eint                            0x00001ad8   Section        0  hal_ext_int_lpc.o(i.pin_to_eint)
+    i.pin_to_gpio                            0x00001b3c   Section        0  hal_ext_int_lpc.o(i.pin_to_gpio)
+    i.rt_FIFO_encolar                        0x00001ba0   Section        0  rt_fifo.o(i.rt_FIFO_encolar)
+    i.rt_FIFO_extraer                        0x00001c6c   Section        0  rt_fifo.o(i.rt_FIFO_extraer)
+    i.rt_FIFO_inicializar                    0x00001cf8   Section        0  rt_fifo.o(i.rt_FIFO_inicializar)
+    i.rt_GE_actualizar                       0x00001d7c   Section        0  rt_ge.o(i.rt_GE_actualizar)
+    i.rt_GE_iniciar                          0x00001e50   Section        0  rt_ge.o(i.rt_GE_iniciar)
+    i.rt_GE_lanzador                         0x00001f04   Section        0  rt_ge.o(i.rt_GE_lanzador)
+    i.sec_fin_gh                             0x00002000   Section        0  guitar_hero.o(i.sec_fin_gh)
+    i.sec_inicio_gh                          0x00002074   Section        0  guitar_hero.o(i.sec_inicio_gh)
+    i.svc_GE_cancelar                        0x0000217c   Section        0  rt_ge.o(i.svc_GE_cancelar)
+    i.svc_GE_suscribir                       0x0000225c   Section        0  rt_ge.o(i.svc_GE_suscribir)
+    i.svc_alarma_activar                     0x00002354   Section        0  svc_alarma.o(i.svc_alarma_activar)
+    i.svc_alarma_actualizar                  0x000024c8   Section        0  svc_alarma.o(i.svc_alarma_actualizar)
+    i.svc_alarma_codificar                   0x000025c8   Section        0  svc_alarma.o(i.svc_alarma_codificar)
+    i.svc_alarma_iniciar                     0x000025e8   Section        0  svc_alarma.o(i.svc_alarma_iniciar)
+    i.vic_channel                            0x00002664   Section        0  hal_ext_int_lpc.o(i.vic_channel)
+    vic_channel                              0x00002664   ARM Code      72  hal_ext_int_lpc.o(i.vic_channel)
+    .constdata                               0x000026ac   Section       12  drv_leds.o(.constdata)
+    s_led_list                               0x000026ac   Data          12  drv_leds.o(.constdata)
+    .constdata                               0x000026b8   Section       16  drv_monitor.o(.constdata)
+    s_monitor_list                           0x000026b8   Data          16  drv_monitor.o(.constdata)
+    .constdata                               0x000026c8   Section       12  drv_botones.o(.constdata)
+    lista_botones                            0x000026c8   Data          12  drv_botones.o(.constdata)
     .data                                    0x40000000   Section        8  drv_tiempo.o(.data)
     s_callback_usuario                       0x40000000   Data           4  drv_tiempo.o(.data)
     s_ID_evento_guardado                     0x40000004   Data           4  drv_tiempo.o(.data)
@@ -724,7 +726,7 @@ Image Symbol Table
     .data                                    0x4000001c   Section        5  drv_sc.o(.data)
     anid_sc                                  0x4000001c   Data           4  drv_sc.o(.data)
     restaurar                                0x40000020   Data           1  drv_sc.o(.data)
-    .data                                    0x40000024   Section       64  guitar_hero.o(.data)
+    .data                                    0x40000024   Section       68  guitar_hero.o(.data)
     leds                                     0x40000024   Data           4  guitar_hero.o(.data)
     periodo_leds                             0x40000028   Data           4  guitar_hero.o(.data)
     led_1_encendido                          0x4000002c   Data           4  guitar_hero.o(.data)
@@ -741,13 +743,14 @@ Image Symbol Table
     puntuacion_total                         0x40000058   Data           4  guitar_hero.o(.data)
     racha                                    0x4000005c   Data           4  guitar_hero.o(.data)
     palpitaciones                            0x40000060   Data           4  guitar_hero.o(.data)
-    .data                                    0x40000064   Section        8  hal_tiempo_lpc.o(.data)
-    s_overflows_t1                           0x40000064   Data           4  hal_tiempo_lpc.o(.data)
-    s_cb                                     0x40000068   Data           4  hal_tiempo_lpc.o(.data)
-    .data                                    0x4000006c   Section        4  hal_ext_int_lpc.o(.data)
-    f_cb                                     0x4000006c   Data           4  hal_ext_int_lpc.o(.data)
-    .bss                                     0x40000070   Section       12  drv_tiempo.o(.bss)
-    info                                     0x40000070   Data          12  drv_tiempo.o(.bss)
+    cuenta_fin                               0x40000064   Data           4  guitar_hero.o(.data)
+    .data                                    0x40000068   Section        8  hal_tiempo_lpc.o(.data)
+    s_overflows_t1                           0x40000068   Data           4  hal_tiempo_lpc.o(.data)
+    s_cb                                     0x4000006c   Data           4  hal_tiempo_lpc.o(.data)
+    .data                                    0x40000070   Section        4  hal_ext_int_lpc.o(.data)
+    f_cb                                     0x40000070   Data           4  hal_ext_int_lpc.o(.data)
+    .bss                                     0x40000074   Section       12  drv_tiempo.o(.bss)
+    info                                     0x40000074   Data          12  drv_tiempo.o(.bss)
     .bss                                     0x40000080   Section     2108  rt_fifo.o(.bss)
     fifo                                     0x40000080   Data        2056  rt_fifo.o(.bss)
     estadisticas                             0x40000888   Data          52  rt_fifo.o(.bss)
@@ -894,59 +897,59 @@ Image Symbol Table
     drv_wdt_feed                             0x00000de8   ARM Code      24  drv_wdt.o(i.drv_wdt_feed)
     drv_wdt_iniciar                          0x00000e00   ARM Code      32  drv_wdt.o(i.drv_wdt_iniciar)
     estadisticas_guitar_hero                 0x00000e20   ARM Code       4  guitar_hero.o(i.estadisticas_guitar_hero)
-    evento_guitar_hero                       0x00000e24   ARM Code     380  guitar_hero.o(i.evento_guitar_hero)
-    fin_partida_guitar_hero                  0x00000fb4   ARM Code     160  guitar_hero.o(i.fin_partida_guitar_hero)
-    guitar_hero                              0x0000106c   ARM Code     152  guitar_hero.o(i.guitar_hero)
-    hal_consumo_dormir                       0x00001124   ARM Code      44  hal_consumo_lpc.o(i.hal_consumo_dormir)
-    hal_consumo_esperar                      0x00001154   ARM Code      32  hal_consumo_lpc.o(i.hal_consumo_esperar)
-    hal_consumo_iniciar                      0x00001178   ARM Code      16  hal_consumo_lpc.o(i.hal_consumo_iniciar)
-    hal_ext_int_clear                        0x0000118c   ARM Code      16  hal_ext_int_lpc.o(i.hal_ext_int_clear)
-    hal_ext_int_clear_flag                   0x000011a0   ARM Code      52  hal_ext_int_lpc.o(i.hal_ext_int_clear_flag)
-    hal_ext_int_deshabilitar_int             0x000011d8   ARM Code      56  hal_ext_int_lpc.o(i.hal_ext_int_deshabilitar_int)
-    hal_ext_int_habilitar_despertar          0x00001210   ARM Code      60  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_despertar)
-    hal_ext_int_habilitar_int                0x00001250   ARM Code      56  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_int)
-    hal_ext_int_iniciar                      0x00001288   ARM Code     176  hal_ext_int_lpc.o(i.hal_ext_int_iniciar)
-    hal_gpio_escribir                        0x00001344   ARM Code      44  hal_gpio_lpc.o(i.hal_gpio_escribir)
-    hal_gpio_iniciar                         0x00001374   ARM Code      16  hal_gpio_lpc.o(i.hal_gpio_iniciar)
-    hal_gpio_leer                            0x00001388   ARM Code      48  hal_gpio_lpc.o(i.hal_gpio_leer)
-    hal_gpio_sentido                         0x000013bc   ARM Code      72  hal_gpio_lpc.o(i.hal_gpio_sentido)
-    hal_iniciar_T0                           0x00001408   ARM Code      28  hal_tiempo_lpc.o(i.hal_iniciar_T0)
-    hal_sc_disable                           0x00001424   ARM Code      20  hal_sc_lpc.o(i.hal_sc_disable)
-    hal_sc_restaurar                         0x00001438   ARM Code      16  hal_sc_lpc.o(i.hal_sc_restaurar)
-    hal_tiempo_actual_tick64                 0x00001448   ARM Code     100  hal_tiempo_lpc.o(i.hal_tiempo_actual_tick64)
-    hal_tiempo_iniciar_tick                  0x000014b4   ARM Code     140  hal_tiempo_lpc.o(i.hal_tiempo_iniciar_tick)
-    hal_tiempo_periodico_config_tick         0x00001550   ARM Code      72  hal_tiempo_lpc.o(i.hal_tiempo_periodico_config_tick)
-    hal_tiempo_periodico_enable              0x000015a0   ARM Code      80  hal_tiempo_lpc.o(i.hal_tiempo_periodico_enable)
-    hal_tiempo_periodico_set_callback        0x000015f4   ARM Code      12  hal_tiempo_lpc.o(i.hal_tiempo_periodico_set_callback)
-    hal_tiempo_reloj_periodico_tick          0x00001604   ARM Code      76  hal_tiempo_lpc.o(i.hal_tiempo_reloj_periodico_tick)
-    hal_wdt_feed                             0x00001650   ARM Code      24  hal_wdt_lpc.o(i.hal_wdt_feed)
-    hal_wdt_iniciar                          0x00001668   ARM Code      44  hal_wdt_lpc.o(i.hal_wdt_iniciar)
-    main                                     0x000016f4   ARM Code      64  main.o(i.main)
-    main_secuencias_gh                       0x00001734   ARM Code     116  guitar_hero.o(i.main_secuencias_gh)
-    manejador_interrupcion_botones_fin       0x000017b4   ARM Code      12  guitar_hero.o(i.manejador_interrupcion_botones_fin)
-    manejador_interrupcion_botones_gh        0x000017c0   ARM Code      72  guitar_hero.o(i.manejador_interrupcion_botones_gh)
-    manejador_interrupcion_botones_juego     0x0000180c   ARM Code      80  guitar_hero.o(i.manejador_interrupcion_botones_juego)
-    modificar_puntuacion                     0x00001860   ARM Code     324  guitar_hero.o(i.modificar_puntuacion)
-    obtener_notas                            0x000019e4   ARM Code      84  guitar_hero.o(i.obtener_notas)
-    partida_guitar_hero                      0x00001a5c   ARM Code      24  guitar_hero.o(i.partida_guitar_hero)
-    pin_to_eint                              0x00001abc   ARM Code      96  hal_ext_int_lpc.o(i.pin_to_eint)
-    pin_to_gpio                              0x00001b20   ARM Code      96  hal_ext_int_lpc.o(i.pin_to_gpio)
-    rt_FIFO_encolar                          0x00001b84   ARM Code     196  rt_fifo.o(i.rt_FIFO_encolar)
-    rt_FIFO_extraer                          0x00001c50   ARM Code     136  rt_fifo.o(i.rt_FIFO_extraer)
-    rt_FIFO_inicializar                      0x00001cdc   ARM Code     124  rt_fifo.o(i.rt_FIFO_inicializar)
-    rt_GE_actualizar                         0x00001d60   ARM Code     204  rt_ge.o(i.rt_GE_actualizar)
-    rt_GE_iniciar                            0x00001e34   ARM Code     160  rt_ge.o(i.rt_GE_iniciar)
-    rt_GE_lanzador                           0x00001ee8   ARM Code     236  rt_ge.o(i.rt_GE_lanzador)
-    sec_fin_gh                               0x00001fe4   ARM Code     112  guitar_hero.o(i.sec_fin_gh)
-    sec_inicio_gh                            0x00002058   ARM Code     244  guitar_hero.o(i.sec_inicio_gh)
-    svc_GE_cancelar                          0x00002160   ARM Code     220  rt_ge.o(i.svc_GE_cancelar)
-    svc_GE_suscribir                         0x00002240   ARM Code     240  rt_ge.o(i.svc_GE_suscribir)
-    svc_alarma_activar                       0x00002338   ARM Code     364  svc_alarma.o(i.svc_alarma_activar)
-    svc_alarma_actualizar                    0x000024ac   ARM Code     248  svc_alarma.o(i.svc_alarma_actualizar)
-    svc_alarma_codificar                     0x000025ac   ARM Code      32  svc_alarma.o(i.svc_alarma_codificar)
-    svc_alarma_iniciar                       0x000025cc   ARM Code     108  svc_alarma.o(i.svc_alarma_iniciar)
-    Region$$Table$$Base                      0x000026b8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000026d8   Number         0  anon$$obj.o(Region$$Table)
+    evento_guitar_hero                       0x00000e24   ARM Code     396  guitar_hero.o(i.evento_guitar_hero)
+    fin_partida_guitar_hero                  0x00000fc4   ARM Code     160  guitar_hero.o(i.fin_partida_guitar_hero)
+    guitar_hero                              0x0000107c   ARM Code     152  guitar_hero.o(i.guitar_hero)
+    hal_consumo_dormir                       0x00001134   ARM Code      44  hal_consumo_lpc.o(i.hal_consumo_dormir)
+    hal_consumo_esperar                      0x00001164   ARM Code      32  hal_consumo_lpc.o(i.hal_consumo_esperar)
+    hal_consumo_iniciar                      0x00001188   ARM Code      16  hal_consumo_lpc.o(i.hal_consumo_iniciar)
+    hal_ext_int_clear                        0x0000119c   ARM Code      16  hal_ext_int_lpc.o(i.hal_ext_int_clear)
+    hal_ext_int_clear_flag                   0x000011b0   ARM Code      52  hal_ext_int_lpc.o(i.hal_ext_int_clear_flag)
+    hal_ext_int_deshabilitar_int             0x000011e8   ARM Code      56  hal_ext_int_lpc.o(i.hal_ext_int_deshabilitar_int)
+    hal_ext_int_habilitar_despertar          0x00001220   ARM Code      60  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_despertar)
+    hal_ext_int_habilitar_int                0x00001260   ARM Code      56  hal_ext_int_lpc.o(i.hal_ext_int_habilitar_int)
+    hal_ext_int_iniciar                      0x00001298   ARM Code     176  hal_ext_int_lpc.o(i.hal_ext_int_iniciar)
+    hal_gpio_escribir                        0x00001354   ARM Code      44  hal_gpio_lpc.o(i.hal_gpio_escribir)
+    hal_gpio_iniciar                         0x00001384   ARM Code      16  hal_gpio_lpc.o(i.hal_gpio_iniciar)
+    hal_gpio_leer                            0x00001398   ARM Code      48  hal_gpio_lpc.o(i.hal_gpio_leer)
+    hal_gpio_sentido                         0x000013cc   ARM Code      72  hal_gpio_lpc.o(i.hal_gpio_sentido)
+    hal_iniciar_T0                           0x00001418   ARM Code      28  hal_tiempo_lpc.o(i.hal_iniciar_T0)
+    hal_sc_disable                           0x00001434   ARM Code      20  hal_sc_lpc.o(i.hal_sc_disable)
+    hal_sc_restaurar                         0x00001448   ARM Code      16  hal_sc_lpc.o(i.hal_sc_restaurar)
+    hal_tiempo_actual_tick64                 0x00001458   ARM Code     100  hal_tiempo_lpc.o(i.hal_tiempo_actual_tick64)
+    hal_tiempo_iniciar_tick                  0x000014c4   ARM Code     140  hal_tiempo_lpc.o(i.hal_tiempo_iniciar_tick)
+    hal_tiempo_periodico_config_tick         0x00001560   ARM Code      72  hal_tiempo_lpc.o(i.hal_tiempo_periodico_config_tick)
+    hal_tiempo_periodico_enable              0x000015b0   ARM Code      80  hal_tiempo_lpc.o(i.hal_tiempo_periodico_enable)
+    hal_tiempo_periodico_set_callback        0x00001604   ARM Code      12  hal_tiempo_lpc.o(i.hal_tiempo_periodico_set_callback)
+    hal_tiempo_reloj_periodico_tick          0x00001614   ARM Code      76  hal_tiempo_lpc.o(i.hal_tiempo_reloj_periodico_tick)
+    hal_wdt_feed                             0x00001660   ARM Code      24  hal_wdt_lpc.o(i.hal_wdt_feed)
+    hal_wdt_iniciar                          0x00001678   ARM Code      44  hal_wdt_lpc.o(i.hal_wdt_iniciar)
+    main                                     0x00001704   ARM Code      64  main.o(i.main)
+    main_secuencias_gh                       0x00001744   ARM Code     116  guitar_hero.o(i.main_secuencias_gh)
+    manejador_interrupcion_botones_fin       0x000017c4   ARM Code      68  guitar_hero.o(i.manejador_interrupcion_botones_fin)
+    manejador_interrupcion_botones_gh        0x0000180c   ARM Code      72  guitar_hero.o(i.manejador_interrupcion_botones_gh)
+    manejador_interrupcion_botones_juego     0x00001858   ARM Code      80  guitar_hero.o(i.manejador_interrupcion_botones_juego)
+    modificar_puntuacion                     0x000018ac   ARM Code     268  guitar_hero.o(i.modificar_puntuacion)
+    obtener_notas                            0x000019f4   ARM Code      84  guitar_hero.o(i.obtener_notas)
+    partida_guitar_hero                      0x00001a6c   ARM Code      32  guitar_hero.o(i.partida_guitar_hero)
+    pin_to_eint                              0x00001ad8   ARM Code      96  hal_ext_int_lpc.o(i.pin_to_eint)
+    pin_to_gpio                              0x00001b3c   ARM Code      96  hal_ext_int_lpc.o(i.pin_to_gpio)
+    rt_FIFO_encolar                          0x00001ba0   ARM Code     196  rt_fifo.o(i.rt_FIFO_encolar)
+    rt_FIFO_extraer                          0x00001c6c   ARM Code     136  rt_fifo.o(i.rt_FIFO_extraer)
+    rt_FIFO_inicializar                      0x00001cf8   ARM Code     124  rt_fifo.o(i.rt_FIFO_inicializar)
+    rt_GE_actualizar                         0x00001d7c   ARM Code     204  rt_ge.o(i.rt_GE_actualizar)
+    rt_GE_iniciar                            0x00001e50   ARM Code     160  rt_ge.o(i.rt_GE_iniciar)
+    rt_GE_lanzador                           0x00001f04   ARM Code     236  rt_ge.o(i.rt_GE_lanzador)
+    sec_fin_gh                               0x00002000   ARM Code     112  guitar_hero.o(i.sec_fin_gh)
+    sec_inicio_gh                            0x00002074   ARM Code     244  guitar_hero.o(i.sec_inicio_gh)
+    svc_GE_cancelar                          0x0000217c   ARM Code     220  rt_ge.o(i.svc_GE_cancelar)
+    svc_GE_suscribir                         0x0000225c   ARM Code     240  rt_ge.o(i.svc_GE_suscribir)
+    svc_alarma_activar                       0x00002354   ARM Code     364  svc_alarma.o(i.svc_alarma_activar)
+    svc_alarma_actualizar                    0x000024c8   ARM Code     248  svc_alarma.o(i.svc_alarma_actualizar)
+    svc_alarma_codificar                     0x000025c8   ARM Code      32  svc_alarma.o(i.svc_alarma_codificar)
+    svc_alarma_iniciar                       0x000025e8   ARM Code     108  svc_alarma.o(i.svc_alarma_iniciar)
+    Region$$Table$$Base                      0x000026d4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000026f4   Number         0  anon$$obj.o(Region$$Table)
     monitor_id                               0x40000008   Data           4  drv_consumo.o(.data)
     __libspace_start                         0x40000a68   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x40000ac8   Data           0  libspace.o(.bss)
@@ -959,9 +962,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000110
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00002748, Max: 0x00020000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00002768, Max: 0x00020000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000026d8, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000026f4, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1052,84 +1055,83 @@ Memory Map of the image
     0x00000de8   0x00000de8   0x00000018   Code   RO          523    i.drv_wdt_feed      drv_wdt.o
     0x00000e00   0x00000e00   0x00000020   Code   RO          524    i.drv_wdt_iniciar   drv_wdt.o
     0x00000e20   0x00000e20   0x00000004   Code   RO          545    i.estadisticas_guitar_hero  guitar_hero.o
-    0x00000e24   0x00000e24   0x00000190   Code   RO          546    i.evento_guitar_hero  guitar_hero.o
-    0x00000fb4   0x00000fb4   0x000000b8   Code   RO          547    i.fin_partida_guitar_hero  guitar_hero.o
-    0x0000106c   0x0000106c   0x000000b8   Code   RO          548    i.guitar_hero       guitar_hero.o
-    0x00001124   0x00001124   0x00000030   Code   RO          739    i.hal_consumo_dormir  hal_consumo_lpc.o
-    0x00001154   0x00001154   0x00000024   Code   RO          740    i.hal_consumo_esperar  hal_consumo_lpc.o
-    0x00001178   0x00001178   0x00000014   Code   RO          741    i.hal_consumo_iniciar  hal_consumo_lpc.o
-    0x0000118c   0x0000118c   0x00000014   Code   RO          767    i.hal_ext_int_clear  hal_ext_int_lpc.o
-    0x000011a0   0x000011a0   0x00000038   Code   RO          768    i.hal_ext_int_clear_flag  hal_ext_int_lpc.o
-    0x000011d8   0x000011d8   0x00000038   Code   RO          770    i.hal_ext_int_deshabilitar_int  hal_ext_int_lpc.o
-    0x00001210   0x00001210   0x00000040   Code   RO          771    i.hal_ext_int_habilitar_despertar  hal_ext_int_lpc.o
-    0x00001250   0x00001250   0x00000038   Code   RO          772    i.hal_ext_int_habilitar_int  hal_ext_int_lpc.o
-    0x00001288   0x00001288   0x000000bc   Code   RO          773    i.hal_ext_int_iniciar  hal_ext_int_lpc.o
-    0x00001344   0x00001344   0x00000030   Code   RO          640    i.hal_gpio_escribir  hal_gpio_lpc.o
-    0x00001374   0x00001374   0x00000014   Code   RO          641    i.hal_gpio_iniciar  hal_gpio_lpc.o
-    0x00001388   0x00001388   0x00000034   Code   RO          642    i.hal_gpio_leer     hal_gpio_lpc.o
-    0x000013bc   0x000013bc   0x0000004c   Code   RO          643    i.hal_gpio_sentido  hal_gpio_lpc.o
-    0x00001408   0x00001408   0x0000001c   Code   RO          675    i.hal_iniciar_T0    hal_tiempo_lpc.o
-    0x00001424   0x00001424   0x00000014   Code   RO          856    i.hal_sc_disable    hal_sc_lpc.o
-    0x00001438   0x00001438   0x00000010   Code   RO          857    i.hal_sc_restaurar  hal_sc_lpc.o
-    0x00001448   0x00001448   0x0000006c   Code   RO          676    i.hal_tiempo_actual_tick64  hal_tiempo_lpc.o
-    0x000014b4   0x000014b4   0x0000009c   Code   RO          677    i.hal_tiempo_iniciar_tick  hal_tiempo_lpc.o
-    0x00001550   0x00001550   0x00000050   Code   RO          678    i.hal_tiempo_periodico_config_tick  hal_tiempo_lpc.o
-    0x000015a0   0x000015a0   0x00000054   Code   RO          679    i.hal_tiempo_periodico_enable  hal_tiempo_lpc.o
-    0x000015f4   0x000015f4   0x00000010   Code   RO          680    i.hal_tiempo_periodico_set_callback  hal_tiempo_lpc.o
-    0x00001604   0x00001604   0x0000004c   Code   RO          681    i.hal_tiempo_reloj_periodico_tick  hal_tiempo_lpc.o
-    0x00001650   0x00001650   0x00000018   Code   RO          877    i.hal_wdt_feed      hal_wdt_lpc.o
-    0x00001668   0x00001668   0x00000030   Code   RO          878    i.hal_wdt_iniciar   hal_wdt_lpc.o
-    0x00001698   0x00001698   0x0000001c   Code   RO          278    i.hw_level_from_state  drv_monitor.o
-    0x000016b4   0x000016b4   0x0000001c   Code   RO          151    i.hw_level_from_status  drv_leds.o
-    0x000016d0   0x000016d0   0x00000024   Code   RO          152    i.led_id_valido     drv_leds.o
-    0x000016f4   0x000016f4   0x00000040   Code   RO            9    i.main              main.o
-    0x00001734   0x00001734   0x00000080   Code   RO          549    i.main_secuencias_gh  guitar_hero.o
-    0x000017b4   0x000017b4   0x0000000c   Code   RO          550    i.manejador_interrupcion_botones_fin  guitar_hero.o
-    0x000017c0   0x000017c0   0x0000004c   Code   RO          551    i.manejador_interrupcion_botones_gh  guitar_hero.o
-    0x0000180c   0x0000180c   0x00000054   Code   RO          552    i.manejador_interrupcion_botones_juego  guitar_hero.o
-    0x00001860   0x00001860   0x00000160   Code   RO          553    i.modificar_puntuacion  guitar_hero.o
-    0x000019c0   0x000019c0   0x00000024   Code   RO          279    i.monitor_id_valido  drv_monitor.o
-    0x000019e4   0x000019e4   0x00000078   Code   RO          554    i.obtener_notas     guitar_hero.o
-    0x00001a5c   0x00001a5c   0x00000018   Code   RO          555    i.partida_guitar_hero  guitar_hero.o
-    0x00001a74   0x00001a74   0x00000048   Code   RO          775    i.pin_a_eint        hal_ext_int_lpc.o
-    0x00001abc   0x00001abc   0x00000064   Code   RO          776    i.pin_to_eint       hal_ext_int_lpc.o
-    0x00001b20   0x00001b20   0x00000064   Code   RO          777    i.pin_to_gpio       hal_ext_int_lpc.o
-    0x00001b84   0x00001b84   0x000000cc   Code   RO          311    i.rt_FIFO_encolar   rt_fifo.o
-    0x00001c50   0x00001c50   0x0000008c   Code   RO          313    i.rt_FIFO_extraer   rt_fifo.o
-    0x00001cdc   0x00001cdc   0x00000084   Code   RO          314    i.rt_FIFO_inicializar  rt_fifo.o
-    0x00001d60   0x00001d60   0x000000d4   Code   RO          376    i.rt_GE_actualizar  rt_ge.o
-    0x00001e34   0x00001e34   0x000000b4   Code   RO          377    i.rt_GE_iniciar     rt_ge.o
-    0x00001ee8   0x00001ee8   0x000000fc   Code   RO          378    i.rt_GE_lanzador    rt_ge.o
-    0x00001fe4   0x00001fe4   0x00000074   Code   RO          556    i.sec_fin_gh        guitar_hero.o
-    0x00002058   0x00002058   0x00000108   Code   RO          557    i.sec_inicio_gh     guitar_hero.o
-    0x00002160   0x00002160   0x000000e0   Code   RO          379    i.svc_GE_cancelar   rt_ge.o
-    0x00002240   0x00002240   0x000000f8   Code   RO          380    i.svc_GE_suscribir  rt_ge.o
-    0x00002338   0x00002338   0x00000174   Code   RO          418    i.svc_alarma_activar  svc_alarma.o
-    0x000024ac   0x000024ac   0x00000100   Code   RO          419    i.svc_alarma_actualizar  svc_alarma.o
-    0x000025ac   0x000025ac   0x00000020   Code   RO          420    i.svc_alarma_codificar  svc_alarma.o
-    0x000025cc   0x000025cc   0x0000007c   Code   RO          421    i.svc_alarma_iniciar  svc_alarma.o
-    0x00002648   0x00002648   0x00000048   Code   RO          778    i.vic_channel       hal_ext_int_lpc.o
-    0x00002690   0x00002690   0x0000000c   Data   RO          153    .constdata          drv_leds.o
-    0x0000269c   0x0000269c   0x00000010   Data   RO          280    .constdata          drv_monitor.o
-    0x000026ac   0x000026ac   0x0000000c   Data   RO          354    .constdata          drv_botones.o
-    0x000026b8   0x000026b8   0x00000020   Data   RO         1131    Region$$Table       anon$$obj.o
+    0x00000e24   0x00000e24   0x000001a0   Code   RO          546    i.evento_guitar_hero  guitar_hero.o
+    0x00000fc4   0x00000fc4   0x000000b8   Code   RO          547    i.fin_partida_guitar_hero  guitar_hero.o
+    0x0000107c   0x0000107c   0x000000b8   Code   RO          548    i.guitar_hero       guitar_hero.o
+    0x00001134   0x00001134   0x00000030   Code   RO          739    i.hal_consumo_dormir  hal_consumo_lpc.o
+    0x00001164   0x00001164   0x00000024   Code   RO          740    i.hal_consumo_esperar  hal_consumo_lpc.o
+    0x00001188   0x00001188   0x00000014   Code   RO          741    i.hal_consumo_iniciar  hal_consumo_lpc.o
+    0x0000119c   0x0000119c   0x00000014   Code   RO          767    i.hal_ext_int_clear  hal_ext_int_lpc.o
+    0x000011b0   0x000011b0   0x00000038   Code   RO          768    i.hal_ext_int_clear_flag  hal_ext_int_lpc.o
+    0x000011e8   0x000011e8   0x00000038   Code   RO          770    i.hal_ext_int_deshabilitar_int  hal_ext_int_lpc.o
+    0x00001220   0x00001220   0x00000040   Code   RO          771    i.hal_ext_int_habilitar_despertar  hal_ext_int_lpc.o
+    0x00001260   0x00001260   0x00000038   Code   RO          772    i.hal_ext_int_habilitar_int  hal_ext_int_lpc.o
+    0x00001298   0x00001298   0x000000bc   Code   RO          773    i.hal_ext_int_iniciar  hal_ext_int_lpc.o
+    0x00001354   0x00001354   0x00000030   Code   RO          640    i.hal_gpio_escribir  hal_gpio_lpc.o
+    0x00001384   0x00001384   0x00000014   Code   RO          641    i.hal_gpio_iniciar  hal_gpio_lpc.o
+    0x00001398   0x00001398   0x00000034   Code   RO          642    i.hal_gpio_leer     hal_gpio_lpc.o
+    0x000013cc   0x000013cc   0x0000004c   Code   RO          643    i.hal_gpio_sentido  hal_gpio_lpc.o
+    0x00001418   0x00001418   0x0000001c   Code   RO          675    i.hal_iniciar_T0    hal_tiempo_lpc.o
+    0x00001434   0x00001434   0x00000014   Code   RO          856    i.hal_sc_disable    hal_sc_lpc.o
+    0x00001448   0x00001448   0x00000010   Code   RO          857    i.hal_sc_restaurar  hal_sc_lpc.o
+    0x00001458   0x00001458   0x0000006c   Code   RO          676    i.hal_tiempo_actual_tick64  hal_tiempo_lpc.o
+    0x000014c4   0x000014c4   0x0000009c   Code   RO          677    i.hal_tiempo_iniciar_tick  hal_tiempo_lpc.o
+    0x00001560   0x00001560   0x00000050   Code   RO          678    i.hal_tiempo_periodico_config_tick  hal_tiempo_lpc.o
+    0x000015b0   0x000015b0   0x00000054   Code   RO          679    i.hal_tiempo_periodico_enable  hal_tiempo_lpc.o
+    0x00001604   0x00001604   0x00000010   Code   RO          680    i.hal_tiempo_periodico_set_callback  hal_tiempo_lpc.o
+    0x00001614   0x00001614   0x0000004c   Code   RO          681    i.hal_tiempo_reloj_periodico_tick  hal_tiempo_lpc.o
+    0x00001660   0x00001660   0x00000018   Code   RO          877    i.hal_wdt_feed      hal_wdt_lpc.o
+    0x00001678   0x00001678   0x00000030   Code   RO          878    i.hal_wdt_iniciar   hal_wdt_lpc.o
+    0x000016a8   0x000016a8   0x0000001c   Code   RO          278    i.hw_level_from_state  drv_monitor.o
+    0x000016c4   0x000016c4   0x0000001c   Code   RO          151    i.hw_level_from_status  drv_leds.o
+    0x000016e0   0x000016e0   0x00000024   Code   RO          152    i.led_id_valido     drv_leds.o
+    0x00001704   0x00001704   0x00000040   Code   RO            9    i.main              main.o
+    0x00001744   0x00001744   0x00000080   Code   RO          549    i.main_secuencias_gh  guitar_hero.o
+    0x000017c4   0x000017c4   0x00000048   Code   RO          550    i.manejador_interrupcion_botones_fin  guitar_hero.o
+    0x0000180c   0x0000180c   0x0000004c   Code   RO          551    i.manejador_interrupcion_botones_gh  guitar_hero.o
+    0x00001858   0x00001858   0x00000054   Code   RO          552    i.manejador_interrupcion_botones_juego  guitar_hero.o
+    0x000018ac   0x000018ac   0x00000124   Code   RO          553    i.modificar_puntuacion  guitar_hero.o
+    0x000019d0   0x000019d0   0x00000024   Code   RO          279    i.monitor_id_valido  drv_monitor.o
+    0x000019f4   0x000019f4   0x00000078   Code   RO          554    i.obtener_notas     guitar_hero.o
+    0x00001a6c   0x00001a6c   0x00000024   Code   RO          555    i.partida_guitar_hero  guitar_hero.o
+    0x00001a90   0x00001a90   0x00000048   Code   RO          775    i.pin_a_eint        hal_ext_int_lpc.o
+    0x00001ad8   0x00001ad8   0x00000064   Code   RO          776    i.pin_to_eint       hal_ext_int_lpc.o
+    0x00001b3c   0x00001b3c   0x00000064   Code   RO          777    i.pin_to_gpio       hal_ext_int_lpc.o
+    0x00001ba0   0x00001ba0   0x000000cc   Code   RO          311    i.rt_FIFO_encolar   rt_fifo.o
+    0x00001c6c   0x00001c6c   0x0000008c   Code   RO          313    i.rt_FIFO_extraer   rt_fifo.o
+    0x00001cf8   0x00001cf8   0x00000084   Code   RO          314    i.rt_FIFO_inicializar  rt_fifo.o
+    0x00001d7c   0x00001d7c   0x000000d4   Code   RO          376    i.rt_GE_actualizar  rt_ge.o
+    0x00001e50   0x00001e50   0x000000b4   Code   RO          377    i.rt_GE_iniciar     rt_ge.o
+    0x00001f04   0x00001f04   0x000000fc   Code   RO          378    i.rt_GE_lanzador    rt_ge.o
+    0x00002000   0x00002000   0x00000074   Code   RO          556    i.sec_fin_gh        guitar_hero.o
+    0x00002074   0x00002074   0x00000108   Code   RO          557    i.sec_inicio_gh     guitar_hero.o
+    0x0000217c   0x0000217c   0x000000e0   Code   RO          379    i.svc_GE_cancelar   rt_ge.o
+    0x0000225c   0x0000225c   0x000000f8   Code   RO          380    i.svc_GE_suscribir  rt_ge.o
+    0x00002354   0x00002354   0x00000174   Code   RO          418    i.svc_alarma_activar  svc_alarma.o
+    0x000024c8   0x000024c8   0x00000100   Code   RO          419    i.svc_alarma_actualizar  svc_alarma.o
+    0x000025c8   0x000025c8   0x00000020   Code   RO          420    i.svc_alarma_codificar  svc_alarma.o
+    0x000025e8   0x000025e8   0x0000007c   Code   RO          421    i.svc_alarma_iniciar  svc_alarma.o
+    0x00002664   0x00002664   0x00000048   Code   RO          778    i.vic_channel       hal_ext_int_lpc.o
+    0x000026ac   0x000026ac   0x0000000c   Data   RO          153    .constdata          drv_leds.o
+    0x000026b8   0x000026b8   0x00000010   Data   RO          280    .constdata          drv_monitor.o
+    0x000026c8   0x000026c8   0x0000000c   Data   RO          354    .constdata          drv_botones.o
+    0x000026d4   0x000026d4   0x00000020   Data   RO         1131    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x40000000, Load base: 0x000026d8, Size: 0x00001348, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x40000000, Load base: 0x000026f4, Size: 0x00001348, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x40000000   0x000026d8   0x00000008   Data   RW          197    .data               drv_tiempo.o
-    0x40000008   0x000026e0   0x00000004   Data   RW          245    .data               drv_consumo.o
-    0x4000000c   0x000026e4   0x00000008   Data   RW          382    .data               rt_ge.o
-    0x40000014   0x000026ec   0x00000008   Data   RW          423    .data               svc_alarma.o
-    0x4000001c   0x000026f4   0x00000005   Data   RW          502    .data               drv_sc.o
-    0x40000021   0x000026f9   0x00000003   PAD
-    0x40000024   0x000026fc   0x00000040   Data   RW          558    .data               guitar_hero.o
-    0x40000064   0x0000273c   0x00000008   Data   RW          683    .data               hal_tiempo_lpc.o
-    0x4000006c   0x00002744   0x00000004   Data   RW          779    .data               hal_ext_int_lpc.o
-    0x40000070        -       0x0000000c   Zero   RW          196    .bss                drv_tiempo.o
-    0x4000007c   0x00002748   0x00000004   PAD
+    0x40000000   0x000026f4   0x00000008   Data   RW          197    .data               drv_tiempo.o
+    0x40000008   0x000026fc   0x00000004   Data   RW          245    .data               drv_consumo.o
+    0x4000000c   0x00002700   0x00000008   Data   RW          382    .data               rt_ge.o
+    0x40000014   0x00002708   0x00000008   Data   RW          423    .data               svc_alarma.o
+    0x4000001c   0x00002710   0x00000005   Data   RW          502    .data               drv_sc.o
+    0x40000021   0x00002715   0x00000003   PAD
+    0x40000024   0x00002718   0x00000044   Data   RW          558    .data               guitar_hero.o
+    0x40000068   0x0000275c   0x00000008   Data   RW          683    .data               hal_tiempo_lpc.o
+    0x40000070   0x00002764   0x00000004   Data   RW          779    .data               hal_ext_int_lpc.o
+    0x40000074        -       0x0000000c   Zero   RW          196    .bss                drv_tiempo.o
     0x40000080        -       0x0000083c   Zero   RW          315    .bss                rt_fifo.o
     0x400008bc        -       0x00000018   Zero   RW          353    .bss                drv_botones.o
     0x400008d4        -       0x00000138   Zero   RW          381    .bss                rt_ge.o
@@ -1154,7 +1156,7 @@ Image component sizes
        144         16          0          5          0       1129   drv_sc.o
        256         32          0          8         12       3326   drv_tiempo.o
         56          0          0          0          0        957   drv_wdt.o
-      2024        192          0         64          0      10063   guitar_hero.o
+      2052        196          0         68          0      10163   guitar_hero.o
        104         12          0          0          0       1373   hal_consumo_lpc.o
        964         40          0          4          0       6851   hal_ext_int_lpc.o
        196         16          0          0          0       2526   hal_gpio_lpc.o
@@ -1168,9 +1170,9 @@ Image component sizes
        784         32          0          8         80       3961   svc_alarma.o
 
     ----------------------------------------------------------------------
-      8624        596         72        112       4728      67668   Object Totals
+      8652        600         72        116       4724      67768   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         0          0          0          3          4          0   (incl. Padding)
+         0          0          0          3          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1219,15 +1221,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      9872        680         72        112       4824      64420   Grand Totals
-      9872        680         72        112       4824      64420   ELF Image Totals
-      9872        680         72        112          0          0   ROM Totals
+      9900        684         72        116       4820      64520   Grand Totals
+      9900        684         72        116       4820      64520   ELF Image Totals
+      9900        684         72        116          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 9944 (   9.71kB)
+    Total RO  Size (Code + RO Data)                 9972 (   9.74kB)
     Total RW  Size (RW Data + ZI Data)              4936 (   4.82kB)
-    Total ROM Size (Code + RO Data + RW Data)      10056 (   9.82kB)
+    Total ROM Size (Code + RO Data + RW Data)      10088 (   9.85kB)
 
 ==============================================================================
 

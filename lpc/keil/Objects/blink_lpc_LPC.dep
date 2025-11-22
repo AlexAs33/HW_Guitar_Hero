@@ -20,7 +20,7 @@ I (..\..\src\drv_consumo.h)(0x691B77C5)
 I (..\..\src\drv_botones.h)(0x69199EC2)
 I (..\..\src\drv_sc.h)(0x6919F116)
 I (..\..\src\drv_wdt.h)(0x6919F114)
-I (..\..\src\guitar_hero.h)(0x6920969E)
+I (..\..\src\guitar_hero.h)(0x6921E3E6)
 I (..\..\src\bit_counter_strike.h)(0x691B77C7)
 F (..\..\src\drv_leds.c)(0x69199EC2)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador-o .\objects\drv_leds.o --omf_browse .\objects\drv_leds.crf --depend .\objects\drv_leds.d)
 I (..\..\src\hal_gpio.h)(0x69199EC2)
@@ -185,8 +185,8 @@ F (..\..\src\drv_sc.h)(0x6919F116)()
 F (..\..\src\drv_wdt.h)(0x6919F114)()
 F (..\..\src\hal_sc.h)(0x6919EBEE)()
 F (..\..\src\hal_wdt.h)(0x6919F10D)()
-F (..\..\src\guitar_hero.c)(0x6920951E)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador-o .\objects\guitar_hero.o --omf_browse .\objects\guitar_hero.crf --depend .\objects\guitar_hero.d)
-I (..\..\src\guitar_hero.h)(0x6920969E)
+F (..\..\src\guitar_hero.c)(0x6921E40E)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador-o .\objects\guitar_hero.o --omf_browse .\objects\guitar_hero.crf --depend .\objects\guitar_hero.d)
+I (..\..\src\guitar_hero.h)(0x6921E3E6)
 I (..\..\src\rt_fifo.h)(0x69199EC2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
 I (..\..\src\rt_evento_t.h)(0x69209095)
@@ -209,7 +209,7 @@ I (..\..\src\drv_wdt.h)(0x6919F114)
 I (..\..\src\random.h)(0x691B77C7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F3DAC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F3DAC)
-F (..\..\src\guitar_hero.h)(0x6920969E)()
+F (..\..\src\guitar_hero.h)(0x6921E3E6)()
 F (..\src_lpc\board_lpc.h)(0x691B77C7)()
 F (..\src_lpc\hal_gpio_lpc.c)(0x69199EC1)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador-o .\objects\hal_gpio_lpc.o --omf_browse .\objects\hal_gpio_lpc.crf --depend .\objects\hal_gpio_lpc.d)
 I (C:\Keil_v5\ARM\INC\Philips\LPC210x.H)(0x559D3D78)

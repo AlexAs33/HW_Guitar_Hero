@@ -25,7 +25,7 @@
 //----------DEFINICIONES DE PARTITURA----------
 #define partitura \
 (uint8_t[]){ \
-    0b10, 0b01, 0b10, 0b01, \
+    0b11, 0b01, 0b10, 0b11, \
     0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
     0b10, 0b01, 0b10, 0b01, \
@@ -103,10 +103,9 @@ void main_secuencias_gh(int modo){
 //----------MANEJADORES BOTONES----------
 void manejador_interrupcion_botones_fin(int32_t id_pin, int32_t id_boton) {
     //TODO boton 3 o 4 pulsados 3 segundos
+		sec_fin_gh();
 
-    sec_fin_gh();
-
-    while(1);   //! como fin --> wdt nos sacara
+		while(1);   //! como fin --> wdt nos sacara
 }
 
 void manejador_interrupcion_botones_juego(int32_t id_pin, int32_t id_boton) {
@@ -158,11 +157,11 @@ void modificar_puntuacion(uint32_t boton){
             puntuacion -= puntos_fallo;
         }
 
-        if(puntuacion < (puntos_acierto * (TAM_PARTITURA - notas_restantes))/2){    //s no llevamos la mitad de los puntos posibles perdemos
+       /* if(puntuacion < (puntos_acierto * (TAM_PARTITURA - notas_restantes))/2){    //s no llevamos la mitad de los puntos posibles perdemos
             //GAME OVER
             notas_restantes = 0;
             //?secuencia game over distinta a la de apagar??
-        }
+        }*/
 	}
 	else{//ACIERTO
         racha ++;
@@ -184,7 +183,7 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
         return;
     }
 
-    if(evento == ev_TIMEOUT_LED){
+    if(evento == ev_TIMEOUT_LED && notas_restantes < 30){
         modificar_puntuacion(255);
         //cancelar alarma
         uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
@@ -236,6 +235,7 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
 //----------INICIO Y FIN DE PARTIDA----------
 void partida_guitar_hero(){
+	cuenta_fin = 0;
 	main_secuencias_gh(0);		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establece
 	
 	rt_GE_lanzador(); //guarrada antologica. 1 ge una partida y asi

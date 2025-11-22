@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\blink_lpc.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\blink_lpc.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 21 17:44:54 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Nov 22 17:25:54 2025
 <BR><P>
 <H3>Maximum Stack Usage =        112 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -483,7 +483,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fin_partida_guitar_hero
 </UL>
 
-<P><STRONG><a name="[10]"></a>evento_guitar_hero</STRONG> (ARM, 380 bytes, Stack size 32 bytes, guitar_hero.o(i.evento_guitar_hero))
+<P><STRONG><a name="[10]"></a>evento_guitar_hero</STRONG> (ARM, 396 bytes, Stack size 32 bytes, guitar_hero.o(i.evento_guitar_hero))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = evento_guitar_hero &rArr; obtener_notas &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;obtener_notas
@@ -683,8 +683,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;partida_guitar_hero
 </UL>
 
-<P><STRONG><a name="[6d]"></a>manejador_interrupcion_botones_fin</STRONG> (ARM, 12 bytes, Stack size 0 bytes, guitar_hero.o(i.manejador_interrupcion_botones_fin))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = manejador_interrupcion_botones_fin &rArr; sec_fin_gh &rArr; drv_consumo_esperar &rArr; drv_monitor_marcar
+<P><STRONG><a name="[6d]"></a>manejador_interrupcion_botones_fin</STRONG> (ARM, 68 bytes, Stack size 16 bytes, guitar_hero.o(i.manejador_interrupcion_botones_fin))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = manejador_interrupcion_botones_fin &rArr; sec_fin_gh &rArr; drv_consumo_esperar &rArr; drv_monitor_marcar
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sec_fin_gh
 </UL>
@@ -709,7 +709,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;manejador_interrupcion_botones_gh
 </UL>
 
-<P><STRONG><a name="[5e]"></a>modificar_puntuacion</STRONG> (ARM, 324 bytes, Stack size 4 bytes, guitar_hero.o(i.modificar_puntuacion))
+<P><STRONG><a name="[5e]"></a>modificar_puntuacion</STRONG> (ARM, 268 bytes, Stack size 4 bytes, guitar_hero.o(i.modificar_puntuacion))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = modificar_puntuacion
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;comprobar_acierto
@@ -725,7 +725,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evento_guitar_hero
 </UL>
 
-<P><STRONG><a name="[62]"></a>partida_guitar_hero</STRONG> (ARM, 24 bytes, Stack size 8 bytes, guitar_hero.o(i.partida_guitar_hero))
+<P><STRONG><a name="[62]"></a>partida_guitar_hero</STRONG> (ARM, 32 bytes, Stack size 8 bytes, guitar_hero.o(i.partida_guitar_hero))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = partida_guitar_hero &rArr; rt_GE_lanzador &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_secuencias_gh
