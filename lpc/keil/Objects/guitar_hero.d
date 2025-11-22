@@ -1,10 +1,10 @@
 .\objects\guitar_hero.o: ..\..\src\guitar_hero.c
 .\objects\guitar_hero.o: ..\..\src\guitar_hero.h
 .\objects\guitar_hero.o: ..\..\src\rt_fifo.h
-.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
 .\objects\guitar_hero.o: ..\..\src\rt_evento_t.h
 .\objects\guitar_hero.o: ..\..\src\drv_tiempo.h
-.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
 .\objects\guitar_hero.o: ..\..\src\drv_monitor.h
 .\objects\guitar_hero.o: ..\..\src\board.h
 .\objects\guitar_hero.o: ../src_lpc/board_lpc.h
@@ -17,8 +17,8 @@
 .\objects\guitar_hero.o: ..\..\src\drv_botones.h
 .\objects\guitar_hero.o: ..\..\src\drv_consumo.h
 .\objects\guitar_hero.o: ..\..\src\drv_leds.h
-.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stddef.h
 .\objects\guitar_hero.o: ..\..\src\drv_wdt.h
 .\objects\guitar_hero.o: ..\..\src\random.h
-.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\objects\guitar_hero.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h
