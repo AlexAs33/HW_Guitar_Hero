@@ -1,32 +1,46 @@
+/* *****************************************************************************
+ * P.H.2025: Interfaz para enviar y recibir mensaje via UART del LPC2105
+ */
+
 #include <LPC210x.H>
 #include "hal_uart.h"
 
-#define PCLK 15000000
+#define PCLK    15000000
+#define PIN_TXD 0
+#define PIN_RXD 2
 
 void hal_uart_init(unsigned long baudrate) {
     unsigned int divisor;
-    
-    PINSEL0 |= 0x00050000;  // P0.8=TXD1, P0.9=RXD1
-    
+
+    // Configure P0.0 as TXD0 and P0.1 as RXD0
+    PINSEL0 &= ~(3 << PIN_TXD);
+    PINSEL0 |=  (1 << PIN_TXD);
+    PINSEL0 &= ~(3 << PIN_RXD);
+    PINSEL0 |=  (1 << PIN_RXD);
+
     divisor = PCLK / (16 * baudrate);
-    
-    U1LCR = 0x83;
-    U1DLL = divisor & 0xFF;
-    U1DLM = (divisor >> 8) & 0xFF;
-    U1LCR = 0x03;
-    U1FCR = 0x07;
+
+    // 8 bits de datos, 1 de stop y divisor activado
+    U0LCR = 0x83;
+    // configuración del baudrate para la parte baja y alta
+    U0DLL = divisor & 0xFF;
+    U0DLM = (divisor >> 8) & 0xFF;
+    // desactiva dlab
+    U0LCR = 0x03;
+    // activa y limpia las fifos
+    U0FCR = 0x07;
 }
 
 void hal_uart_putchar(char c) {
-    while (!(U1LSR & 0x20));
-    U1THR = c;
+    while (!(U0LSR & 0x20));
+    U0THR = c;
 }
 
 char hal_uart_getchar(void) {
-    while (!(U1LSR & 0x01));
-    return U1RBR;
+    while (!(U0LSR & 0x01));
+    return U0RBR;
 }
 
 int hal_uart_data_available(void) {
-    return (U1LSR & 0x01);
+    return (U0LSR & 0x01);
 }
