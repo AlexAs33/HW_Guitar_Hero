@@ -1,6 +1,7 @@
 .\objects\main.o: ..\..\src\main.c
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 .\objects\main.o: ..\..\src\svc_alarma.h
 .\objects\main.o: ..\..\src\rt_evento_t.h
 .\objects\main.o: ..\..\src\drv_tiempo.h

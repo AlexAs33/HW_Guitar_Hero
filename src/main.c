@@ -20,6 +20,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "svc_alarma.h"
 
@@ -245,21 +246,23 @@ void test_uart() {
 #ifdef DEBUG
 	  drv_uart_puts("\r\nESTOY EN MODO DEBUG\r\n\n");
 #endif
+	
     int contador = 0;
 
     while (1) {
-        // enviar contador cada segundo
-        drv_uart_puts("Contador: ");
-        drv_uart_putint(contador++);
-        drv_uart_puts("\r\n");
-        // eco inmediato de lo recibido
+        // mensaje de info
+        char buf[32];
+        sprintf(buf, "Contador: %d", contador++);
+        UART_LOG_INFO(buf);
+
+        // eco inmediato
         if (drv_uart_data_available()) {
             char c = drv_uart_getchar();
-            drv_uart_puts("Recibido: ");
+            UART_LOG_DEBUG("Recibido un byte"); // solo en debug
             drv_uart_putchar(c);
-            drv_uart_puts("\r\n");
         }
-        // pequeño delay cutre
+
+        // delay cutre
         for (volatile int i = 0; i < 500000; i++);
     }
 }
