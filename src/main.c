@@ -28,8 +28,6 @@
 #include "rt_evento_t.h"
 #include "rt_GE.h"
 
-#include "svc_alarma.h"
-
 #include "rt_fifo.h"
 #include "rt_evento_t.h"
 #include "rt_GE.h"
@@ -46,6 +44,7 @@
 #include "hal_gpio.h"
 
 #include "board.h"
+#include "random.h"
 
 #include "guitar_hero.h"
 #include "bit_counter_strike.h"
@@ -53,12 +52,13 @@
 
 #define RETARDO_MS 500u
 
-#define TEST_WATCHDOG 1
-#define TEST_BOTONES  2
-#define TEST_OVERFLOW 3
-#define TEST_UART     4
+#define TEST_WATCHDOG  1
+#define TEST_BOTONES   2
+#define TEST_OVERFLOW  3
+#define TEST_UART      4
+#define TEST_PARTITURA 5
 
-#define TEST  TEST_UART
+#define TEST  TEST_PARTITURA
 
 #define TESTS   0
 #define BCS     6
@@ -198,6 +198,7 @@ void blink_v3_bis(LED_id_t id)
     }
 }
 
+#ifdef DEBUG
 /* *********************************************************************************
  * TESTS
  */
@@ -267,6 +268,33 @@ void test_uart() {
     }
 }
 
+void crear_partitura_aleatoria() {
+    drv_uart_init(9600);
+    random_iniciar(drv_tiempo_actual_us());
+
+    uint8_t partitura[TAM_PARTITURA] = {};
+		for(int j = 1; j < 6; j++) 
+		{
+			char msg[64];
+			sprintf(msg, "PARTITURA NUMERO: %d\r\n===========================", j);
+		  UART_LOG_INFO(msg);
+			for (int i = 0; i < TAM_PARTITURA; i++) {
+					partitura[i] = random_value(0, 3);   // notas entre 0 y 3
+
+					char msg[8];
+					sprintf(msg, "%c%c ",
+							(partitura[i] & 0x02) ? '1' : '0',   // bit 1
+							(partitura[i] & 0x01) ? '1' : '0');  // bit 0
+
+					drv_uart_puts(msg);
+
+					if ((i + 1) % 10 == 0)
+							drv_uart_puts("\r\n");
+			}
+			drv_uart_puts("\r\n");
+		}
+}
+#endif
 /* *****************************************************************************
  * MAIN, Programa princ * para la primera sesion se debe usar la funcion de blink_v1 sin temporizadores
  * para la entrega final se debe incocar blink_v2
@@ -309,18 +337,23 @@ int main(void){
 				guitar_hero(Num_Leds);
 		
 #else
-		#if TEST == TEST_BOTONES
-				test_botones();
-				
-		#elif TEST == TEST_WATCHDOG
-				test_watchdog((LED_id_t)1);
-				
-		#elif TEST == TEST_OVERFLOW
-				test_overflow();
+	#ifdef DEBUG
+			#if TEST == TEST_BOTONES
+					test_botones();
+					
+			#elif TEST == TEST_WATCHDOG
+					test_watchdog((LED_id_t)1);
+					
+			#elif TEST == TEST_OVERFLOW
+					test_overflow();
 
-        #elif TEST == TEST_UART
-                test_uart();
-		#endif
+					#elif TEST == TEST_UART
+									test_uart();
+
+					#elif TEST == TEST_PARTITURA
+									crear_partitura_aleatoria();
+			#endif
+	#endif
 #endif
 		}	
 

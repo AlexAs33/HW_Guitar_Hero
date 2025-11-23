@@ -21,20 +21,7 @@
 //Monitores Overflow
 #define MONITOR_CONSUMO 1
 #define MONITOR_FIFO 2
-#define MONITOR_GE 3
-
-//----------DEFINICIONES DE PARTITURA----------
-#define partitura \
-(uint8_t[]){ \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01, 0b10, 0b01, \
-    0b10, 0b01 \
-}
+#define MONITOR_GE 
 
 //----------DEFINICIONES DE STATICS----------
 //Control de leds
@@ -55,6 +42,17 @@ static int aciertos = 0;                    //aciertos en una partida
 static int fallos = 0;                      //fallos en una partida
 static int puntuacion_total = 0;            //puntuacion total
 static int racha = 0;                       //aciertos encadenados en una partida
+//Partitura
+static uint8_t partitura[TAM_PARTITURA] = { 
+    0b10, 0b01, 0b10, 0b01, 
+    0b10, 0b01, 0b10, 0b01,
+    0b10, 0b01, 0b10, 0b01,
+    0b10, 0b01, 0b10, 0b01,
+    0b10, 0b01, 0b10, 0b01,
+    0b10, 0b01, 0b10, 0b01,
+    0b10, 0b01, 0b10, 0b01,
+    0b10, 0b01
+};
 
 
 void evento_guitar_hero(EVENTO_T evento, uint32_t auxData);
@@ -208,7 +206,8 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
             obtener_notas(&l1, &l2);    //primera partitura codificada
         }
         else{
-            //TODO partitura aleatoria
+            for (int i = 0; i < TAM_PARTITURA; i++)
+							partitura[i] = random_value(0, 3);
         }*/
         notas_restantes --;
 

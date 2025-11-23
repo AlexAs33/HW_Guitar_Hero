@@ -557,6 +557,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_uart.h</FilePath>
             </File>
+            <File>
+              <FileName>random.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\random.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1172,6 +1177,11 @@
               <FileName>hal_uart.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>random.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\random.h</FilePath>
             </File>
           </Files>
         </Group>
