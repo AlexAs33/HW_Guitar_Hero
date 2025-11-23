@@ -607,6 +607,11 @@
               <FileType>1</FileType>
               <FilePath>..\src_nrf\hal_random_nrf.c</FilePath>
             </File>
+            <File>
+              <FileName>hal_uart_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_uart_nrf.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1217,6 +1222,11 @@
               <FileName>hal_random_nrf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src_nrf\hal_random_nrf.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_uart_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_uart_nrf.c</FilePath>
             </File>
           </Files>
         </Group>

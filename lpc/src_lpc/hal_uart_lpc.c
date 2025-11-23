@@ -1,3 +1,7 @@
+/* *****************************************************************************
+ * P.H.2025: Interfaz para enviar y recibir mensaje via UART del LPC2105
+ */
+
 #include <LPC210x.H>
 #include "hal_uart.h"
 
