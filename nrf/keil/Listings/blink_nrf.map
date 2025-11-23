@@ -42,6 +42,13 @@ Section Cross References
     main.o(i.main) refers to drv_tiempo.o(i.drv_tiempo_iniciar) for drv_tiempo_iniciar
     main.o(i.main) refers to hal_gpio_nrf.o(i.hal_gpio_iniciar) for hal_gpio_iniciar
     main.o(i.main) refers to drv_leds.o(i.drv_leds_iniciar) for drv_leds_iniciar
+    main.o(i.main) refers to drv_uart.o(i.drv_uart_init) for drv_uart_init
+    main.o(i.main) refers to drv_uart.o(i.drv_uart_puts) for drv_uart_puts
+    main.o(i.main) refers to drv_uart.o(i.drv_uart_putint) for drv_uart_putint
+    main.o(i.main) refers to drv_uart.o(i.drv_uart_data_available) for drv_uart_data_available
+    main.o(i.main) refers to drv_uart.o(i.drv_uart_getchar) for drv_uart_getchar
+    main.o(i.main) refers to drv_uart.o(i.drv_uart_putchar) for drv_uart_putchar
+    main.o(i.main) refers to main.o(i.test_uart) for i.test_uart
     main.o(i.test_botones) refers to drv_consumo.o(i.drv_consumo_iniciar) for drv_consumo_iniciar
     main.o(i.test_botones) refers to drv_monitor.o(i.drv_monitor_iniciar) for drv_monitor_iniciar
     main.o(i.test_botones) refers to rt_ge.o(i.rt_GE_iniciar) for rt_GE_iniciar
@@ -52,6 +59,12 @@ Section Cross References
     main.o(i.test_overflow) refers to drv_monitor.o(i.drv_monitor_iniciar) for drv_monitor_iniciar
     main.o(i.test_overflow) refers to rt_fifo.o(i.rt_FIFO_inicializar) for rt_FIFO_inicializar
     main.o(i.test_overflow) refers to rt_fifo.o(i.rt_FIFO_encolar) for rt_FIFO_encolar
+    main.o(i.test_uart) refers to drv_uart.o(i.drv_uart_init) for drv_uart_init
+    main.o(i.test_uart) refers to drv_uart.o(i.drv_uart_puts) for drv_uart_puts
+    main.o(i.test_uart) refers to drv_uart.o(i.drv_uart_putint) for drv_uart_putint
+    main.o(i.test_uart) refers to drv_uart.o(i.drv_uart_data_available) for drv_uart_data_available
+    main.o(i.test_uart) refers to drv_uart.o(i.drv_uart_getchar) for drv_uart_getchar
+    main.o(i.test_uart) refers to drv_uart.o(i.drv_uart_putchar) for drv_uart_putchar
     main.o(i.test_watchdog) refers to drv_wdt.o(i.drv_wdt_iniciar) for drv_wdt_iniciar
     main.o(i.test_watchdog) refers to rt_ge.o(i.rt_GE_iniciar) for rt_GE_iniciar
     main.o(i.test_watchdog) refers to drv_monitor.o(i.drv_monitor_iniciar) for drv_monitor_iniciar
@@ -306,12 +319,6 @@ Removing Unused input sections from the image.
     Removing drv_sc.o(.data), (8 bytes).
     Removing drv_wdt.o(i.drv_wdt_feed), (18 bytes).
     Removing drv_wdt.o(i.drv_wdt_iniciar), (22 bytes).
-    Removing drv_uart.o(i.drv_uart_data_available), (4 bytes).
-    Removing drv_uart.o(i.drv_uart_getchar), (4 bytes).
-    Removing drv_uart.o(i.drv_uart_init), (4 bytes).
-    Removing drv_uart.o(i.drv_uart_putchar), (4 bytes).
-    Removing drv_uart.o(i.drv_uart_putint), (116 bytes).
-    Removing drv_uart.o(i.drv_uart_puts), (28 bytes).
     Removing hal_gpio_nrf.o(.rev16_text), (4 bytes).
     Removing hal_gpio_nrf.o(.revsh_text), (4 bytes).
     Removing hal_gpio_nrf.o(.rrx_text), (6 bytes).
@@ -363,4 +370,4 @@ Removing Unused input sections from the image.
     Removing system_nrf52.o(i.nvmc_config), (24 bytes).
     Removing system_nrf52.o(i.nvmc_wait), (16 bytes).
 
-118 unused section(s) (total 23888 bytes) removed from the image.
+112 unused section(s) (total 23728 bytes) removed from the image.

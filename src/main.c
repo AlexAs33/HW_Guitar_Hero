@@ -57,12 +57,12 @@
 #define TEST_OVERFLOW 3
 #define TEST_UART     4
 
-#define TEST TEST_UART
+#define TEST  TEST_UART
 
-#define DEBUG   0
+#define TESTS   0
 #define BCS     6
-#define GH		7
-#define VERSION DEBUG
+#define GH		  7
+#define VERSION TESTS
 
 /* Prototipos */
 void blink_v1(LED_id_t id);
@@ -239,9 +239,12 @@ void test_botones() {
 }
 
 void test_uart() {
-    drv_uart_init(9600);  
+    drv_uart_init(9600);
     drv_uart_puts("\r\nUART TEST INICIADO\r\n");
-
+	
+#ifdef DEBUG
+	  drv_uart_puts("\r\nESTOY EN MODO DEBUG\r\n\n");
+#endif
     int contador = 0;
 
     while (1) {

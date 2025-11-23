@@ -746,8 +746,8 @@ Image Symbol Table
     hw_level_from_status                     0x000008e4   ARM Code      28  drv_leds.o(i.hw_level_from_status)
     i.main                                   0x00000900   Section        0  main.o(i.main)
     i.test_uart                              0x0000093c   Section        0  main.o(i.test_uart)
-    .constdata                               0x00000a04   Section       12  drv_leds.o(.constdata)
-    s_led_list                               0x00000a04   Data          12  drv_leds.o(.constdata)
+    .constdata                               0x00000a28   Section       12  drv_leds.o(.constdata)
+    s_led_list                               0x00000a28   Data          12  drv_leds.o(.constdata)
     .data                                    0x40000000   Section        8  hal_tiempo_lpc.o(.data)
     s_overflows_t1                           0x40000000   Data           4  hal_tiempo_lpc.o(.data)
     s_cb                                     0x40000004   Data           4  hal_tiempo_lpc.o(.data)
@@ -883,9 +883,9 @@ Image Symbol Table
     hal_uart_init                            0x00000820   ARM Code     144  hal_uart_lpc.o(i.hal_uart_init)
     hal_uart_putchar                         0x000008bc   ARM Code      36  hal_uart_lpc.o(i.hal_uart_putchar)
     main                                     0x00000900   ARM Code      60  main.o(i.main)
-    test_uart                                0x0000093c   ARM Code     148  main.o(i.test_uart)
-    Region$$Table$$Base                      0x00000a10   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000a30   Number         0  anon$$obj.o(Region$$Table)
+    test_uart                                0x0000093c   ARM Code     156  main.o(i.test_uart)
+    Region$$Table$$Base                      0x00000a34   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000a54   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x40000020   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x40000080   Data           0  libspace.o(.bss)
 
@@ -897,9 +897,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000110
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000a38, Max: 0x00020000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000a5c, Max: 0x00020000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000a30, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000a54, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -985,16 +985,16 @@ Memory Map of the image
     0x000008bc   0x000008bc   0x00000028   Code   RO          979    i.hal_uart_putchar  hal_uart_lpc.o
     0x000008e4   0x000008e4   0x0000001c   Code   RO          160    i.hw_level_from_status  drv_leds.o
     0x00000900   0x00000900   0x0000003c   Code   RO            9    i.main              main.o
-    0x0000093c   0x0000093c   0x000000c8   Code   RO           12    i.test_uart         main.o
-    0x00000a04   0x00000a04   0x0000000c   Data   RO          162    .constdata          drv_leds.o
-    0x00000a10   0x00000a10   0x00000020   Data   RO         1218    Region$$Table       anon$$obj.o
+    0x0000093c   0x0000093c   0x000000ec   Code   RO           12    i.test_uart         main.o
+    0x00000a28   0x00000a28   0x0000000c   Data   RO          162    .constdata          drv_leds.o
+    0x00000a34   0x00000a34   0x00000020   Data   RO         1218    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x40000000, Load base: 0x00000a30, Size: 0x00000900, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x40000000, Load base: 0x00000a54, Size: 0x00000900, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x40000000   0x00000a30   0x00000008   Data   RW          737    .data               hal_tiempo_lpc.o
+    0x40000000   0x00000a54   0x00000008   Data   RW          737    .data               hal_tiempo_lpc.o
     0x40000008        -       0x0000000c   Zero   RW          205    .bss                drv_tiempo.o
     0x40000014        -       0x0000000c   Zero   RW          736    .bss                hal_tiempo_lpc.o
     0x40000020        -       0x00000060   Zero   RW         1145    .bss                c_t.l(libspace.o)
@@ -1015,11 +1015,11 @@ Image component sizes
        144         12          0          0          0       1938   hal_gpio_lpc.o
        216         24          0          8         12       2187   hal_tiempo_lpc.o
        256         24          0          0          0       1996   hal_uart_lpc.o
-       260         52          0          0          0       7419   main.o
+       296         80          0          0          0       7427   main.o
        376         64          0          0       2176        620   startup.o
 
     ----------------------------------------------------------------------
-      1716        184         44          8       2200      20910   Object Totals
+      1752        212         44          8       2200      20918   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -1069,15 +1069,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2564        204         44          8       2296      20642   Grand Totals
-      2564        204         44          8       2296      20642   ELF Image Totals
-      2564        204         44          8          0          0   ROM Totals
+      2600        232         44          8       2296      20650   Grand Totals
+      2600        232         44          8       2296      20650   ELF Image Totals
+      2600        232         44          8          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2608 (   2.55kB)
+    Total RO  Size (Code + RO Data)                 2644 (   2.58kB)
     Total RW  Size (RW Data + ZI Data)              2304 (   2.25kB)
-    Total ROM Size (Code + RO Data + RW Data)       2616 (   2.55kB)
+    Total ROM Size (Code + RO Data + RW Data)       2652 (   2.59kB)
 
 ==============================================================================
 
