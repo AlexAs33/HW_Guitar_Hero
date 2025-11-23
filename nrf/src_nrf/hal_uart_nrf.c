@@ -8,12 +8,32 @@
 #define PIN_TXD 6
 #define PIN_RXD 8
 
+uint32_t uarte_baudrate(unsigned long baudrate) {
+    uint32_t uarte_baud;
+    switch (baudrate) {
+        case 1200:   uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud1200; break;
+        case 2400:   uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud2400; break;
+        case 4800:   uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud4800; break;
+        case 9600:   uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud9600; break;
+        case 14400:  uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud14400; break;
+        case 19200:  uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud19200; break;
+        case 38400:  uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud38400; break;
+        case 57600:  uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud57600; break;
+        case 115200: uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud115200; break;
+        case 230400: uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud230400; break;
+        case 460800: uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud460800; break;
+        case 921600: uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud921600; break;
+        default:     uarte_baud = UARTE_BAUDRATE_BAUDRATE_Baud115200; break; 
+    }
+    return uarte_baud;
+}
+
 void hal_uart_init(unsigned long baudrate) {
     // configurar UART sin flow control, con un bit de paridad y baudrate de 115200
     NRF_UARTE0->CONFIG = (UART_CONFIG_HWFC_Disabled   << UART_CONFIG_HWFC_Pos) |
                         (UART_CONFIG_PARITY_Included << UART_CONFIG_PARITY_Pos);
 
-    NRF_UARTE0->BAUDRATE = UARTE_BAUDRATE_BAUDRATE_Baud115200 << UARTE_BAUDRATE_BAUDRATE_Pos;
+    NRF_UARTE0->BAUDRATE = uarte_baudrate(baudrate) << UARTE_BAUDRATE_BAUDRATE_Pos;
 
     // seleccionar pins de transfer y receive
     NRF_UARTE0->PSEL.TXD = PIN_TXD;
