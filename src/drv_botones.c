@@ -91,7 +91,6 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
             hal_ext_int_clear_flag(boton_id);
             hal_ext_int_habilitar_int(boton_id);
             boton->estado = e_esperando;
-
         break;
 
     default:
