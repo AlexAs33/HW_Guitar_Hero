@@ -40,6 +40,7 @@
 #include "drv_botones.h"
 #include "drv_sc.h"
 #include "drv_wdt.h"
+#include "drv_uart.h"
 
 #include "hal_gpio.h"
 
@@ -54,13 +55,14 @@
 #define TEST_WATCHDOG 1
 #define TEST_BOTONES  2
 #define TEST_OVERFLOW 3
+#define TEST_UART     4
 
-#define TEST TEST_WATCHDOG
+#define TEST TEST_UART
 
 #define DEBUG   0
 #define BCS     6
-#define GH			7
-#define VERSION GH
+#define GH		7
+#define VERSION DEBUG
 
 /* Prototipos */
 void blink_v1(LED_id_t id);
@@ -224,20 +226,39 @@ void boton_pulsado(int32_t id_boton) {
 }
 
 void test_botones() {
-    //EVENTO_T EV_ID_evento;
-    //uint32_t EV_auxData;
-    //Tiempo_us_t EV_TS;
-	
     // Inicializar consuma, monitores y cola de eventos
     drv_consumo_iniciar((MONITOR_id_t)2);
     drv_monitor_iniciar();
 	
-		rt_GE_iniciar((MONITOR_id_t) 1);
+	rt_GE_iniciar((MONITOR_id_t) 1);
     rt_FIFO_inicializar((MONITOR_id_t)3);
 
-	  drv_botones_iniciar(boton_pulsado);
+	drv_botones_iniciar(boton_pulsado);
 
     rt_GE_lanzador();
+}
+
+void test_uart() {
+    drv_uart_init(9600);  
+    drv_uart_puts("\r\nUART TEST INICIADO\r\n");
+
+    int contador = 0;
+
+    while (1) {
+        // enviar contador cada segundo
+        drv_uart_puts("Contador: ");
+        drv_uart_putint(contador++);
+        drv_uart_puts("\r\n");
+        // eco inmediato de lo recibido
+        if (drv_uart_data_available()) {
+            char c = drv_uart_getchar();
+            drv_uart_puts("Recibido: ");
+            drv_uart_putchar(c);
+            drv_uart_puts("\r\n");
+        }
+        // pequeño delay cutre
+        for (volatile int i = 0; i < 500000; i++);
+    }
 }
 
 /* *****************************************************************************
@@ -290,7 +311,9 @@ int main(void){
 				
 		#elif TEST == TEST_OVERFLOW
 				test_overflow();
-				
+
+        #elif TEST == TEST_UART
+                test_uart();
 		#endif
 #endif
 		}	
