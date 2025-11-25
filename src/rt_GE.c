@@ -18,6 +18,7 @@
 #include "drv_wdt.h"
 #include <string.h>
 #include <stdint.h>
+#include "drv_uart.h"
 
 /* Fila de suscripciones por tipo de evento */
 typedef struct {

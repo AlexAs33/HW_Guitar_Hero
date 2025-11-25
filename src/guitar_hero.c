@@ -116,6 +116,14 @@ void manejador_interrupcion_botones_fin(int32_t id_pin, int32_t id_boton) {
 
 void manejador_interrupcion_botones_juego(int32_t id_pin, int32_t id_boton) {
     drv_botones_actualizar(ev_PULSAR_BOTON, id_pin);		//Actulaiza el estado a bajo nivel del pin
+		rt_FIFO_encolar(ev_ACT_INACTIVIDAD, 0);
+	
+#ifdef DEBUG
+		char buf[64];
+        sprintf(buf, "Soy el botón %d", id_boton);
+        UART_LOG_DEBUG(buf);
+#endif
+	
     if(id_boton == 0 || id_boton == 1){	//! mirar bien lo de los nuumeros
         rt_FIFO_encolar(ev_LEDS_GUITAR_HERO, id_boton + 1);	//Produce un evento del juego asociado al botón.
     }
@@ -209,12 +217,6 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
         uint8_t l1, l2;
 		obtener_notas(&l1, &l2);
 
-        /*if(num_partidas == 0){
-            obtener_notas(&l1, &l2);    //primera partitura codificada
-        }
-        else{
-            //TODO partitura aleatoria
-        }*/
         notas_restantes --;
 
         //encender led(s) que toca
@@ -315,10 +317,7 @@ void guitar_hero(unsigned int num_leds){
     drv_botones_iniciar(manejador_interrupcion_botones_gh);
 
     svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, fin_partida_guitar_hero);
-		svc_GE_suscribir(ev_TIMEOUT_LED, 0, evento_guitar_hero);
-	  svc_GE_suscribir(ev_RESET, 0, manejador_interrupcion_botones_fin);
-	
-		drv_uart_init(9600);
+	svc_GE_suscribir(ev_TIMEOUT_LED, 0, evento_guitar_hero);
 
     drv_uart_init(9600);
 

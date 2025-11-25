@@ -2,7 +2,11 @@
 #include "hal_ext_int.h"
 #include "svc_alarma.h"
 #include "board.h"
-
+#include "drv_uart.h"
+	
+#ifdef DEBUG
+	#include <stdio.h>
+#endif
 // Estructura que define un botón (estado e identificador)
 typedef struct {
     Estado_boton estado;
@@ -55,7 +59,13 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
     uint32_t boton_id = auxData;
     int i = drv_botones_encontrar_indice(boton_id);
     if (i < 0) return;
-    
+	
+#ifdef DEBUG
+    char buf[64];
+    sprintf(buf, "Mi boton id en botones actualizar es %d", boton_id);
+    UART_LOG_DEBUG(buf);
+#endif
+
     // Botón que ha cambiado su estado
     Boton* boton = &botones[i];
     uint32_t alarma_flags;

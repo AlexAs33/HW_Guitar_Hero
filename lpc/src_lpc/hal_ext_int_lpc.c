@@ -1,6 +1,7 @@
 #include "hal_ext_int.h"
 #include "hal_gpio.h"
 #include "board.h"
+#include "drv_uart.h"
 
 #define CLEAR_FLAG 0x7
 
@@ -56,9 +57,15 @@ void EINT_Handler(void) __irq
     else if (EXTINT & (1UL << 2)) pin = EINT2_PIN;
     else return;
 
+    //hal_ext_int_deshabilitar_int(pin);
+
+    //pin_to_gpio(pin);
+
     // Limpiar flag de interrupción correspondiente
     hal_ext_int_clear_flag(pin);
-    //hal_ext_int_deshabilitar_int(pin);
+	
+	UART_LOG_DEBUG("Entro en rutina de servicio!");
+
     // LLamar a la función de callback asociada con el pin
     if (f_cb) f_cb(pin, pin_a_eint(pin));
     // Indicar al VIC que la IRQ se ha atendido
