@@ -44,7 +44,7 @@ static int puntuacion_total = 0;            //puntuacion total
 static int racha = 0;                       //aciertos encadenados en una partida
 //Partitura
 static uint8_t partitura[TAM_PARTITURA] = { 
-    0b11, 0b11, 0b11, 0b11, 
+    0b10, 0b01, 0b11, 0b11, 
     0b10, 0b01, 0b10, 0b01,
     0b10, 0b01, 0b10, 0b01,
     0b10, 0b01, 0b10, 0b01,
@@ -68,10 +68,10 @@ void sec_inicio_gh(EVENTO_T ev, uint32_t auxData){   // 1 --- Numleds
     }
     else{
         uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-	    svc_alarma_activar(flags_cancelar, ev_SEC_INI_FIN, 0);
+				svc_alarma_activar(flags_cancelar, ev_SEC_INI_FIN, 0);
 				svc_GE_cancelar(ev_SEC_INI_FIN, sec_inicio_gh);
         for(int i = 1; i <= leds; i++)
-		    drv_led_establecer(i, LED_OFF);
+						drv_led_establecer(i, LED_OFF);
 				en_partida = 1;
     //activar alarma --> periodo_leds
     uint32_t alarmaGH = svc_alarma_codificar(true, periodo_leds, 0);
@@ -86,11 +86,11 @@ void sec_fin_gh(EVENTO_T ev, uint32_t auxData){   // Numleds --- 1
     for(int i = leds; i <= 1; i--) {
 		drv_led_establecer(i, LED_ON);
 		for (int j = 0; j <= SEC_INI_FIN; j++)
-			drv_consumo_esperar();
+				drv_consumo_esperar();
 	}
 	
 	for(int i = 1; i <= leds; i++)
-		drv_led_establecer(i, LED_OFF);
+			drv_led_establecer(i, LED_OFF);
 }
 
 //Pre modo = 0 --> inicio. 1 --> fin
@@ -201,14 +201,14 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
         modificar_puntuacion(255);
         //cancelar alarma
         uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-	    svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
+				svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 
         drv_led_establecer((LED_id_t)1, LED_OFF); drv_led_establecer((LED_id_t)2, LED_OFF);
     }
 
     else if(auxData == 0){   //toca led
         uint8_t l1, l2;
-		obtener_notas(&l1, &l2);
+		    obtener_notas(&l1, &l2);
 
         /*if(num_partidas == 0){
             obtener_notas(&l1, &l2);    //primera partitura codificada
@@ -237,32 +237,38 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
     else{   //toca boton  //boton solo puede ser 1 o 2
         //cancelar alarma timeout
         uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-	    svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
+				svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 
         uint32_t boton = auxData;
-				
-		//apagar leds 	//? funcion de apagar y encender??
-		drv_led_establecer(1, LED_OFF); drv_led_establecer(2, LED_OFF);
 			
-		modificar_puntuacion(boton);
+#ifdef DEBUG
+				char buf[64];
+        sprintf(buf, "Voy a apagar el led leds %d", boton);
+        UART_LOG_DEBUG(buf);
+#endif
+			
+				//apagar led correspondiente
+				drv_led_establecer(boton, LED_OFF);
+					
+				modificar_puntuacion(boton);
     }
 }
 
 //----------INICIO Y FIN DE PARTIDA----------
 void partida_guitar_hero(){
-	main_secuencias_gh(0);		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establece
-	rt_GE_lanzador(); //guarrada antologica. 1 ge una partida y asi
+		main_secuencias_gh(0);		//! comentado porque salta el wdt si se pone aqui. salta aunq se alimente despues de establece
+		rt_GE_lanzador(); //guarrada antologica. 1 ge una partida y asi
 }
 
 //? solo esto o  separar de puntuacion
 void estadisticas_guitar_hero(){
-		drv_uart_puts("Tu desempeno en esta partida ha sido el siguiente\r\n");
+		drv_uart_puts("Tu desempegno en esta partida ha sido el siguiente\r\n");
 		drv_uart_puts("Con "); drv_uart_putint(aciertos); drv_uart_puts(" aciertos\r\n");
 		drv_uart_puts("Y "); drv_uart_putint(fallos); drv_uart_puts(" fallos\r\n");
 		//TODO contar rachas y poner
 		drv_uart_puts("Has conseguido una puntuacion de "); drv_uart_putint(puntuacion); drv_uart_puts(" puntos\r\n");
-			drv_uart_puts("Lo que en tus "); drv_uart_putint(num_partidas); drv_uart_puts(" partidas, suma un total de "); drv_uart_putint(puntuacion_total); drv_uart_puts(" puntos\r\n");
-
+		drv_uart_puts("Lo que en tus "); drv_uart_putint(num_partidas); drv_uart_puts(" partidas, suma un total de "); drv_uart_putint(puntuacion_total); drv_uart_puts(" puntos\r\n");
+	
     //TODO hay que poner cosas de estadistica de rendimiento???
 }
 
@@ -270,19 +276,22 @@ void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) evento;
     (void) auxData;
 	
-	//matar alarma ev_LEDS_GUITAR_HERO
+		// matar alarma ev_LEDS_GUITAR_HERO
     uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-	svc_alarma_activar(flags_cancelar, ev_LEDS_GUITAR_HERO, 0);
+		svc_alarma_activar(flags_cancelar, ev_LEDS_GUITAR_HERO, 0);
 	
-	//desuscribir del evento
-	svc_GE_cancelar(ev_LEDS_GUITAR_HERO, evento_guitar_hero);
+		// desuscribir del evento
+		svc_GE_cancelar(ev_LEDS_GUITAR_HERO, evento_guitar_hero);
 
-    //Acabar cosas de partida --> //? podría meterse en la funcion de partida en el caso base
+    // acabar cosas de partida --> //? podría meterse en la funcion de partida en el caso base
     en_partida = 0;
     num_partidas ++;
     puntuacion_total += puntuacion;
-	notas_restantes = TAM_PARTITURA;
-    
+		notas_restantes = TAM_PARTITURA;
+	
+		// cambiar partitura para la siguiente partida
+		for (int i = 0; i < TAM_PARTITURA; i++)
+			partitura[i] = random_value(0, 3);
 
     estadisticas_guitar_hero();  //TODO
 		aciertos = 0;

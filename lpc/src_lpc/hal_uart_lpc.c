@@ -6,21 +6,18 @@
 #include "hal_uart.h"
 
 #define PCLK    15000000
-#define PIN_TXD 8
-#define PIN_RXD 9
+#define PIN_TXD 0
+#define PIN_RXD 2
 
 void hal_uart_init(unsigned long baudrate) {
     unsigned int divisor;
 
     // configurar tx y rx 
-	/*
+
     PINSEL0 &= ~(3 << PIN_TXD);
     PINSEL0 |=  (1 << PIN_TXD);
     PINSEL0 &= ~(3 << PIN_RXD);
     PINSEL0 |=  (1 << PIN_RXD);
-	*/
-	
-	PINSEL0 |= 0x00050000;
 
     divisor = PCLK / (16 * baudrate);
 

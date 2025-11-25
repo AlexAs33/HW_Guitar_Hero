@@ -166,7 +166,7 @@ void blink_v4(LED_id_t id)
             // Procesar solo evento periódico
             if (EV_ID_evento == ev_T_PERIODICO)
                 drv_led_conmutar(id);
-				}
+		}
 				// No hay eventos pendientes
         else
             drv_consumo_esperar();
@@ -243,10 +243,7 @@ void test_botones() {
 void test_uart() {
     drv_uart_init(9600);
     drv_uart_puts("\r\nUART TEST INICIADO\r\n");
-	
-#ifdef DEBUG
-	  drv_uart_puts("\r\nESTOY EN MODO DEBUG\r\n\n");
-#endif
+	drv_uart_puts("\r\nESTOY EN MODO DEBUG\r\n\n");
 	
     int contador = 0;
 
@@ -299,6 +296,7 @@ void crear_partitura_aleatoria() {
  * MAIN, Programa princ * para la primera sesion se debe usar la funcion de blink_v1 sin temporizadores
  * para la entrega final se debe incocar blink_v2
  */
+
 int main(void){
 	uint32_t Num_Leds;
 	volatile uint8_t timer_iniciado;

@@ -689,11 +689,10 @@ C)
               00000000 
               E01FC080 
 Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
-bjects\startup.d -o.\objects\startup.o -IC:\Programas-Practicas\Simuladores\Kei
-l\ARM\RV31\INC -IC:\Programas-Practicas\Simuladores\Keil\ARM\CMSIS\Include -IC:
-\Programas-Practicas\Simuladores\Keil\ARM\INC\Philips --predefine="__EVAL SETA 
-1" --predefine="__UVISION_VERSION SETA 526" --list=.\listings\startup.lst ..\sr
-c_lpc\Startup.s
+bjects\startup.d -o.\objects\startup.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\A
+RM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL SETA 1" --pre
+define="__UVISION_VERSION SETA 526" --list=.\listings\startup.lst ..\src_lpc\St
+artup.s
 
 
 
