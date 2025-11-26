@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\blink_lpc.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\blink_lpc.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 24 20:20:35 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Nov 26 18:07:54 2025
 <BR><P>
 <H3>Maximum Stack Usage =        216 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -223,7 +223,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[92]"></a>rand</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, rand.o(.emb_text))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value (via Veneer)
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value (via Veneer)
 </UL>
 
 <P><STRONG><a name="[3d]"></a>__user_initial_stackheap</STRONG> (ARM, 0 bytes, Stack size unknown bytes, startup.o(.text))
@@ -378,7 +378,7 @@ Global Symbols
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__arm_div8
 </UL>
 <BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_uart_init
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value
 </UL>
 
 <P><STRONG><a name="[c2]"></a>__semihosting_library_function</STRONG> (ARM, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
@@ -646,7 +646,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fin_partida_guitar_hero
 </UL>
 
-<P><STRONG><a name="[12]"></a>evento_guitar_hero</STRONG> (ARM, 440 bytes, Stack size 88 bytes, guitar_hero.o(i.evento_guitar_hero))
+<P><STRONG><a name="[12]"></a>evento_guitar_hero</STRONG> (ARM, 704 bytes, Stack size 88 bytes, guitar_hero.o(i.evento_guitar_hero))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208 + Unknown Stack Size
 <LI>Call Chain = evento_guitar_hero &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -655,6 +655,7 @@ Global Symbols
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_FIFO_encolar
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_led_establecer
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf (via Veneer)
@@ -669,10 +670,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;partida_guitar_hero
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;estadisticas_guitar_hero
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_cancelar
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_cancelar
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> guitar_hero.o(i.guitar_hero)
 </UL>
@@ -936,7 +937,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
 </UL>
 
-<P><STRONG><a name="[81]"></a>random_value</STRONG> (ARM, 68 bytes, Stack size 16 bytes, hal_random_lpc.o(i.random_value))
+<P><STRONG><a name="[80]"></a>random_value</STRONG> (ARM, 68 bytes, Stack size 16 bytes, hal_random_lpc.o(i.random_value))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
 <LI>Call Chain = random_value
 </UL>
@@ -944,6 +945,7 @@ Global Symbols
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand (via Veneer)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fin_partida_guitar_hero
+<LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evento_guitar_hero
 </UL>
 
 <P><STRONG><a name="[f]"></a>rt_FIFO_encolar</STRONG> (ARM, 196 bytes, Stack size 24 bytes, rt_fifo.o(i.rt_FIFO_encolar))
@@ -1013,7 +1015,7 @@ Global Symbols
 <P><STRONG><a name="[18]"></a>sec_inicio_gh</STRONG> (ARM, 252 bytes, Stack size 24 bytes, guitar_hero.o(i.sec_inicio_gh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = sec_inicio_gh &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_cancelar
+<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_cancelar
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_suscribir
@@ -1022,7 +1024,7 @@ Global Symbols
 <BR>[Address Reference Count : 2]<UL><LI> guitar_hero.o(i.sec_inicio_gh)
 <LI> guitar_hero.o(i.main_secuencias_gh)
 </UL>
-<P><STRONG><a name="[80]"></a>svc_GE_cancelar</STRONG> (ARM, 220 bytes, Stack size 12 bytes, rt_ge.o(i.svc_GE_cancelar))
+<P><STRONG><a name="[81]"></a>svc_GE_cancelar</STRONG> (ARM, 220 bytes, Stack size 12 bytes, rt_ge.o(i.svc_GE_cancelar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = svc_GE_cancelar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sec_inicio_gh

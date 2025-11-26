@@ -190,6 +190,8 @@ void modificar_puntuacion(uint32_t boton){
 }
 
 //----------PRINCIPAL EVENTO DE PARTIDA----------
+static int led1_estado_previo = 0;
+static int led2_estado_previo = 0;
 void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
     if(notas_restantes <= 0){
@@ -197,38 +199,56 @@ void evento_guitar_hero(EVENTO_T evento, uint32_t auxData){
         return;
     }
 
-    if(evento == ev_TIMEOUT_LED && notas_restantes < 30){
+    if(evento == ev_TIMEOUT_LED && notas_restantes < 29){
         modificar_puntuacion(255);
         //cancelar alarma
         uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
 				svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 
-        drv_led_establecer((LED_id_t)1, LED_OFF); drv_led_establecer((LED_id_t)2, LED_OFF);
+        drv_led_establecer((LED_id_t)3, LED_OFF); drv_led_establecer((LED_id_t)4, LED_OFF);
     }
 
     else if(auxData == 0){   //toca led
         uint8_t l1, l2;
-		    obtener_notas(&l1, &l2);
 
-        /*if(num_partidas == 0){
+        if(num_partidas == 0){
             obtener_notas(&l1, &l2);    //primera partitura codificada
         }
         else{
-            for (int i = 0; i < TAM_PARTITURA; i++)
-							partitura[i] = random_value(0, 3);
-        }*/
+            uint8_t nota = random_value(0, 3);   // notas entre 0 y 3
+            l1 = (nota & 0x01) ? '1' : '0';
+            l2 = (nota & 0x02) ? '1' : '0';
+        }
         notas_restantes --;
 
-        //encender led(s) que toca
-        if(l1){
-            drv_led_establecer((LED_id_t)1, LED_ON);
+        drv_led_establecer((LED_id_t)1, LED_OFF); drv_led_establecer((LED_id_t)2, LED_OFF);
+
+         //encender led(s) que toca. segundo paso
+        if(led1_estado_previo){
+            drv_led_establecer((LED_id_t)3, LED_ON);
             led_1_encendido = 1;
         }
-        if(l2){
-            drv_led_establecer((LED_id_t)2, LED_ON);
+        else led_1_encendido = 0;
+
+        if(led2_estado_previo){
+            drv_led_establecer((LED_id_t)4, LED_ON);
             led_2_encendido = 1;
         }
-        
+        else led_2_encendido = 0;
+
+        //encender led(s) que toca. primer paso
+        if(l1){
+            drv_led_establecer((LED_id_t)1, LED_ON);
+            led1_estado_previo = 1;
+        }
+        else led1_estado_previo = 0;
+
+        if(l2){
+            drv_led_establecer((LED_id_t)2, LED_ON);
+            led2_estado_previo = 1;
+        }
+        else led2_estado_previo = 0;
+
         //alarma para detectar si led pulsado cuando toca
         uint32_t flags_timeout = svc_alarma_codificar(false, periodo_leds - margen_pulsar, 0);  //tienes hasta el siguiente para darle
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
