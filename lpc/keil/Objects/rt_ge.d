@@ -15,5 +15,6 @@
 .\objects\rt_ge.o: ..\..\src\rt_fifo.h
 .\objects\rt_ge.o: ..\..\src\drv_consumo.h
 .\objects\rt_ge.o: ..\..\src\drv_wdt.h
+.\objects\rt_ge.o: ..\..\src\drv_uart.h
 .\objects\rt_ge.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 .\objects\rt_ge.o: ..\..\src\drv_uart.h

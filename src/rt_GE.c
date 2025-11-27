@@ -16,6 +16,7 @@
 #include "rt_fifo.h"
 #include "drv_consumo.h"
 #include "drv_wdt.h"
+#include "drv_uart.h"
 #include <string.h>
 #include <stdint.h>
 #include "drv_uart.h"
@@ -68,7 +69,7 @@ void rt_GE_lanzador(void)
         if (rt_FIFO_extraer(&evento, &auxData, &timestamp)) {
 					EVENTO_T eventos_usuario[] = ev_USUARIO;
 					for (int i = 0; i < ev_NUM_EV_USUARIO; i++) {
-							if(evento == eventos_usuario[i] || evento == ev_T_PERIODICO) {
+							if(evento == eventos_usuario[i] || evento == ev_T_PERIODICO ) {
 								drv_wdt_feed();
 								i = ev_NUM_EV_USUARIO;
 							}
@@ -89,7 +90,7 @@ void rt_GE_lanzador(void)
 
 void rt_GE_actualizar(EVENTO_T evento, uint32_t auxiliar)
 {
-	  uint32_t i = auxiliar;
+		(void)auxiliar;
     switch (evento) {
         case ev_INACTIVIDAD:
             // Timeout de inactividad → entrar en modo dormir profundo
@@ -97,14 +98,11 @@ void rt_GE_actualizar(EVENTO_T evento, uint32_t auxiliar)
                 drv_consumo_dormir();
             }
             break;
-
-        case ev_PULSAR_BOTON: 
-            i++;
-						//break;
             
         default:
             // Cualquier evento de usuario → reprogramar alarma de inactividad
-						
+						UART_LOG_DEBUG("ACTUALIZO INACTIVIDAD!!");
+				
 						contador_inactividad = contador_inactividad;
             
 						uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);

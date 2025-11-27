@@ -40,6 +40,13 @@ uint32_t hal_gpio_leer(HAL_GPIO_PIN_T gpio){
 	return (NRF_P0->OUT & masc) ? 1u : 0u;
 }
 
+// Leer pin de entrada
+uint32_t hal_gpio_leer_in(HAL_GPIO_PIN_T gpio){
+    uint32_t masc = (1UL << gpio);
+    return (NRF_P0->IN & masc) ? 1u : 0u;   
+}
+
+
 
 /**
  * Escribe en el gpio el valor

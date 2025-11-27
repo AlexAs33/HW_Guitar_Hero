@@ -8,8 +8,8 @@
 #include <stdint.h>
 #include "drv_tiempo.h" 
 
-#define ev_NUM_EV_USUARIO 3
-#define ev_USUARIO  {ev_PULSAR_BOTON, ev_PULSAR_BOTON, ev_BOTON_DEBOUNCE}
+#define ev_NUM_EV_USUARIO 1
+#define ev_USUARIO  {ev_ACT_INACTIVIDAD}
 
 /* Enum de eventos para encolar */
 typedef enum {
@@ -26,7 +26,7 @@ typedef enum {
 		ev_LEDS_GUITAR_HERO = 10,
     ev_FIN_GUITAR_HERO = 11,
     ev_SEC_INI_FIN = 12,
-		ev_RESET = 13
+		ev_ACT_INACTIVIDAD = 13
 } EVENTO_T;  // mapea a uint32_t
 
 #define EVENT_TYPES 14

@@ -12,7 +12,8 @@
 void hal_uart_init(unsigned long baudrate) {
     unsigned int divisor;
 
-    // Configure P0.0 as TXD0 and P0.1 as RXD0
+    // configurar tx y rx 
+
     PINSEL0 &= ~(3 << PIN_TXD);
     PINSEL0 |=  (1 << PIN_TXD);
     PINSEL0 &= ~(3 << PIN_RXD);

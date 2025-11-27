@@ -46,6 +46,11 @@ uint32_t hal_gpio_leer(HAL_GPIO_PIN_T gpio){
 }
 
 
+uint32_t hal_gpio_leer_in(HAL_GPIO_PIN_T gpio){
+	return hal_gpio_leer(gpio);
+}
+
+
 /**
  * Escribe en el gpio el valor
  */

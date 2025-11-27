@@ -3,6 +3,7 @@
 #include "drv_tiempo.h"
 #include "drv_consumo.h"
 #include "rt_GE.h"
+#include "drv_uart.h"
 
 #include <string.h>
 
@@ -77,6 +78,7 @@ void svc_alarma_activar(uint32_t alarma_flags, EVENTO_T ID_EVENTO, uint32_t aux_
     // si no se ha encontrado una alarma en ninguno de los casos, marcamos overflow
     if (!reprogramada) {
         drv_monitor_marcar(monitor_overflow);
+				UART_LOG_ERROR("OVERFLOW DE ALARMAS!!");
         while(1); // overflow de alarmas
     }
 }

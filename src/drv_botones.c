@@ -3,10 +3,7 @@
 #include "svc_alarma.h"
 #include "board.h"
 #include "drv_uart.h"
-	
-#ifdef DEBUG
-	#include <stdio.h>
-#endif
+
 // Estructura que define un botón (estado e identificador)
 typedef struct {
     Estado_boton estado;
@@ -31,7 +28,6 @@ void drv_botones_iniciar(void (*callback)())
         // habilitar eirqs y que despierten al sistema
         hal_ext_int_habilitar_int(lista_botones[i]);
         hal_ext_int_habilitar_despertar(lista_botones[i]);
-				//hal_ext_int_asociar_pin(lista_botones[i]);
 	
         // configurar pines como entradas
         hal_gpio_sentido(lista_botones[i], HAL_GPIO_PIN_DIR_INPUT);
@@ -59,13 +55,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
     uint32_t boton_id = auxData;
     int i = drv_botones_encontrar_indice(boton_id);
     if (i < 0) return;
-	
-#ifdef DEBUG
-    char buf[64];
-    sprintf(buf, "Mi boton id en botones actualizar es %d", boton_id);
-    UART_LOG_DEBUG(buf);
-#endif
-
+    
     // Botón que ha cambiado su estado
     Boton* boton = &botones[i];
     uint32_t alarma_flags;
@@ -74,7 +64,6 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
     {
     case e_esperando:
             hal_ext_int_deshabilitar_int(boton_id);
-
             alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_RETARDO_REBOTE_MS, 0);
             svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
             boton->estado = e_rebotes;
@@ -89,7 +78,8 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
         break;
 
     case e_muestreo:
-			if (hal_gpio_leer(boton_id) == 1) {
+			if (hal_gpio_leer_in(boton_id) == 1) {
+								UART_LOG_DEBUG("MUESTREO PARA SALIRME");
                 alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_RETARDO_REBOTE_MS, 0);
                 svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
                 boton->estado = e_salida;
@@ -97,10 +87,12 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
         break;
 
     case e_salida:
+						
             pin_to_eint(boton_id);
             hal_ext_int_clear_flag(boton_id);
             hal_ext_int_habilitar_int(boton_id);
             boton->estado = e_esperando;
+
         break;
 
     default:

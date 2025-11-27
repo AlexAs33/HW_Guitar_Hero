@@ -1,0 +1,13 @@
+.\objects\drv_tiempo.o: ..\..\src\drv_tiempo.c
+.\objects\drv_tiempo.o: ..\..\src\drv_tiempo.h
+.\objects\drv_tiempo.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\drv_tiempo.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\drv_tiempo.o: ..\..\src\hal_tiempo.h
+.\objects\drv_tiempo.o: ..\..\src\svc_alarma.h
+.\objects\drv_tiempo.o: ..\..\src\rt_evento_t.h
+.\objects\drv_tiempo.o: ..\..\src\rt_fifo.h
+.\objects\drv_tiempo.o: ..\..\src\drv_monitor.h
+.\objects\drv_tiempo.o: ..\..\src\board.h
+.\objects\drv_tiempo.o: ../src_nrf/board_nrf52840dk.h
+.\objects\drv_tiempo.o: ..\..\src\hal_gpio.h
+.\objects\drv_tiempo.o: ..\..\src\svc_GE.h

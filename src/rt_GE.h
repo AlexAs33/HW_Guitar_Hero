@@ -22,7 +22,7 @@
 
 //Variables del gestor de eventos
 #define rt_GE_MAX_SUSCRITOS 4								//Máximo número de eventos
-#define rt_GE_TIMEOUT_INACTIVIDAD_MS 20000  //Tiempo de inactividad máximo
+#define rt_GE_TIMEOUT_INACTIVIDAD_MS 25000  //Tiempo de inactividad máximo
 
 //Pre: --
 //Post: inicializa el gestor de eventos.

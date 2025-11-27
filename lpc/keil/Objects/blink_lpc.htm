@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\blink_lpc.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\blink_lpc.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Nov 25 11:27:31 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 24 20:20:35 2025
 <BR><P>
 <H3>Maximum Stack Usage =        216 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -383,12 +383,11 @@ Global Symbols
 
 <P><STRONG><a name="[c2]"></a>__semihosting_library_function</STRONG> (ARM, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[15]"></a>EINT_Handler</STRONG> (ARM, 204 bytes, Stack size 32 bytes, hal_ext_int_lpc.o(i.EINT_Handler))
+<P><STRONG><a name="[15]"></a>EINT_Handler</STRONG> (ARM, 172 bytes, Stack size 32 bytes, hal_ext_int_lpc.o(i.EINT_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = EINT_Handler &rArr; hal_ext_int_clear_flag
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_clear_flag
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> hal_ext_int_lpc.o(i.hal_ext_int_iniciar)
 </UL>
@@ -418,16 +417,16 @@ Global Symbols
 <P><STRONG><a name="[10]"></a>drv_botones_actualizar</STRONG> (ARM, 384 bytes, Stack size 32 bytes, drv_botones.o(i.drv_botones_actualizar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = drv_botones_actualizar &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_to_gpio
+<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_to_gpio
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_to_eint
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_gpio_leer_in
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_gpio_leer_in
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_habilitar_int
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_deshabilitar_int
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_deshabilitar_int
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_clear_flag
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_encontrar_indice
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_encontrar_indice
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;manejador_interrupcion_botones_juego
 </UL>
@@ -528,7 +527,7 @@ Global Symbols
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hw_level_from_state
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_gpio_escribir
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_suscribir
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_FIFO_encolar
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_consumo_esperar
@@ -605,7 +604,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;estadisticas_guitar_hero
 </UL>
 
-<P><STRONG><a name="[46]"></a>drv_uart_puts</STRONG> (ARM, 40 bytes, Stack size 8 bytes, drv_uart.o(i.drv_uart_puts))
+<P><STRONG><a name="[4d]"></a>drv_uart_puts</STRONG> (ARM, 40 bytes, Stack size 8 bytes, drv_uart.o(i.drv_uart_puts))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = drv_uart_puts
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_uart_putchar
@@ -614,9 +613,8 @@ Global Symbols
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evento_guitar_hero
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;estadisticas_guitar_hero
 <LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_GE_actualizar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
-<LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EINT_Handler
 </UL>
 
 <P><STRONG><a name="[79]"></a>drv_wdt_feed</STRONG> (ARM, 24 bytes, Stack size 8 bytes, drv_wdt.o(i.drv_wdt_feed))
@@ -643,7 +641,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = estadisticas_guitar_hero &rArr; drv_uart_putint &rArr; drv_uart_putchar
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_putint
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fin_partida_guitar_hero
 </UL>
@@ -654,10 +652,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;obtener_notas
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;modificar_puntuacion
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_FIFO_encolar
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_led_establecer
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf (via Veneer)
 </UL>
@@ -672,13 +670,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;partida_guitar_hero
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;estadisticas_guitar_hero
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_cancelar
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;random_value
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> guitar_hero.o(i.guitar_hero)
 </UL>
-<P><STRONG><a name="[83]"></a>guitar_hero</STRONG> (ARM, 160 bytes, Stack size 8 bytes, guitar_hero.o(i.guitar_hero))
+<P><STRONG><a name="[83]"></a>guitar_hero</STRONG> (ARM, 168 bytes, Stack size 8 bytes, guitar_hero.o(i.guitar_hero))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88 + Unknown Stack Size
 <LI>Call Chain = guitar_hero &rArr; partida_guitar_hero &rArr; rt_GE_lanzador &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
@@ -719,17 +717,17 @@ Global Symbols
 <P><STRONG><a name="[45]"></a>hal_ext_int_clear_flag</STRONG> (ARM, 52 bytes, Stack size 16 bytes, hal_ext_int_lpc.o(i.hal_ext_int_clear_flag))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = hal_ext_int_clear_flag
 </UL>
-<BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
+<BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
 <LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EINT_Handler
 </UL>
 
-<P><STRONG><a name="[49]"></a>hal_ext_int_deshabilitar_int</STRONG> (ARM, 56 bytes, Stack size 8 bytes, hal_ext_int_lpc.o(i.hal_ext_int_deshabilitar_int))
+<P><STRONG><a name="[48]"></a>hal_ext_int_deshabilitar_int</STRONG> (ARM, 56 bytes, Stack size 8 bytes, hal_ext_int_lpc.o(i.hal_ext_int_deshabilitar_int))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = hal_ext_int_deshabilitar_int
 </UL>
 <BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vic_channel
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
 </UL>
@@ -737,7 +735,7 @@ Global Symbols
 <P><STRONG><a name="[53]"></a>hal_ext_int_habilitar_despertar</STRONG> (ARM, 60 bytes, Stack size 16 bytes, hal_ext_int_lpc.o(i.hal_ext_int_habilitar_despertar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = hal_ext_int_habilitar_despertar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
+<BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_iniciar
 </UL>
@@ -746,7 +744,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = hal_ext_int_habilitar_int
 </UL>
 <BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vic_channel
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pin_a_eint
 </UL>
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_iniciar
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
@@ -769,10 +767,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[88]"></a>hal_gpio_leer</STRONG> (ARM, 48 bytes, Stack size 0 bytes, hal_gpio_lpc.o(i.hal_gpio_leer))
-<BR><BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_gpio_leer_in
+<BR><BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_gpio_leer_in
 </UL>
 
-<P><STRONG><a name="[4d]"></a>hal_gpio_leer_in</STRONG> (ARM, 24 bytes, Stack size 4 bytes, hal_gpio_lpc.o(i.hal_gpio_leer_in))
+<P><STRONG><a name="[4c]"></a>hal_gpio_leer_in</STRONG> (ARM, 24 bytes, Stack size 4 bytes, hal_gpio_lpc.o(i.hal_gpio_leer_in))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = hal_gpio_leer_in
 </UL>
 <BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_gpio_leer
@@ -840,7 +838,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[76]"></a>hal_uart_putchar</STRONG> (ARM, 36 bytes, Stack size 0 bytes, hal_uart_lpc.o(i.hal_uart_putchar))
-<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
+<BR><BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_putchar
 </UL>
 
@@ -871,8 +869,8 @@ Global Symbols
 <P><STRONG><a name="[8d]"></a>main_secuencias_gh</STRONG> (ARM, 116 bytes, Stack size 16 bytes, guitar_hero.o(i.main_secuencias_gh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = main_secuencias_gh &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_suscribir
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;partida_guitar_hero
@@ -901,7 +899,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sec_fin_gh
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_FIFO_encolar
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf (via Veneer)
 </UL>
@@ -934,7 +932,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
 </UL>
 
-<P><STRONG><a name="[4c]"></a>pin_to_gpio</STRONG> (ARM, 96 bytes, Stack size 0 bytes, hal_ext_int_lpc.o(i.pin_to_gpio))
+<P><STRONG><a name="[4b]"></a>pin_to_gpio</STRONG> (ARM, 96 bytes, Stack size 0 bytes, hal_ext_int_lpc.o(i.pin_to_gpio))
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
 </UL>
 
@@ -974,9 +972,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = rt_GE_actualizar &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
+<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_consumo_dormir
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rt_ge.o(i.rt_GE_iniciar)
@@ -993,8 +991,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = rt_GE_lanzador &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_wdt_feed
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_FIFO_extraer
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_consumo_esperar
 </UL>
@@ -1016,8 +1014,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = sec_inicio_gh &rArr; svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_cancelar
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_codificar
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_alarma_activar
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svc_GE_suscribir
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_led_establecer
 </UL>
@@ -1044,10 +1042,10 @@ Global Symbols
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_iniciar
 </UL>
 
-<P><STRONG><a name="[4b]"></a>svc_alarma_activar</STRONG> (ARM, 396 bytes, Stack size 32 bytes, svc_alarma.o(i.svc_alarma_activar))
+<P><STRONG><a name="[4a]"></a>svc_alarma_activar</STRONG> (ARM, 396 bytes, Stack size 32 bytes, svc_alarma.o(i.svc_alarma_activar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = svc_alarma_activar &rArr; drv_monitor_marcar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
+<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_uart_puts
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_monitor_marcar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sec_inicio_gh
@@ -1064,7 +1062,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> svc_alarma.o(i.svc_alarma_iniciar)
 </UL>
-<P><STRONG><a name="[4a]"></a>svc_alarma_codificar</STRONG> (ARM, 32 bytes, Stack size 0 bytes, svc_alarma.o(i.svc_alarma_codificar))
+<P><STRONG><a name="[49]"></a>svc_alarma_codificar</STRONG> (ARM, 32 bytes, Stack size 0 bytes, svc_alarma.o(i.svc_alarma_codificar))
 <BR><BR>[Called By]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sec_inicio_gh
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_secuencias_gh
 <LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fin_partida_guitar_hero
@@ -1111,21 +1109,21 @@ Local Symbols
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_monitor_desmarcar
 </UL>
 
-<P><STRONG><a name="[48]"></a>drv_botones_encontrar_indice</STRONG> (ARM, 56 bytes, Stack size 0 bytes, drv_botones.o(i.drv_botones_encontrar_indice))
+<P><STRONG><a name="[47]"></a>drv_botones_encontrar_indice</STRONG> (ARM, 56 bytes, Stack size 0 bytes, drv_botones.o(i.drv_botones_encontrar_indice))
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_botones_actualizar
 </UL>
 
-<P><STRONG><a name="[47]"></a>pin_a_eint</STRONG> (ARM, 72 bytes, Stack size 0 bytes, hal_ext_int_lpc.o(i.pin_a_eint))
+<P><STRONG><a name="[46]"></a>pin_a_eint</STRONG> (ARM, 72 bytes, Stack size 0 bytes, hal_ext_int_lpc.o(i.pin_a_eint))
 <BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_habilitar_int
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_habilitar_despertar
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_deshabilitar_int
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_deshabilitar_int
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_clear_flag
 <LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EINT_Handler
 </UL>
 
 <P><STRONG><a name="[87]"></a>vic_channel</STRONG> (ARM, 72 bytes, Stack size 0 bytes, hal_ext_int_lpc.o(i.vic_channel))
 <BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_habilitar_int
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_deshabilitar_int
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hal_ext_int_deshabilitar_int
 </UL>
 
 <P><STRONG><a name="[5]"></a>Undef_Handler</STRONG> (ARM, 4 bytes, Stack size unknown bytes, startup.o(RESET))

@@ -41,7 +41,7 @@ void GPIOTE_IRQHandler(void)
         if (canal >= 0 && NRF_GPIOTE->EVENTS_IN[canal])
         {
             if (f_cb)
-                f_cb(pin_a_eint(pines_eint[i])); 
+                f_cb(pines_eint[i], canal); 
             hal_ext_int_clear_flag(pines_eint[i]);
         }
     }

@@ -48,6 +48,9 @@ void hal_gpio_sentido(HAL_GPIO_PIN_T gpio, hal_gpio_pin_dir_t direccion);
  */
 uint32_t hal_gpio_leer(HAL_GPIO_PIN_T gpio);
 
+// Lee el valor lógico de un GPIO de entrada
+uint32_t hal_gpio_leer_in(HAL_GPIO_PIN_T gpio);
+
 /**
  * @brief Escribe un valor l�gico en un GPIO.
  *
