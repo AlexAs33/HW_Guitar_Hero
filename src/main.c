@@ -232,10 +232,10 @@ void test_botones() {
     drv_consumo_iniciar((MONITOR_id_t)2);
     drv_monitor_iniciar();
 	
-	rt_GE_iniciar((MONITOR_id_t) 1);
+		rt_GE_iniciar((MONITOR_id_t) 1);
     rt_FIFO_inicializar((MONITOR_id_t)3);
 
-	drv_botones_iniciar(boton_pulsado);
+		drv_botones_iniciar(boton_pulsado);
 
     rt_GE_lanzador();
 }
@@ -243,7 +243,7 @@ void test_botones() {
 void test_uart() {
     drv_uart_init(9600);
     drv_uart_puts("\r\nUART TEST INICIADO\r\n");
-	drv_uart_puts("\r\nESTOY EN MODO DEBUG\r\n\n");
+		drv_uart_puts("\r\nESTOY EN MODO DEBUG\r\n\n");
 	
     int contador = 0;
 

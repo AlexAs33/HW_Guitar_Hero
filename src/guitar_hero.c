@@ -23,6 +23,8 @@
 #define MONITOR_FIFO 2
 #define MONITOR_GE 3
 
+#define BIT_TO_LED(x) ((x) ? LED_ON : LED_OFF)
+
 //----------DEFINICIONES DE STATICS----------
 //Control de leds
 static int leds = 0;                        //Numero de leds
@@ -208,13 +210,14 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
     if(num_partidas == 0) estados_notas[0] = partitura[TAM_PARTITURA - notas_restantes];
     else estados_notas[0] = random_value(0, 3);
 
+	  /*
     if(estados_notas[0] == 0b10){
-			drv_led_establecer((LED_id_t)1, LED_ON); 
+			drv_led_establecer((LED_id_t)1, LED_ON);
 			drv_led_establecer((LED_id_t)2, LED_OFF);
 		}
 
     if(estados_notas[0] == 0b01){
-			drv_led_establecer((LED_id_t)1, LED_OFF); 
+			drv_led_establecer((LED_id_t)1, LED_OFF);
 			drv_led_establecer((LED_id_t)2, LED_ON);
 		}
 		
@@ -222,22 +225,30 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 			drv_led_establecer((LED_id_t)1, LED_ON); 
 			drv_led_establecer((LED_id_t)2, LED_ON);
 		}
+*/
+		drv_led_establecer((LED_id_t)1, BIT_TO_LED(estados_notas[0] & 0b10));
+		drv_led_establecer((LED_id_t)2, BIT_TO_LED(estados_notas[0] & 0b01));
 
+		
     //PREVIO
+		/*
     if(estados_notas[1] == 0b10){
 			drv_led_establecer((LED_id_t)3, LED_ON); 
 			drv_led_establecer((LED_id_t)4, LED_OFF);
 		}
 
     if(estados_notas[1] == 0b01){
-			drv_led_establecer((LED_id_t)3, LED_OFF); 
+			drv_led_establecer((LED_id_t)3, LED_OFF);
 			drv_led_establecer((LED_id_t)4, LED_ON);
 		}
 		
 		if(estados_notas[1] == 0b11){
-			drv_led_establecer((LED_id_t)3, LED_ON); 
+			drv_led_establecer((LED_id_t)3, LED_ON);
 			drv_led_establecer((LED_id_t)4, LED_ON);
-		}
+		}*/
+		
+		drv_led_establecer((LED_id_t)3, BIT_TO_LED(estados_notas[1] & 0b10)); 
+		drv_led_establecer((LED_id_t)4, BIT_TO_LED(estados_notas[1] & 0b01));
 
     //JUEGO
     //esta codificado. usar estados_notas[2] para comprobar resultado
@@ -341,6 +352,7 @@ int comprobar_acierto(uint32_t boton){
 void modificar_puntuacion(uint32_t boton){
 	//ver acierto / fallo y modificar puntuación
 	if(boton == 255 || !comprobar_acierto(boton)){	//FALLO
+				UART_LOG_DEBUG("HE FALLADO...");
         racha = 0;
         fallos++;
         if(boton == 255){   //Fallo de no pulsar nada cuenta por dos
@@ -357,6 +369,7 @@ void modificar_puntuacion(uint32_t boton){
         }*/
 	}
 	else{//ACIERTO
+				UART_LOG_DEBUG("HE ACERTADO!!");
         racha ++;
         if(racha >= 5){
             puntuacion += puntos_acierto * racha;
