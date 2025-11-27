@@ -210,43 +210,11 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
     if(num_partidas == 0) estados_notas[0] = partitura[TAM_PARTITURA - notas_restantes];
     else estados_notas[0] = random_value(0, 3);
 
-	  /*
-    if(estados_notas[0] == 0b10){
-			drv_led_establecer((LED_id_t)1, LED_ON);
-			drv_led_establecer((LED_id_t)2, LED_OFF);
-		}
-
-    if(estados_notas[0] == 0b01){
-			drv_led_establecer((LED_id_t)1, LED_OFF);
-			drv_led_establecer((LED_id_t)2, LED_ON);
-		}
-		
-		if(estados_notas[0] == 0b11){
-			drv_led_establecer((LED_id_t)1, LED_ON); 
-			drv_led_establecer((LED_id_t)2, LED_ON);
-		}
-*/
 		drv_led_establecer((LED_id_t)1, BIT_TO_LED(estados_notas[0] & 0b10));
 		drv_led_establecer((LED_id_t)2, BIT_TO_LED(estados_notas[0] & 0b01));
 
 		
     //PREVIO
-		/*
-    if(estados_notas[1] == 0b10){
-			drv_led_establecer((LED_id_t)3, LED_ON); 
-			drv_led_establecer((LED_id_t)4, LED_OFF);
-		}
-
-    if(estados_notas[1] == 0b01){
-			drv_led_establecer((LED_id_t)3, LED_OFF);
-			drv_led_establecer((LED_id_t)4, LED_ON);
-		}
-		
-		if(estados_notas[1] == 0b11){
-			drv_led_establecer((LED_id_t)3, LED_ON);
-			drv_led_establecer((LED_id_t)4, LED_ON);
-		}*/
-		
 		drv_led_establecer((LED_id_t)3, BIT_TO_LED(estados_notas[1] & 0b10)); 
 		drv_led_establecer((LED_id_t)4, BIT_TO_LED(estados_notas[1] & 0b01));
 
