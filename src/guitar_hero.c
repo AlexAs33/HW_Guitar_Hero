@@ -44,17 +44,11 @@ static int fallos = 0;                      //fallos en una partida
 static int puntuacion_total = 0;            //puntuacion total
 static int racha = 0;                       //aciertos encadenados en una partida
 //Partitura
+#ifdef DEBUG
 static uint8_t partitura[TAM_PARTITURA] = { 
-    0b10, 0b01, 0b10, 0b01, 
-    0b10};
-/*, 0b01, 0b10, 0b01,
-    0b10, 0b01, 0b10, 0b01,
-    0b10, 0b01, 0b10, 0b01,
-    0b10, 0b01, 0b10, 0b01,
-    0b10, 0b01, 0b10, 0b01,
-    0b10, 0b01, 0b10, 0b01,
-    0b10, 0b01
-};*/
+    0b11, 0b10, 0b11, 0b01, 0b11};
+#endif
+
 
 //----------SECUENCIAS LEDS----------
 
@@ -201,14 +195,22 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
     //FETCH
     if (notas_tocadas >= TAM_PARTITURA)
 			estados_notas[0] = 0;
-    else if(num_partidas == 0) 
-			estados_notas[0] = partitura[notas_tocadas];
-    //else estados_notas[0] = random_value(0, 3);
+
+#ifdef DEBUG 
+		 estados_notas[0] = partitura[notas_tocadas];
+#else
+		 estados_notas[0] = random_value(0, 3);
+#endif 
+		
+#ifdef DEBUG
+				char buf[64];
+        sprintf(buf, "La partitura es %d", estados_notas[2]);
+        UART_LOG_DEBUG(buf);
+#endif
 
 		drv_led_establecer((LED_id_t)1, BIT_TO_LED(estados_notas[0] & 0b10));
 		drv_led_establecer((LED_id_t)2, BIT_TO_LED(estados_notas[0] & 0b01));
 
-		
     //PREVIO
 		drv_led_establecer((LED_id_t)3, BIT_TO_LED(estados_notas[1] & 0b10)); 
 		drv_led_establecer((LED_id_t)4, BIT_TO_LED(estados_notas[1] & 0b01));
@@ -293,6 +295,7 @@ void guitar_hero(unsigned int num_leds){
     drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
     rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
     rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
+		random_iniciar(drv_tiempo_actual_us());
 
     //sec_inicio_gh();	//!como no esta lanzado ge solo enciende 1
 		drv_wdt_iniciar(PERIODO_WDT);
@@ -312,7 +315,7 @@ void guitar_hero(unsigned int num_leds){
 //Cálculos de evento
 // VER ESTA FUNCION PARA LOS DOS LEDS ENCENDIDOS A LA VEZ
 int comprobar_acierto(uint32_t boton){
-		return estados_notas[2] & (1 << (boton - 1));
+    return estados_notas[2] & (1 << (2 - boton));
 }
 
 //Pre: boton = 255 --> venimos de no haber pulsado boton
@@ -328,12 +331,6 @@ void modificar_puntuacion(uint32_t boton){
         else{
             puntuacion -= puntos_fallo;
         }
-
-       /* if(puntuacion < (puntos_acierto * (TAM_PARTITURA - notas_restantes))/2){    //s no llevamos la mitad de los puntos posibles perdemos
-            //GAME OVER
-            notas_restantes = 0;
-            //?secuencia game over distinta a la de apagar??
-        }*/
 	}
 	else {//ACIERTO
 				UART_LOG_DEBUG("HE ACERTADO!!");
