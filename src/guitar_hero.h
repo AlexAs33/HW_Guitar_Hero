@@ -11,7 +11,7 @@
 #define FALLO 10              //puntos por fallo
 #define PERIODO_WDT 10         //1"
 #define SEC_INI_FIN 100
-#define TAM_PARTITURA 30
+#define TAM_PARTITURA 5
 
 void guitar_hero(unsigned int num_leds);
 
