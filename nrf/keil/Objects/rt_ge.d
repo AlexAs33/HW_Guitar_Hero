@@ -1,7 +1,7 @@
 .\objects\rt_ge.o: ..\..\src\rt_GE.c
 .\objects\rt_ge.o: ..\..\src\rt_GE.h
-.\objects\rt_ge.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\rt_ge.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\rt_ge.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\rt_ge.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
 .\objects\rt_ge.o: ..\..\src\rt_evento_t.h
 .\objects\rt_ge.o: ..\..\src\drv_tiempo.h
 .\objects\rt_ge.o: ..\..\src\drv_monitor.h
@@ -14,4 +14,4 @@
 .\objects\rt_ge.o: ..\..\src\drv_consumo.h
 .\objects\rt_ge.o: ..\..\src\drv_wdt.h
 .\objects\rt_ge.o: ..\..\src\drv_uart.h
-.\objects\rt_ge.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\rt_ge.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\string.h

@@ -22,7 +22,7 @@
 
 // LEDs definitions for LPC2105 simulado
 
-#define LEDS_NUMBER    3 // 4
+#define LEDS_NUMBER    4
 
 #define LED_1          (LED1_GPIO)
 #define LED_2          (LED2_GPIO)
@@ -31,7 +31,7 @@
 
 #define LEDS_ACTIVE_STATE 1
 
-#define LEDS_LIST { LED_1, LED_2, LED_3} //, LED_4 }
+#define LEDS_LIST { LED_1, LED_2, LED_3, LED_4 }
 
 //botones
 #define BUTTONS_NUMBER 3

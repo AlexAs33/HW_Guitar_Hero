@@ -1,7 +1,7 @@
 .\objects\drv_tiempo.o: ..\..\src\drv_tiempo.c
 .\objects\drv_tiempo.o: ..\..\src\drv_tiempo.h
-.\objects\drv_tiempo.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\drv_tiempo.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\drv_tiempo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\drv_tiempo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
 .\objects\drv_tiempo.o: ..\..\src\hal_tiempo.h
 .\objects\drv_tiempo.o: ..\..\src\svc_alarma.h
 .\objects\drv_tiempo.o: ..\..\src\rt_evento_t.h
