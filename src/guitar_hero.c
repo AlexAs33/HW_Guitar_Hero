@@ -29,7 +29,7 @@
 //Control de leds
 static int leds = 0;                        //Numero de leds
 static int periodo_leds = 0;                //ms cada los que se encienden los leds
-static uint8_t estados_notas[3] = {4, 4, 4};    //4 indica que no se ha llegado a ese estado aun
+static uint8_t estados_notas[3] = {0, 0, 0};  
 //Control partida
 static int notas_tocadas = 0; //Acordes que tiene una partitura
 static int margen_pulsar = 0;               //ms maximos antes del siguiente acorde para pulsar
@@ -68,7 +68,7 @@ void sec_inicio_gh(EVENTO_T ev, uint32_t auxData){   // 1 --- Numleds
 		(void)auxData;
 
     if(palpitaciones < leds){
-        drv_led_establecer(palpitaciones +1, LED_ON);
+        drv_led_establecer(palpitaciones + 1, LED_ON);
         palpitaciones ++;
     }
     else{
@@ -127,11 +127,9 @@ void manejador_interrupcion_botones_juego(int32_t id_pin, int32_t id_boton) {
     if(id_boton == 0 || id_boton == 1){	//! mirar bien lo de los nuumeros
         rt_FIFO_encolar(ev_BOTONES_GUITAR_HERO, id_boton + 1);	//Produce un evento del juego asociado al botón.
     }
-    else{   //admitira 3 en nrf --> //?importante ?????
-        notas_tocadas = 0;
-				EVENTO_T ev; 
-				uint32_t auxData;
-				sec_fin_gh(ev, auxData);
+    else if (id_boton == 3) {   //! debería ser 4 en el nrf (esto es temporal)
+        uint32_t flags = svc_alarma_codificar(false, T_RESET_MS, 0);
+        svc_alarma_activar(flags, ev_FIN_GUITAR_HERO, 0);
     }
 }
 
@@ -314,10 +312,6 @@ void guitar_hero(unsigned int num_leds){
 //Cálculos de evento
 // VER ESTA FUNCION PARA LOS DOS LEDS ENCENDIDOS A LA VEZ
 int comprobar_acierto(uint32_t boton){
-    /*
-		return ((estados_notas[2] == 0b01) && boton == 1) ||
-            ((estados_notas[2] == 0b10) && boton == 2) ||
-            ((estados_notas[2] == 0b11) && (boton == 1 || boton == 2));*/
 		return estados_notas[2] & (1 << (boton - 1));
 }
 

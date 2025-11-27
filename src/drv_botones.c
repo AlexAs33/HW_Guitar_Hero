@@ -79,18 +79,21 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
 
     case e_muestreo:
 			if (hal_gpio_leer_in(boton_id) == 1) {
-								UART_LOG_DEBUG("MUESTREO PARA SALIRME");
+                UART_LOG_DEBUG("MUESTREO PARA SALIRME");
                 alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_RETARDO_REBOTE_MS, 0);
                 svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
                 boton->estado = e_salida;
             }
         break;
 
-    case e_salida:
-						
+    case e_salida:	
             pin_to_eint(boton_id);
             hal_ext_int_clear_flag(boton_id);
             hal_ext_int_habilitar_int(boton_id);
+            if (i == 2) {
+                alarma_flags = svc_alarma_codificar(false, 0, 0);
+                svc_alarma_activar(alarma_flags, ev_FIN_GUITAR_HERO, 0);
+						}
             boton->estado = e_esperando;
 
         break;
