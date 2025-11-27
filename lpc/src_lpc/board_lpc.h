@@ -31,7 +31,7 @@
 
 #define LEDS_ACTIVE_STATE 1
 
-#define LEDS_LIST { LED_1, LED_2, LED_3} //, LED_4 }
+#define LEDS_LIST { LED_1, LED_2, LED_3, LED_4 }
 
 //botones
 #define BUTTONS_NUMBER 3

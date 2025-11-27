@@ -29,7 +29,7 @@
 //Control de leds
 static int leds = 0;                        //Numero de leds
 static int periodo_leds = 0;                //ms cada los que se encienden los leds
-static uint8_t estados_notas[3] = {22, 22, 22};    //22 indica que no se ha llegado a ese estado aun
+static uint8_t estados_notas[3] = {4, 4, 4};    //4 indica que no se ha llegado a ese estado aun
 //Control partida
 static int notas_restantes = TAM_PARTITURA +2; //Acordes que tiene una partitura
 static int margen_pulsar = 0;               //ms maximos antes del siguiente acorde para pulsar
@@ -253,7 +253,7 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
     //JUEGO
     //esta codificado. usar estados_notas[2] para comprobar resultado
 		notas_restantes --;
-		if(estados_notas[2] != 22){
+		if(estados_notas[2] != 4){
 			//codificar alarma timeout
 			uint32_t flags_timeout = svc_alarma_codificar(false, periodo_leds - margen_pulsar, 0);  //tienes hasta el siguiente para darle
 			svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
