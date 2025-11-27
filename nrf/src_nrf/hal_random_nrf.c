@@ -1,9 +1,15 @@
 /* *****************************************************************************
+ * P.H.2025: Implementación de números aleatorios para el LPC
+ * Este fichero utiliza la API ofrecida opr la standard library de C
+ */
+
+/* *****************************************************************************
  * P.H.2025: Implementación de números aleatorios para el NRF
  * Este fichero utiliza la API ofrecida por el hardware dedicado del procesador
  */
 
 #include "random.h"
+#include "nrf.h"
 
 void random_iniciar(uint64_t seed)
 {

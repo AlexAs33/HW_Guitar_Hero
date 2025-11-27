@@ -440,13 +440,13 @@ ARM Macro Assembler    Page 7
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\arm_startup_nrf52840.d -o.\objects\arm_startup_nrf528
-40.o -I.\RTE\_Release_nRF -IC:\Programas-Practicas\Simuladores\Keil\ARM\PACK\AR
-M\CMSIS\5.6.0\CMSIS\Core\Include -IC:\Programas-Practicas\Simuladores\Keil\ARM\
-PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include --predefine
-="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION
- SETA 526" --predefine="_RTE_ SETA 1" --predefine="NRF52840_XXAA SETA 1" --list
-=.\listings\arm_startup_nrf52840.lst RTE\Device\nRF52840_xxAA\arm_startup_nrf52
-840.s
+40.o -I.\RTE\_Debug_nRF -IC:\Programas-Practicas\Simuladores\Keil\ARM\PACK\ARM\
+CMSIS\5.6.0\CMSIS\Core\Include -IC:\Programas-Practicas\Simuladores\Keil\ARM\PA
+CK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include --predefine="
+__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION S
+ETA 526" --predefine="_RTE_ SETA 1" --predefine="NRF52840_XXAA SETA 1" --list=.
+\listings\arm_startup_nrf52840.lst RTE\Device\nRF52840_xxAA\arm_startup_nrf5284
+0.s
 
 
 
