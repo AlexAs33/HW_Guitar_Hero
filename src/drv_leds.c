@@ -4,10 +4,10 @@
  *
  * - API idempotente: drv_led_establecer(id, estado), drv_led_estado, drv_led_conmutar
  * - IDs 1..LEDS_NUMBER
- * - Independiente de hardware vía HAL + board.h
+ * - Independiente de hardware vï¿½a HAL + board.h
  *
  * Requiere de board.h:
- *   - LEDS_NUMBER           : nº de leds disponibles (0 si ninguno)
+ *   - LEDS_NUMBER           : nï¿½ de leds disponibles (0 si ninguno)
  *   - LEDS_LIST             : lista de pines/ids GPIO (ej: {LED1_GPIO, LED2_GPIO, ...})
  *   - LEDS_ACTIVE_STATE     : 1 si activo a nivel alto, 0 si activo a nivel bajo
  *
@@ -97,7 +97,7 @@ int drv_led_estado(LED_id_t id, LED_status_t *out_estado) {
 int drv_led_conmutar(LED_id_t id) {
 #if LEDS_NUMBER > 0
     if (!led_id_valido(id)) return 0;
-    /* Leemos estado lógico, invertimos, escribimos (idempotente y consistente con activo-bajo/alto) */
+    /* Leemos estado lï¿½gico, invertimos, escribimos (idempotente y consistente con activo-bajo/alto) */
     LED_status_t st;
     if (!drv_led_estado(id, &st)) return 0;
     return drv_led_establecer(id, (st == LED_ON) ? LED_OFF : LED_ON);
@@ -107,4 +107,30 @@ int drv_led_conmutar(LED_id_t id) {
 #endif
 }
 
-//otras???
+unsigned int drv_leds_cantidad(void) {
+#if LEDS_NUMBER > 0
+    return (unsigned int)LEDS_NUMBER;
+#else
+    return 0;
+#endif
+}
+
+void drv_leds_encender_todos(void) {
+#if LEDS_NUMBER > 0
+    for (LED_id_t i = 1; i <= (LED_id_t)LEDS_NUMBER; ++i) {
+        hal_gpio_escribir(s_led_list[i-1], hw_level_from_status(LED_ON));
+    }
+#else
+    /* nada */
+#endif
+}
+
+void drv_leds_apagar_todos(void) {
+#if LEDS_NUMBER > 0
+    for (LED_id_t i = 1; i <= (LED_id_t)LEDS_NUMBER; ++i) {
+        hal_gpio_escribir(s_led_list[i-1], hw_level_from_status(LED_OFF));
+    }
+#else
+    /* nada */
+#endif
+}

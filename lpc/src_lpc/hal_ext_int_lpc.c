@@ -1,6 +1,7 @@
 #include "hal_ext_int.h"
 #include "hal_gpio.h"
 #include "board.h"
+#include "drv_uart.h"
 
 #define CLEAR_FLAG 0x7
 
@@ -59,6 +60,8 @@ void EINT_Handler(void) __irq
     // Limpiar flag de interrupción correspondiente
     hal_ext_int_clear_flag(pin);
 
+		UART_LOG_DEBUG("HAN APRETADO UN BOTON");
+	
     // LLamar a la función de callback asociada con el pin
     if (f_cb) f_cb(pin, pin_a_eint(pin));
 	
@@ -98,10 +101,8 @@ void hal_ext_int_iniciar(void (*callback)())
 
     __enable_irq();
 }
-
-/**
- *	Devuelve el estado del pin
- */
+ 
+// Devuelve el estado del pin
 int32_t hal_ext_int_leer(uint32_t pin){
 	uint32_t estado;
 	int8_t eint_id = pin_a_eint(pin);

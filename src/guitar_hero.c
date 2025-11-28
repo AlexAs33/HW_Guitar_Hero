@@ -1,3 +1,4 @@
+#if 0
 
 #include "guitar_hero.h"
 
@@ -344,3 +345,4 @@ void modificar_puntuacion(uint32_t boton){
         aciertos ++;    
 	}
 }
+#endif

@@ -102,3 +102,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
         break;
     }
 }
+
+unsigned int drv_botones_cantidad() {
+    return (unsigned int) BUTTONS_NUMBER;
+}

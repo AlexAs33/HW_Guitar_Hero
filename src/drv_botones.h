@@ -6,7 +6,7 @@
 
 /* Tiempos de la FSM antirebote (en ms) */
 #define DRV_BOTONES_RETARDO_REBOTE_MS  20
-#define DRV_BOTONES_PERIODO_MUESTREO_MS 10
+#define DRV_BOTONES_PERIODO_MUESTREO_MS 20
 
 /* Identificadores de eventos internos para alarmas */
 typedef enum {
@@ -32,4 +32,5 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t boton_id);
 
 void drv_boton_estado_actualizar(EVENTO_T evento, uint32_t boton_id);
 
+unsigned int drv_botones_cantidad(void);
 #endif // DRV_BOTONES_H

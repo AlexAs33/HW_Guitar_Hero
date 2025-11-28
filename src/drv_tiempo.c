@@ -13,7 +13,6 @@
 #define TODO 0	//pa que no de error de compilacion con el proyecto vacio, modicicar
 
 #define US2MILIS 1000
-#define BLINKV3  3
 
 static hal_tiempo_info_t info;
 

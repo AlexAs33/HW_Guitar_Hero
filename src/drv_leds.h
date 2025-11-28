@@ -2,15 +2,15 @@
  * P.H.2025: Driver/Manejador de los Leds
  * 
  * Suministra los servicios de iniciar, establecer estado, conmutar y consultar,
- * independientemente del hardware (vía HAL + board.h).
+ * independientemente del hardware (vï¿½a HAL + board.h).
  *
  * - API idempotente: drv_led_establecer(id, estado), drv_led_estado, drv_led_conmutar
- * - IDs válidos: 1..LEDS_NUMBER (0 no es válido)
+ * - IDs vï¿½lidos: 1..LEDS_NUMBER (0 no es vï¿½lido)
  *
  * Requiere de board.h:
- *   - LEDS_NUMBER           : número de leds disponibles (0 si ninguno)
+ *   - LEDS_NUMBER           : nï¿½mero de leds disponibles (0 si ninguno)
  *   - LEDS_LIST             : lista de pines GPIO (ej: {LED1_GPIO, LED2_GPIO, ...})
- *   - LEDS_ACTIVE_STATE     : 1 si el LED está encendido con nivel alto, 0 si con nivel bajo
+ *   - LEDS_ACTIVE_STATE     : 1 si el LED estï¿½ encendido con nivel alto, 0 si con nivel bajo
  *
  * Requiere de hal_gpio.h:
  *   - hal_gpio_sentido(HAL_GPIO_PIN_T gpio, hal_gpio_pin_dir_t dir)
@@ -32,7 +32,7 @@ extern "C" {
 typedef uint8_t LED_id_t;
 #define LED_ID_INVALID ((LED_id_t)0xFF)
 
-/* Estado lógico del LED */
+/* Estado lï¿½gico del LED */
 typedef enum {
     LED_OFF = 0,
     LED_ON  = 1,
@@ -42,7 +42,7 @@ typedef enum {
  * @brief Inicializa el subsistema de LEDs.
  *
  * Configura los GPIO como salida, apaga todos los LEDs y devuelve
- * el número de LEDs disponibles en la plataforma.
+ * el nï¿½mero de LEDs disponibles en la plataforma.
  */
 unsigned int drv_leds_iniciar(void);
 
@@ -56,11 +56,11 @@ unsigned int drv_leds_iniciar(void);
 int drv_led_establecer(LED_id_t id, LED_status_t estado);
 
 /**
- * @brief Obtiene el estado lógico de un LED.
+ * @brief Obtiene el estado lï¿½gico de un LED.
  *
  * @param id         Identificador del LED (1..N).
  * @param out_estado Puntero de salida: se escribe LED_ON o LED_OFF.
- * @return 1 si ok (out_estado válido), 0 si id fuera de rango.
+ * @return 1 si ok (out_estado vï¿½lido), 0 si id fuera de rango.
  */
 int drv_led_estado(LED_id_t id, LED_status_t *out_estado);
 
@@ -72,10 +72,9 @@ int drv_led_estado(LED_id_t id, LED_status_t *out_estado);
  */
 int drv_led_conmutar(LED_id_t id);
 
-#if 0
 /* ---- Funciones opcionales de alto nivel ---- */
 
-/** Devuelve de nuevo el número total de LEDs disponibles */
+/** Devuelve de nuevo el nï¿½mero total de LEDs disponibles */
 unsigned int drv_leds_cantidad(void);
 
 /** Enciende todos los LEDs disponibles */
@@ -84,10 +83,8 @@ void drv_leds_encender_todos(void);
 /** Apaga todos los LEDs disponibles */
 void drv_leds_apagar_todos(void);
 
-#endif /* opcionales */
-
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* DRV_LEDS_H */
+#endif // DRV_LEDS_H 

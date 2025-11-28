@@ -27,7 +27,7 @@
 
 //Variables de las alarmas
 #define svc_ALARMAS_MAX 40						//Máximas alarmas disponibles
-#define svc_ALARMAS_PERIODO_MS 10
+#define svc_ALARMAS_PERIODO_MS 20
 
 //Estructura de las alarmas
 typedef struct {

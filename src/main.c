@@ -46,7 +46,7 @@
 #include "board.h"
 #include "random.h"
 
-#include "guitar_hero.h"
+#include "app_guitar_hero.h"
 #include "bit_counter_strike.h"
 
 

@@ -28,8 +28,9 @@ typedef enum {
     ev_SEC_INI_FIN = 12,
 		ev_ACT_INACTIVIDAD = 13,
 		ev_BOTONES_GUITAR_HERO = 14,
+    ev_GUITAR_HERO = 15,
 } EVENTO_T;  // mapea a uint32_t
 
-#define EVENT_TYPES 15
+#define EVENT_TYPES 16
 
 #endif /* RT_EVENTO_T_H */
