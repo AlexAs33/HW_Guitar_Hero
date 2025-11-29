@@ -23,17 +23,22 @@
 
 #include "random.h"
 
+#ifdef DEBUG
+    #include "svc_estadisticas.h"
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 
-//Monitores Overflow
+//------------------------------ DEFINICIONES ------------------------------//
+
 #define MONITOR_CONSUMO 1
 #define MONITOR_FIFO 2
 #define MONITOR_GE 3
 
 #define BIT_TO_LED(x) ((x) ? LED_ON : LED_OFF)
 
-//------------------------------ DEFINICIONES DE VAIRABLES ------------------------------//
+//------------------------------ INICIALIZACIÓN DE VAIRABLES ------------------------------//
 //Control de leds
 static int leds = 0;                        //Numero de leds
 static int periodo_leds = 0;                //ms cada los que se encienden los leds
@@ -61,6 +66,7 @@ void sec_fin_gh(EVENTO_T ev, uint32_t auxData);
 void partida_guitar_hero(void);
 
 //------------------------------ AUXILIARES ------------------------------//
+		
 //Pre modo = 0 --> inicio. 1 --> fin
 void main_secuencias_gh(int modo){
     uint32_t alarma_sec_inicio = svc_alarma_codificar(true, SEC_INI_FIN, 0);
@@ -120,8 +126,7 @@ void sec_inicio_gh(EVENTO_T ev, uint32_t auxData){
         uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
 				svc_alarma_activar(flags_cancelar, ev_SEC_INI_FIN, 0);
 				svc_GE_cancelar(ev_SEC_INI_FIN, sec_inicio_gh);
-        for(int i = 1; i <= leds; i++)
-						drv_led_establecer(i, LED_OFF);
+        drv_leds_apagar_todos();
 				en_partida = 1;
 				//activar alarma --> periodo_leds
 				uint32_t alarmaGH = svc_alarma_codificar(true, periodo_leds, 0);
@@ -168,6 +173,10 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 		drv_led_establecer((LED_id_t)3, BIT_TO_LED(estados_notas[1] & 0b10)); 
 		drv_led_establecer((LED_id_t)4, BIT_TO_LED(estados_notas[1] & 0b01));
 
+#ifdef DEBUG 
+				svc_estadisticas_set_tmp(e_TERMINA_SECUENCIA);
+#endif
+		
     //JUEGO
     //esta codificado. usar estados_notas[2] para comprobar resultado
 		notas_tocadas++;
@@ -196,6 +205,12 @@ void manejador_interrupcion_botones_fin(int32_t id_pin, int32_t id_boton) {
 }
 
 void manejador_interrupcion_botones_juego(int32_t id_pin, int32_t id_boton) {
+	
+#ifdef DEBUG 
+				svc_estadisticas_set_tmp(e_ATIENDE_IRQ);
+				svc_estadisticas_set_tmp(e_EMPIEZA_PULSAR);
+#endif
+	
     drv_botones_actualizar(ev_PULSAR_BOTON, id_pin);		//Actulaiza el estado a bajo nivel del pin
     encolar_EM(ev_ACT_INACTIVIDAD, 0);
 	
@@ -248,13 +263,20 @@ void evento_timeout_guitar_hero(EVENTO_T evento, uint32_t auxData){
 //------------------------------ ESTADO DE FIN ------------------------------//
 
 void sec_fin_gh(EVENTO_T ev, uint32_t auxData){
-    for(int i = leds; i >= 1; i--) {
-			drv_led_establecer(i, LED_ON);
-			for (int j = 0; j <= SEC_INI_FIN; j++)
-					drv_consumo_esperar();
-		}
-		
-		drv_leds_apagar_todos();
+    (void) ev;
+    (void) auxData;
+
+    static int call_count = 0;
+    call_count++;
+
+    // Alternar pares de LEDs
+    if (call_count % 2 == 1) {
+        drv_led_establecer(1, LED_ON);
+        drv_led_establecer(4, LED_ON);
+    } else {
+        drv_led_establecer(2, LED_ON);
+        drv_led_establecer(3, LED_ON);
+    }
 }
 
 void estadisticas_guitar_hero(){
@@ -264,11 +286,19 @@ void estadisticas_guitar_hero(){
 
 		drv_uart_puts("Has conseguido una puntuacion de "); drv_uart_putint(puntuacion); drv_uart_puts(" puntos\r\n");
 		drv_uart_puts("Lo que en tus "); drv_uart_putint(num_partidas); drv_uart_puts(" partidas, suma un total de "); drv_uart_putint(puntuacion_total); drv_uart_puts(" puntos\r\n");
+
+#ifdef DEBUG
+    svc_estadisticas_print();
+#endif
 }
 
 void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) evento;
     (void) auxData;
+	
+	  uint32_t alarma_sec_inicio = svc_alarma_codificar(true, SEC_INI_FIN, 0);
+    svc_alarma_activar(alarma_sec_inicio, ev_SEC_INI_FIN, 0);
+		svc_GE_suscribir(ev_SEC_INI_FIN, 0, sec_fin_gh);
 	
 		// Matar alarma ev_LEDS_GUITAR_HERO
     uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
@@ -298,15 +328,22 @@ void fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
 		estados_notas[2] = 0;	
 
     // Periodo de los leds disminuye
-    if(periodo_leds >= T_RESTA_PARTIDA * 2){
+    if(periodo_leds >= T_RESTA_PARTIDA * 2)
        periodo_leds -= T_RESTA_PARTIDA;
-    }
+
+		svc_alarma_activar(flags_cancelar, ev_SEC_INI_FIN, 0);
+		svc_GE_cancelar(ev_SEC_INI_FIN, sec_fin_gh);
+		
+		drv_leds_apagar_todos();
+		
     partida_guitar_hero();
 }
 
 //------------------------------ MAIN ------------------------------//
 void partida_guitar_hero() {
-		main_secuencias_gh(0);
+	  uint32_t alarma_sec_inicio = svc_alarma_codificar(true, SEC_INI_FIN, 0);
+    svc_alarma_activar(alarma_sec_inicio, ev_SEC_INI_FIN, 0);
+		svc_GE_suscribir(ev_SEC_INI_FIN, 0, sec_inicio_gh);
 
     // Suscripciones
     svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, fin_partida_guitar_hero);
@@ -316,6 +353,7 @@ void partida_guitar_hero() {
 }
 
 void guitar_hero(unsigned int num_leds){
+	
     leds = num_leds;
     periodo_leds = PERIODO_LEDS;
 

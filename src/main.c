@@ -49,6 +49,9 @@
 #include "app_guitar_hero.h"
 #include "app_bit_counter_strike.h"
 
+#ifdef DEBUG 
+	#include "svc_estadisticas.h"
+#endif
 
 #define RETARDO_MS 500u
 
@@ -291,6 +294,12 @@ void crear_partitura_aleatoria() {
  */
 
 int main(void){
+	
+#ifdef DEBUG 
+				svc_estadisticas_set_tmp(e_TIEMPO_INICIO_DESPIERTO);
+#endif
+
+	
 	uint32_t Num_Leds;
 	volatile uint8_t timer_iniciado;
 

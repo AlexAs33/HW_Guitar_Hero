@@ -36,11 +36,19 @@ void svc_estadisticas_iniciar(void) {
     estadisticas.lanza_irq = 0;
     estadisticas.atiende_irq = 0;
     estadisticas.tiempo_respuesta_irq_US = 0;
+    estadisticas.irq_max_US = 0;
+    estadisticas.irq_min_US = (uint64_t)-1; // Para actualizar mínimo directamente
+    estadisticas.irq_med_US = 0;
+    estadisticas.irq_muestras = 0;
     
     // Inicializar tiempos de secuencia de usuario
     estadisticas.termina_secuencia = 0;
     estadisticas.empieza_pulsar = 0;
     estadisticas.tiempo_respuesta_usuario_US = 0;
+    estadisticas.user_max_US = 0;
+    estadisticas.user_min_US = (uint64_t)-1;
+    estadisticas.user_med_US = 0;
+    estadisticas.user_muestras = 0;
     
     // Inicializar tiempos de estados del sistema
     estadisticas.tiempo_inicio_despierto = 0;
@@ -67,6 +75,8 @@ void svc_estadisticas_iniciar(void) {
  */
 void svc_estadisticas_set_tmp(estadisticas_evento_t evento) {
     uint64_t tiempo_actual = drv_tiempo_actual_us();
+		uint64_t delta_irq = 0;
+		uint64_t delta_user = 0;
     
     switch (evento) {
         case e_LANZA_IRQ:
@@ -79,6 +89,16 @@ void svc_estadisticas_set_tmp(estadisticas_evento_t evento) {
             estadisticas.atiende_irq = tiempo_actual;
             estadisticas.tiempo_respuesta_irq_US = 
                 estadisticas.atiende_irq - estadisticas.lanza_irq;
+            
+            delta_irq = estadisticas.tiempo_respuesta_irq_US;
+            if (delta_irq > estadisticas.irq_max_US) estadisticas.irq_max_US = delta_irq;
+            if (delta_irq < estadisticas.irq_min_US) estadisticas.irq_min_US = delta_irq;
+            estadisticas.irq_muestras++;
+            if (estadisticas.irq_muestras == 1) 
+                estadisticas.irq_med_US = delta_irq;
+            else 
+                estadisticas.irq_med_US += (delta_irq - estadisticas.irq_med_US) / estadisticas.irq_muestras;
+            
             
             // Limpiar los timestamps temporales
             estadisticas.atiende_irq = 0;
@@ -94,7 +114,17 @@ void svc_estadisticas_set_tmp(estadisticas_evento_t evento) {
             // Marca cuando el usuario empieza a responder y calcula su tiempo de reacción
             estadisticas.empieza_pulsar = tiempo_actual;
             estadisticas.tiempo_respuesta_usuario_US = 
-                estadisticas.empieza_pulsar - estadisticas.termina_secuencia;
+            estadisticas.empieza_pulsar - estadisticas.termina_secuencia;
+            
+            delta_user = estadisticas.tiempo_respuesta_usuario_US;
+            if (delta_user > estadisticas.user_max_US) estadisticas.user_max_US = delta_user;
+            if (delta_user < estadisticas.user_min_US) estadisticas.user_min_US = delta_user;
+            estadisticas.user_muestras++;
+            if (estadisticas.user_muestras == 1) 
+                estadisticas.user_med_US = delta_user;
+            else 
+                estadisticas.user_med_US += (delta_user - estadisticas.user_med_US) / estadisticas.user_muestras;
+            
             
             // Limpiar los timestamps temporales
             estadisticas.termina_secuencia = 0;
@@ -134,6 +164,7 @@ void svc_estadisticas_set_tmp(estadisticas_evento_t evento) {
             break;
             
         case e_TIEMPO_DESENCOLAR:
+						break;
         case e_TIEMPO_ENCOLAR:
             // Estos eventos se gestionan en la función específica de FIFO
             break;
@@ -196,4 +227,69 @@ void svc_estadisticas_set_tmp_fifo(EVENTO_T evento,
             estadisticas.eventos[evento].tiempo_fifo_med_MS = tiempo_en_cola;
         }
     }
+}
+
+void svc_estadisticas_print(void) {
+
+    drv_uart_puts("\r\n=== ESTADISTICAS DEL SISTEMA ===\r\n");
+
+    // ---------- IRQ ----------
+    drv_uart_puts("\r\n[IRQ]\r\n");
+    drv_uart_puts("Ultima latencia (US): ");
+    drv_uart_putint(estadisticas.tiempo_respuesta_irq_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Minima latencia (US): ");
+    drv_uart_putint(estadisticas.irq_min_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Maxima latencia (US): ");
+    drv_uart_putint(estadisticas.irq_max_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Media latencia (US): ");
+    drv_uart_putint(estadisticas.irq_med_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Muestras IRQ: ");
+    drv_uart_putint(estadisticas.irq_muestras);
+    drv_uart_puts("\r\n");
+
+
+    // ---------- USUARIO ----------
+    drv_uart_puts("\r\n[Usuario]\r\n");
+    drv_uart_puts("Ultimo tiempo reaccion (US): ");
+    drv_uart_putint(estadisticas.tiempo_respuesta_usuario_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Minimo tiempo reaccion (US): ");
+    drv_uart_putint(estadisticas.user_min_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Maximo tiempo reaccion (US): ");
+    drv_uart_putint(estadisticas.user_max_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Media tiempo reaccion (US): ");
+    drv_uart_putint(estadisticas.user_med_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Muestras Usuario: ");
+    drv_uart_putint(estadisticas.user_muestras);
+    drv_uart_puts("\r\n");
+
+
+    // ---------- TIEMPOS DE ESTADO ----------
+    drv_uart_puts("\r\n[Estados]\r\n");
+
+    drv_uart_puts("Tiempo total despierto (US): ");
+    drv_uart_putint(estadisticas.tiempo_despierto_US);
+    drv_uart_puts("\r\n");
+
+    drv_uart_puts("Tiempo total espera (US): ");
+    drv_uart_putint(estadisticas.tiempo_espera_US);
+    drv_uart_puts("\r\n");
+
+
+    drv_uart_puts("\r\n=== FIN ESTADISTICAS ===\r\n");
 }

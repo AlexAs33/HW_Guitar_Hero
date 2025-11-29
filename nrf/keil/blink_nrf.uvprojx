@@ -503,11 +503,6 @@
               <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
-              <FileName>bit_counter_strike.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\bit_counter_strike.c</FilePath>
-            </File>
-            <File>
               <FileName>drv_sc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\drv_sc.c</FilePath>
@@ -516,11 +511,6 @@
               <FileName>drv_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\drv_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>bit_counter_strike.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\bit_counter_strike.h</FilePath>
             </File>
             <File>
               <FileName>drv_sc.h</FileName>
@@ -563,14 +553,44 @@
               <FilePath>..\..\src\random.h</FilePath>
             </File>
             <File>
-              <FileName>guitar_hero.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\guitar_hero.c</FilePath>
+              <FileName>app_bit_counter_strike.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
             </File>
             <File>
-              <FileName>guitar_hero.h</FileName>
+              <FileName>app_guitar_hero.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\guitar_hero.h</FilePath>
+              <FilePath>..\..\src\app_guitar_hero.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_bit_counter_strike.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1134,11 +1154,6 @@
               <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
-              <FileName>bit_counter_strike.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\bit_counter_strike.c</FilePath>
-            </File>
-            <File>
               <FileName>drv_sc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\drv_sc.c</FilePath>
@@ -1147,11 +1162,6 @@
               <FileName>drv_wdt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\drv_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>bit_counter_strike.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\bit_counter_strike.h</FilePath>
             </File>
             <File>
               <FileName>drv_sc.h</FileName>
@@ -1194,14 +1204,44 @@
               <FilePath>..\..\src\random.h</FilePath>
             </File>
             <File>
-              <FileName>guitar_hero.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\guitar_hero.c</FilePath>
+              <FileName>app_bit_counter_strike.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
             </File>
             <File>
-              <FileName>guitar_hero.h</FileName>
+              <FileName>app_guitar_hero.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\guitar_hero.h</FilePath>
+              <FilePath>..\..\src\app_guitar_hero.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_bit_counter_strike.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
             </File>
           </Files>
         </Group>

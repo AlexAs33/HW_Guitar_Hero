@@ -606,6 +606,26 @@
               <FileType>5</FileType>
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
             </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1274,6 +1294,26 @@
               <FileName>app_guitar_hero.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
             </File>
           </Files>
         </Group>

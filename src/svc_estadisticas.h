@@ -25,6 +25,7 @@
 
 #include <stdint.h>
 #include "rt_evento_t.h"
+#include "drv_uart.h"
 
 // Tipos de eventos para medición de tiempos
 typedef enum {
@@ -56,11 +57,23 @@ typedef struct {
     uint64_t lanza_irq;                     // Timestamp de lanzamiento de IRQ (US)
     uint64_t atiende_irq;                   // Timestamp de atención de IRQ (US)
     uint64_t tiempo_respuesta_irq_US;       // Tiempo de respuesta de IRQ (US)
+
+    // Estadísticas IRQ acumuladas
+    uint64_t irq_max_US;
+    uint64_t irq_min_US;
+    uint64_t irq_med_US;
+    uint32_t irq_muestras;
     
     // Estadísticas de respuesta del usuario
     uint64_t termina_secuencia;             // Timestamp de fin de secuencia (US)
     uint64_t empieza_pulsar;                // Timestamp de inicio de pulsación (US)
     uint64_t tiempo_respuesta_usuario_US;   // Tiempo de respuesta del usuario (US)
+
+    // Estadísticas de respuesta de usuario acumuladas
+    uint64_t user_max_US;
+    uint64_t user_min_US;
+    uint64_t user_med_US;
+    uint32_t user_muestras;
     
     // Estadísticas de estados del sistema
     uint64_t tiempo_inicio_despierto;       // Timestamp de inicio estado activo (US)
@@ -99,5 +112,9 @@ void svc_estadisticas_set_tmp(estadisticas_evento_t evento);
 //       se calcula la media incremental y se incrementa el contador de mediciones
 void svc_estadisticas_set_tmp_fifo(EVENTO_T evento, 
                                     estadisticas_evento_t desencolar_encolar);
+
+// Pre: El servicio de estadísticas ha sido inicializado
+// Post: Se envían por UART las estadísticas actuales de IRQ, usuario y estados
+void svc_estadisticas_print(void); 
 
 #endif  //SVC_ESTADISTICAS_H

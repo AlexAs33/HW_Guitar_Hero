@@ -1,8 +1,17 @@
+/* ***************************************************************************************
+ * P.H.2025: Implementacion de la Hardware Abstraction Layer de servicio de 
+						 interrupciones externas para el procesador nRF52840
+ *************************************************************************************** */
+
 #include "hal_ext_int.h"
 #include "hal_gpio.h"
 #include "board.h"
 #include <stdbool.h>
 #include <nrf.h>
+
+#ifdef DEBUG
+    #include "svc_estadisticas.h"
+#endif
 
 // Máximo número de canales GPIOTE disponibles
 #define GPIOTE_MAX_SIZE 8
@@ -23,6 +32,11 @@ static void (*f_cb)() = 0;
 /* Convierte pin GPIO a número de canal GPIOTE */
 static int8_t pin_a_eint(uint32_t pin)
 {
+	
+#ifdef DEBUG 
+				svc_estadisticas_set_tmp(e_LANZA_IRQ);
+#endif
+	
     switch (pin) {
         case EINT0_PIN: return 0;
         case EINT1_PIN: return 1;

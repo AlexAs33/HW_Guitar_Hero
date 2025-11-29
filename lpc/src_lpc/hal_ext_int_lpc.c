@@ -1,6 +1,15 @@
+/* ***************************************************************************************
+ * P.H.2025: Implementacion de la Hardware Abstraction Layer de servicio de 
+						 interrupciones externas para el procesador LPC2105
+ *************************************************************************************** */
+ 
 #include "hal_ext_int.h"
 #include "hal_gpio.h"
 #include "board.h"
+
+#ifdef DEBUG
+    #include "svc_estadisticas.h"
+#endif
 
 #define CLEAR_FLAG 0x7
 
@@ -56,6 +65,10 @@ void EINT_Handler(void) __irq
     else if (EXTINT & (1UL << 2)) pin = EINT2_PIN;
     else return;
 
+#ifdef DEBUG 
+				svc_estadisticas_set_tmp(e_LANZA_IRQ);
+#endif
+	
     // Limpiar flag de interrupción correspondiente
     hal_ext_int_clear_flag(pin);
 

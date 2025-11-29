@@ -31,7 +31,7 @@ static struct {
     uint32_t monitor_overflow;
 } fifo;
 
-//static uint32_t estadisticas[EVENT_TYPES];
+static uint32_t estadisticas_eventos[EVENT_TYPES];
 
 /* Inicializa la cola y el monitor de overflow */
 void rt_FIFO_inicializar(MONITOR_id_t monitor)
@@ -47,7 +47,7 @@ void rt_FIFO_inicializar(MONITOR_id_t monitor)
     }
 
     for (int i = 0; i < EVENT_TYPES; ++i) {
-//        estadisticas[i] = 0;
+        estadisticas_eventos[i] = 0;
     }
 }
 
@@ -79,7 +79,7 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 
     /* Estadísticas */
     if ((uint32_t)ID_evento < EVENT_TYPES) {
-//        estadisticas[ID_evento]++;
+        estadisticas_eventos[ID_evento]++;
     }
 }
 
@@ -108,6 +108,6 @@ uint8_t rt_FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData, Tiempo_us_t *TS)
 uint32_t rt_FIFO_estadisticas(EVENTO_T ID_evento)
 {
     if ((uint32_t)ID_evento < EVENT_TYPES)
-//        return estadisticas[ID_evento];
+        return estadisticas_eventos[ID_evento];
     return 0;
 }

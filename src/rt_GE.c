@@ -23,10 +23,6 @@
 #include <string.h>
 #include <stdint.h>
 
-#ifdef DEBUG
-    #include "svc_estadisticas.h"
-#endif
-
 /* Fila de suscripciones por tipo de evento */
 typedef struct {
     uint8_t num_suscritos;                                      // Cantidad actual de callbacks
@@ -72,18 +68,15 @@ void rt_GE_lanzador(void)
 
     // Bucle principal del sistema
     while (1) {
-#ifdef DEBUG 
-		//svc_estadisticas_set_tmp(e_TIEMPO_INICIO_DESPIERTO);
-#endif
-
-        if (rt_FIFO_extraer(&evento, &auxData, &timestamp)) {
-					EVENTO_T eventos_usuario[] = ev_USUARIO;
-					for (int i = 0; i < ev_NUM_EV_USUARIO; i++) {
-							if(evento == eventos_usuario[i] || evento == ev_T_PERIODICO ) {
-								drv_wdt_feed();
-								i = ev_NUM_EV_USUARIO;
-							}
-					}
+			
+				if (rt_FIFO_extraer(&evento, &auxData, &timestamp)) {
+						EVENTO_T eventos_usuario[] = ev_USUARIO;
+						for (int i = 0; i < ev_NUM_EV_USUARIO; i++) {
+								if(evento == eventos_usuario[i] || evento == ev_T_PERIODICO ) {
+									drv_wdt_feed();
+									i = ev_NUM_EV_USUARIO;
+								}
+						}
 						
             // Hay evento disponible: despacharlo
             GestorEvento *fila = &tabla_suscripciones[evento];
@@ -92,16 +85,9 @@ void rt_GE_lanzador(void)
                 if (fila->callbacks[i] != NULL) 
                     fila->callbacks[i](evento, auxData);
         } 
-        else  // Sin eventos: modo bajo consumo
-#ifdef DEBUG 
-			//svc_estadisticas_set_tmp(e_TIEMPO_FIN_DESPIERTO);
-			//svc_estadisticas_set_tmp(e_TIEMPO_INICIO_ESPERA);
-#endif
-            drv_consumo_esperar();
-
-#ifdef DEBUG 
-			//svc_estadisticas_set_tmp(e_TIEMPO_FIN_ESPERA);
-#endif    
+        else { // Sin eventos: modo bajo consumo
+            drv_consumo_esperar(); 
+				}
         
     }
 }
