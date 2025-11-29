@@ -20,6 +20,10 @@
 #include <stdio.h>
 #include "drv_leds.h"
 
+#ifdef DEBUG
+    #include "svc_estadisticas.h"
+#endif
+
 static struct {
     EVENTO buffer[RT_FIFO_TAMANO];
     uint8_t siguiente_a_tratar;
@@ -50,6 +54,10 @@ void rt_FIFO_inicializar(MONITOR_id_t monitor)
 /* Añade un evento a la cola */
 void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 {
+#ifdef DEBUG
+	svc_estadisticas_set_tmp_fifo(ID_evento,e_TIEMPO_ENCOLAR);
+#endif
+
     uint8_t siguiente = (fifo.siguiente_libre + 1) % RT_FIFO_TAMANO;
 
     /* Overflow: la cola se llenó */
@@ -79,6 +87,10 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 // En rt_fifo.c
 uint8_t rt_FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData, Tiempo_us_t *TS)
 {
+#ifdef DEBUG
+	svc_estadisticas_set_tmp_fifo(*ID_evento,e_TIEMPO_DESENCOLAR);
+#endif
+
     if (fifo.siguiente_a_tratar == fifo.siguiente_libre) 
         return 0;  // No había eventos
 
