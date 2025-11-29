@@ -1,3 +1,19 @@
+/* *****************************************************************************
+ * P.H.2025: Implementacion del Driver de la UART
+ *
+ * Funciones:
+ * - Inicializar la UART con un baudrate específico
+ * - Enviar un carácter
+ * - Recibir un carácter
+ * - Enviar una cadena de caracteres
+ * - Enviar un número entero
+ * - Consultar si hay datos disponibles en la UART
+ *
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ ***************************************************************************** */
+
 #include "drv_uart.h"
 #include "hal_uart.h"
 
@@ -9,19 +25,12 @@ void drv_uart_putchar(char c) {
     hal_uart_putchar(c);
 }
 
-char drv_uart_getchar(void) {
-    return hal_uart_getchar();
-}
-
 void drv_uart_puts(char *s) {
     while (*s) {
         hal_uart_putchar(*s++);
     }
 }
 
-int drv_uart_data_available(void) {
-    return hal_uart_data_available();
-}
 void drv_uart_putint(int valor) {
     char buffer[12];
     int i = 0;

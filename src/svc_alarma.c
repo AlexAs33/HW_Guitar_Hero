@@ -1,3 +1,21 @@
+/* ***************************************************************************************
+ * P.H.2025: Implementación del Servicio de Alarmas
+ *
+ * Funciones:
+ * - Iniciar el servicio con un monitor de overflow y una función de inactividad asociada
+ * - Codificar alarmas con un tiempo específico
+ * - Activar alarmas con un veneto asociado
+ * - Actualizar alarmas
+ * 
+ * Nota:
+ *  por las características del hardware donde se trabaja el número de alarmas está limitado.
+ *  Si se excede el programa se detendrá en un bucle infinito.
+ *
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ *************************************************************************************** */
+
 #include "svc_alarma.h"
 
 #include "drv_tiempo.h"

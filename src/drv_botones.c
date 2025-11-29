@@ -1,3 +1,18 @@
+/* ***************************************************************************************
+ * P.H.2025: Implementación del Driver de botones
+ * Proporciona la interfaz necesaria para gestionar los botones con tratamiento
+ * de rebotes mediante MSF, interrupciones externas y alarmas periódicas.
+ *
+ * Funciones:
+ * - Inicialización del driver de botones
+ * - Actualización del estado interno según eventos recibidos
+ * - Gestión de estados individuales de cada botón
+ *
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ *************************************************************************************** */
+
 #include "drv_botones.h"
 #include "hal_ext_int.h"
 #include "svc_alarma.h"

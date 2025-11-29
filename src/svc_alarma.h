@@ -8,6 +8,10 @@
  * - Codificar alarmas con un tiempo específico
  * - Activar alarmas con un veneto asociado
  * - Actualizar alarmas
+ * 
+ * Nota:
+ *  por las características del hardware donde se trabaja el número de alarmas está limitado.
+ *  Si se excede el programa se detendrá en un bucle infinito.
  *
  * Autores:
  * - Pablo Plumed

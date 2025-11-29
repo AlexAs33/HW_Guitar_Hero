@@ -13,7 +13,7 @@
  * - Alex Asensio
  *************************************************************************************** */
 
-#include "bit_counter_strike.h"
+#include "app_bit_counter_strike.h"
 
 #include "rt_fifo.h"
 #include "rt_GE.h"

@@ -1,9 +1,15 @@
-/* *****************************************************************************
- * P.H.2025: Driver/Manejador del consumo
- * suministra los servicios independientemente del hardware
+/* ***************************************************************************************
+ * P.H.2025: Implementacion del Driver de consumo
  *
- * usa los servicos de hal_consumo.h: 
- */
+ * Funcionalidad:
+ *  - Inicialización del subsistema de consumo.
+ *  - Entrada en modo de espera.
+ *  - Entrada en modo de bajo consumo profundo.
+ * 
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ *************************************************************************************** */
  
 #include "drv_consumo.h"
 #include "hal_consumo.h"

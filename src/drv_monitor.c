@@ -1,9 +1,14 @@
 /* *****************************************************************************
  * P.H.2025: Implementación del Driver de Monitores
- * 
- * Los monitores son pines GPIO usados para marcar eventos o estados del programa
- * en un analizador lógico. Este módulo abstrae el acceso al hardware.
- */
+ * Funciones:
+ * - Inicializar todos los monitores como salidas desmarcadas
+ * - Marcar un monitor (ponerlo a nivel lógico activo)
+ * - Desmarcar un monitor (ponerlo a nivel lógico inactivo)
+ *
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ ***************************************************************************** */
 
 #include "drv_monitor.h"
 

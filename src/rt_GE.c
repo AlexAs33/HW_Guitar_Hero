@@ -1,14 +1,17 @@
-/* *****************************************************************************
- * P.H.2025: Gestor de Eventos (rt_GE)
- * Control centralizado de suscripciones y despacho de eventos.
- * Integra las funciones del servicio GE (svc_GE) en este mismo módulo.
- * 
- * FUNCIONALIDAD:
- *  - Gestiona la tabla de suscripciones por evento.
- *  - Lanza callbacks según prioridad.
- *  - Reprograma automáticamente la alarma de inactividad.
- *  - Entra en bajo consumo cuando no hay eventos.
- * ****************************************************************************/
+/* ***************************************************************************************
+ * P.H.2025: Implementación del Runtime de Gestión de Eventos
+ *
+ * Funciones:
+ * - Inicializar el gestor de eventos
+ * - Poner en marcha el gestor de eventos
+ * - Actualizar eventos
+ * - Suscribir eventos con una prioridad y tarea asociadas
+ * - Cancelar tareas asociadas a eventos
+ *
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ *************************************************************************************** */
 
 #include "rt_GE.h"
 #include "svc_GE.h"

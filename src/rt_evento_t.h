@@ -1,6 +1,10 @@
-/* *****************************************************************************
- * P.H.2025: Runtime para la implementación de distintos eventos 
- */
+/* ***************************************************************************************
+ * P.H.2025: Interfaz del Runtime que almacena los tipos de eventos con un id asociado.
+ *
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ *************************************************************************************** */
  
 #ifndef RT_EVENTO_T_H
 #define RT_EVENTO_T_H

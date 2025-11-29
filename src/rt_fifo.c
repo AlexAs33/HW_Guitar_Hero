@@ -1,8 +1,20 @@
-/* *****************************************************************************
- * P.H.2025: Runtime para la implementación de colas de tipo FIFO
- * Colas de tamaño limitado almacenan los distintos eventos a ejecutar e información
- * adicionar relativa a estos
- */
+/* ***************************************************************************************
+ * P.H.2025: Implemenatción del Runtime de las colas tipo FIFO
+ *
+ * Funciones:
+ * - Inicializar la cola con un monitor de overflow asociado
+ * - Encolar eventos con un parametro
+ * - Extraer eventos con un parámetro y tiempo asociados
+ * - Consultar el número de eventos encolados de un tipo
+ * 
+ * Nota:
+ *  por las características del hardware donde se trabaja el número de eventos encolados está limitado.
+ *  Si se excede el programa se detendrá en un bucle infinito.
+ *
+ * Autores:
+ * - Pablo Plumed
+ * - Alex Asensio
+ *************************************************************************************** */
  
 #include "rt_fifo.h"
 #include <stdio.h>
