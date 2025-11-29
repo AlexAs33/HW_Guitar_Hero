@@ -70,7 +70,7 @@ int comprobar_acierto(uint32_t boton)
 void modificar_puntuacion(uint32_t boton){
 		//ver acierto / fallo y modificar puntuación
 		if (boton == 255 || !comprobar_acierto(boton)) {
-				UART_LOG_DEBUG("HE FALLADO...");
+				UART_LOG_INFO("A LA PROXIMAS ERA...");
 
 				//Fallo de no pulsar nada cuenta por dos
 				if(boton == 255) puntuacion -= FALLO * 2;
@@ -80,7 +80,7 @@ void modificar_puntuacion(uint32_t boton){
 				fallos++;
 		}
 		else {
-				UART_LOG_DEBUG("HE ACERTADO!!");
+				UART_LOG_INFO("MUY BIEN!!");
 								
 				// Modificar puntuación dependiendo de la racha
 				if(++racha >= 5) puntuacion += ACIERTO * racha;
@@ -147,7 +147,8 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 		// He terminado la partitura
 		if(notas_tocadas > TAM_PARTITURA + NOTAS_INIT){    
 				encolar_EM(ev_GUITAR_HERO, 0);
-                estado_actual = e_FIN;
+        estado_actual = e_FIN;
+				return;
 		}
 		else if(notas_tocadas > NOTAS_INIT) {
 			
@@ -158,7 +159,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 #endif
 			
 				//codificar alarma timeout
-				uint32_t flags_timeout = svc_alarma_codificar(false, PERIODO_LEDS + 200 - MARGEN_PULSAR, 0);  //tienes hasta el siguiente para darle
+				uint32_t flags_timeout = svc_alarma_codificar(false, PERIODO_LEDS - MARGEN_PULSAR, 0);  //tienes hasta el siguiente para darle
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 				estado_actual = e_BEAT;
 		}
@@ -169,7 +170,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 		}
 		
 		// Esperamos tiempo entre leds
-		drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS + 200); 
+		drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
 }
 
 //------------------------------ ESTADO DE BOTONES ------------------------------//
@@ -195,6 +196,8 @@ void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
 
 void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
+
+    drv_consumo_esperar();
 
     //cancelar alarma timeout
     uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
@@ -258,6 +261,11 @@ void estado_fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
 		fallos = 0;
 		puntuacion = 0;
     //TODO definir características nueva partida
+	  // Reiniciamos estado de las notas
+		estados_notas[0] = 0;
+		estados_notas[1] = 0;
+		estados_notas[2] = 0;	
+	
     // Volvemos a empezar una nueva partida
     estado_actual = e_INICIO;
     encolar_EM(ev_GUITAR_HERO, 0);
