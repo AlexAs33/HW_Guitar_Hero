@@ -253,13 +253,6 @@ void test_uart() {
         sprintf(buf, "Contador: %d", contador++);
         UART_LOG_INFO(buf);
 
-        // eco inmediato
-        if (drv_uart_data_available()) {
-            char c = drv_uart_getchar();
-            UART_LOG_DEBUG("Recibido un byte"); // solo en debug
-            drv_uart_putchar(c);
-        }
-
         // delay cutre
         for (volatile int i = 0; i < 500000; i++);
     }

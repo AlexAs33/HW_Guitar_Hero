@@ -50,4 +50,10 @@ char drv_uart_getchar(void);
 // Post: La cadena completa se envía por la UART carácter a carácter.
 void drv_uart_puts(char *s);
 
+// Pre:  La UART debe estar inicializada correctamente.
+//       'valor' es un entero válido (positivo, negativo o cero).
+// Post: El número entero representado por 'valor' se envía por la UART
+//       carácter a carácter, sin añadir salto de línea ni espacios.
+void drv_uart_putint(int valor);
+
 #endif  //DRV_UART_H

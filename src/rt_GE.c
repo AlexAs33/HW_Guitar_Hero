@@ -73,7 +73,7 @@ void rt_GE_lanzador(void)
     // Bucle principal del sistema
     while (1) {
 #ifdef DEBUG 
-		svc_estadisticas_set_tmp(e_TIEMPO_INICIO_DESPIERTO);
+		//svc_estadisticas_set_tmp(e_TIEMPO_INICIO_DESPIERTO);
 #endif
 
         if (rt_FIFO_extraer(&evento, &auxData, &timestamp)) {
@@ -94,13 +94,13 @@ void rt_GE_lanzador(void)
         } 
         else  // Sin eventos: modo bajo consumo
 #ifdef DEBUG 
-			svc_estadisticas_set_tmp(e_TIEMPO_FIN_DESPIERTO);
-			svc_estadisticas_set_tmp(e_TIEMPO_INICIO_ESPERA);
+			//svc_estadisticas_set_tmp(e_TIEMPO_FIN_DESPIERTO);
+			//svc_estadisticas_set_tmp(e_TIEMPO_INICIO_ESPERA);
 #endif
             drv_consumo_esperar();
 
 #ifdef DEBUG 
-			svc_estadisticas_set_tmp(e_TIEMPO_FIN_ESPERA);
+			//svc_estadisticas_set_tmp(e_TIEMPO_FIN_ESPERA);
 #endif    
         
     }

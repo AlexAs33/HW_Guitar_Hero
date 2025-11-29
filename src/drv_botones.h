@@ -54,4 +54,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t boton_id);
 //       y generar eventos derivados.
 void drv_boton_estado_actualizar(EVENTO_T evento, uint32_t boton_id);
 
+// Retorna la cantidad de botones activos disponibles
+unsigned int drv_botones_cantidad(void);
+
 #endif // DRV_BOTONES_H

@@ -1,6 +1,7 @@
 
 
 #include "hal_wdt.h"
+#include "drv_sc.h"
 #include <LPC210x.H> /* Definiciones específicas del hardware LPC210x */
 
 void hal_wdt_iniciar(uint32_t tsec) {
@@ -18,6 +19,8 @@ void hal_wdt_iniciar(uint32_t tsec) {
 }
 
 void hal_wdt_feed(void) {
+	drv_sc_disable();
   WDFEED = 0xAA; // Primera escritura requerida para alimentar el WDT.
   WDFEED = 0x55; // Segunda escritura requerida para alimentar el WDT.
+	drv_sc_enable();
 }

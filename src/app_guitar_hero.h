@@ -33,15 +33,20 @@
 #ifndef GUITAR_HERO_H
 #define GUITAR_HERO_H
 
-#define PERIODO_LEDS        2000     //ms
+#define PERIODO_LEDS        500     //ms
 #define MARGEN_PULSAR       100       
 #define ACIERTO             20      //puntos por acierto
 #define FALLO               10      //puntos por fallo
 #define PERIODO_WDT         10      // 1 segundos 
 #define SEC_INI_FIN         500
-#define TAM_PARTITURA       30
 #define T_RESET_MS          3000
 #define T_RESTA_PARTIDA     250
+
+#ifdef DEBUG
+	#define TAM_PARTITURA     5
+#else
+	#define TAM_PARTITURA     30
+#endif
 
 void guitar_hero(unsigned int num_leds);
 
