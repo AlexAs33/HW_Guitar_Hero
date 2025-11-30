@@ -66,16 +66,7 @@ void sec_fin_gh(EVENTO_T ev, uint32_t auxData);
 void partida_guitar_hero(void);
 
 //------------------------------ AUXILIARES ------------------------------//
-		
-//Pre modo = 0 --> inicio. 1 --> fin
-void main_secuencias_gh(int modo){
-    uint32_t alarma_sec_inicio = svc_alarma_codificar(true, SEC_INI_FIN, 0);
-    svc_alarma_activar(alarma_sec_inicio, ev_SEC_INI_FIN, 0);
-    palpitaciones = 0;
-    if(modo == 0) svc_GE_suscribir(ev_SEC_INI_FIN, 0, sec_inicio_gh);
-    else if (modo == 1) svc_GE_suscribir(ev_SEC_INI_FIN, 0, sec_fin_gh);
-}
-
+// Encolar un evento en exclusion mutua
 void encolar_EM(EVENTO_T evento, uint32_t auxData) {
 		drv_sc_disable();
     rt_FIFO_encolar(evento, auxData);
@@ -180,7 +171,7 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
     //JUEGO
     //esta codificado. usar estados_notas[2] para comprobar resultado
 		notas_tocadas++;
-		if(notas_tocadas > 2){
+		if(notas_tocadas > MIN_COMPASES){
 			
 #ifdef DEBUG
 				char buf[64];
@@ -193,7 +184,7 @@ void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 			svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 		}
 		
-		if(notas_tocadas > TAM_PARTITURA + 2)
+		if(notas_tocadas > TAM_PARTITURA + MIN_COMPASES)
       encolar_EM(ev_FIN_GUITAR_HERO, 0);
 }
 
@@ -233,18 +224,13 @@ void manejador_interrupcion_botones_gh(int32_t id_pin, int32_t id_boton) {
 void evento_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
 	
-    //cancelar alarma timeout
-    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
-
-    uint32_t boton = auxData;
-	
 #ifdef DEBUG
 				char buf[64];
         sprintf(buf, "Soy el botón %d", boton);
         UART_LOG_DEBUG(buf);
-#endif
-					
+#endif			
+
+    uint32_t boton = auxData;
 		modificar_puntuacion(boton);
 }
 
@@ -252,12 +238,9 @@ void evento_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
 void evento_timeout_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
+    
 		UART_LOG_DEBUG("TIMOUT, APRIETA EL BOTON!!");
-	
     modificar_puntuacion(255);
-    //cancelar alarma
-    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-    svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 }
 
 //------------------------------ ESTADO DE FIN ------------------------------//

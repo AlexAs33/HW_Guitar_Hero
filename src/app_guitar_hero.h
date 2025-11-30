@@ -41,6 +41,7 @@
 #define SEC_INI_FIN         500
 #define T_RESET_MS          3000
 #define T_RESTA_PARTIDA     250
+#define MIN_COMPASES        2
 
 #ifdef DEBUG
 	#define TAM_PARTITURA     5
