@@ -427,6 +427,36 @@
               <FilePath>..\..\src\main.c</FilePath>
             </File>
             <File>
+              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_botones.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_botones.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_botones.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_botones.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_consumo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_consumo.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_consumo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_consumo.h</FilePath>
+            </File>
+            <File>
               <FileName>drv_leds.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\drv_leds.c</FilePath>
@@ -435,6 +465,26 @@
               <FileName>drv_leds.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\drv_leds.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_monitor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_monitor.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_monitor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_monitor.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_sc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_sc.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_sc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_sc.h</FilePath>
             </File>
             <File>
               <FileName>drv_tiempo.c</FileName>
@@ -447,44 +497,49 @@
               <FilePath>..\..\src\drv_tiempo.h</FilePath>
             </File>
             <File>
-              <FileName>hal_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_tiempo.h</FilePath>
-            </File>
-            <File>
-              <FileName>board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\board.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_consumo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_consumo.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_consumo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_consumo.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_consumo.c</FileName>
+              <FileName>drv_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\drv_consumo.c</FilePath>
+              <FilePath>..\..\src\drv_uart.c</FilePath>
             </File>
             <File>
-              <FileName>drv_monitor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_monitor.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_monitor.h</FileName>
+              <FileName>drv_uart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_monitor.h</FilePath>
+              <FilePath>..\..\src\drv_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_wdt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_wdt.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_alarma.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_alarma.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_GE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_GE.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
             </File>
             <File>
               <FileName>rt_evento_t.h</FileName>
@@ -502,29 +557,9 @@
               <FilePath>..\..\src\rt_fifo.h</FilePath>
             </File>
             <File>
-              <FileName>drv_botones.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_botones.c</FilePath>
-            </File>
-            <File>
               <FileName>rt_GE.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\rt_GE.c</FilePath>
-            </File>
-            <File>
-              <FileName>svc_alarma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_alarma.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_botones.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_botones.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_ext_int.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_ext_int.h</FilePath>
             </File>
             <File>
               <FileName>rt_GE.h</FileName>
@@ -532,34 +567,24 @@
               <FilePath>..\..\src\rt_GE.h</FilePath>
             </File>
             <File>
-              <FileName>svc_alarma.h</FileName>
+              <FileName>hal_consumo.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\svc_alarma.h</FilePath>
+              <FilePath>..\..\src\hal_consumo.h</FilePath>
             </File>
             <File>
-              <FileName>svc_GE.h</FileName>
+              <FileName>hal_ext_int.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\svc_GE.h</FilePath>
+              <FilePath>..\..\src\hal_ext_int.h</FilePath>
             </File>
             <File>
-              <FileName>drv_sc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_sc.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_wdt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_sc.h</FileName>
+              <FileName>hal_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_sc.h</FilePath>
+              <FilePath>..\..\src\hal_gpio.h</FilePath>
             </File>
             <File>
-              <FileName>drv_wdt.h</FileName>
+              <FileName>hal_tiempo.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_wdt.h</FilePath>
+              <FilePath>..\..\src\hal_tiempo.h</FilePath>
             </File>
             <File>
               <FileName>hal_sc.h</FileName>
@@ -567,24 +592,14 @@
               <FilePath>..\..\src\hal_sc.h</FilePath>
             </File>
             <File>
-              <FileName>hal_wdt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_wdt.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_uart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_uart.h</FilePath>
-            </File>
-            <File>
               <FileName>hal_uart.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_wdt.h</FilePath>
             </File>
             <File>
               <FileName>app_bit_counter_strike.c</FileName>
@@ -592,14 +607,14 @@
               <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
             </File>
             <File>
-              <FileName>app_guitar_hero.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
-            </File>
-            <File>
               <FileName>app_bit_counter_strike.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
             <File>
               <FileName>app_guitar_hero.h</FileName>
@@ -607,50 +622,15 @@
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
             </File>
             <File>
-              <FileName>svc_estadisticas.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
-            </File>
-            <File>
-              <FileName>svc_estadisticas.h</FileName>
+              <FileName>board.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+              <FilePath>..\..\src\board.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Dependientes</GroupName>
           <Files>
-            <File>
-              <FileName>board_lpc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src_lpc\board_lpc.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_gpio_lpc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_gpio_lpc.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo_lpc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_tiempo_lpc.c</FilePath>
-            </File>
-            <File>
-              <FileName>reserva_gpio_lpc2105.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src_lpc\reserva_gpio_lpc2105.h</FilePath>
-            </File>
             <File>
               <FileName>hal_consumo_lpc.c</FileName>
               <FileType>1</FileType>
@@ -662,14 +642,9 @@
               <FilePath>..\src_lpc\hal_ext_int_lpc.c</FilePath>
             </File>
             <File>
-              <FileName>hal_sc_lpc.c</FileName>
+              <FileName>hal_gpio_lpc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_sc_lpc.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_wdt_lpc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_wdt_lpc.c</FilePath>
+              <FilePath>..\src_lpc\hal_gpio_lpc.c</FilePath>
             </File>
             <File>
               <FileName>hal_random_lpc.c</FileName>
@@ -677,9 +652,34 @@
               <FilePath>..\src_lpc\hal_random_lpc.c</FilePath>
             </File>
             <File>
+              <FileName>hal_sc_lpc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_lpc\hal_sc_lpc.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_tiempo_lpc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_lpc\hal_tiempo_lpc.c</FilePath>
+            </File>
+            <File>
               <FileName>hal_uart_lpc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src_lpc\hal_uart_lpc.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt_lpc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_lpc\hal_wdt_lpc.c</FilePath>
+            </File>
+            <File>
+              <FileName>reserva_gpio_lpc2105.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_lpc\reserva_gpio_lpc2105.h</FilePath>
+            </File>
+            <File>
+              <FileName>board_lpc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_lpc\board_lpc.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1116,6 +1116,36 @@
               <FilePath>..\..\src\main.c</FilePath>
             </File>
             <File>
+              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_botones.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_botones.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_botones.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_botones.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_consumo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_consumo.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_consumo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_consumo.h</FilePath>
+            </File>
+            <File>
               <FileName>drv_leds.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\drv_leds.c</FilePath>
@@ -1124,6 +1154,26 @@
               <FileName>drv_leds.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\drv_leds.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_monitor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_monitor.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_monitor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_monitor.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_sc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_sc.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_sc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_sc.h</FilePath>
             </File>
             <File>
               <FileName>drv_tiempo.c</FileName>
@@ -1136,44 +1186,49 @@
               <FilePath>..\..\src\drv_tiempo.h</FilePath>
             </File>
             <File>
-              <FileName>hal_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_tiempo.h</FilePath>
-            </File>
-            <File>
-              <FileName>board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\board.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_consumo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_consumo.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_consumo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_consumo.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_consumo.c</FileName>
+              <FileName>drv_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\drv_consumo.c</FilePath>
+              <FilePath>..\..\src\drv_uart.c</FilePath>
             </File>
             <File>
-              <FileName>drv_monitor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_monitor.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_monitor.h</FileName>
+              <FileName>drv_uart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_monitor.h</FilePath>
+              <FilePath>..\..\src\drv_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_wdt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\drv_wdt.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_alarma.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_alarma.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_GE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_GE.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
             </File>
             <File>
               <FileName>rt_evento_t.h</FileName>
@@ -1191,29 +1246,9 @@
               <FilePath>..\..\src\rt_fifo.h</FilePath>
             </File>
             <File>
-              <FileName>drv_botones.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_botones.c</FilePath>
-            </File>
-            <File>
               <FileName>rt_GE.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\rt_GE.c</FilePath>
-            </File>
-            <File>
-              <FileName>svc_alarma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_alarma.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_botones.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_botones.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_ext_int.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_ext_int.h</FilePath>
             </File>
             <File>
               <FileName>rt_GE.h</FileName>
@@ -1221,34 +1256,24 @@
               <FilePath>..\..\src\rt_GE.h</FilePath>
             </File>
             <File>
-              <FileName>svc_alarma.h</FileName>
+              <FileName>hal_consumo.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\svc_alarma.h</FilePath>
+              <FilePath>..\..\src\hal_consumo.h</FilePath>
             </File>
             <File>
-              <FileName>svc_GE.h</FileName>
+              <FileName>hal_ext_int.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\svc_GE.h</FilePath>
+              <FilePath>..\..\src\hal_ext_int.h</FilePath>
             </File>
             <File>
-              <FileName>drv_sc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_sc.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_wdt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_sc.h</FileName>
+              <FileName>hal_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_sc.h</FilePath>
+              <FilePath>..\..\src\hal_gpio.h</FilePath>
             </File>
             <File>
-              <FileName>drv_wdt.h</FileName>
+              <FileName>hal_tiempo.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_wdt.h</FilePath>
+              <FilePath>..\..\src\hal_tiempo.h</FilePath>
             </File>
             <File>
               <FileName>hal_sc.h</FileName>
@@ -1256,24 +1281,14 @@
               <FilePath>..\..\src\hal_sc.h</FilePath>
             </File>
             <File>
-              <FileName>hal_wdt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_wdt.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_uart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_uart.h</FilePath>
-            </File>
-            <File>
               <FileName>hal_uart.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_wdt.h</FilePath>
             </File>
             <File>
               <FileName>app_bit_counter_strike.c</FileName>
@@ -1281,14 +1296,14 @@
               <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
             </File>
             <File>
-              <FileName>app_guitar_hero.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
-            </File>
-            <File>
               <FileName>app_bit_counter_strike.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
             <File>
               <FileName>app_guitar_hero.h</FileName>
@@ -1296,50 +1311,15 @@
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
             </File>
             <File>
-              <FileName>svc_estadisticas.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
-            </File>
-            <File>
-              <FileName>svc_estadisticas.h</FileName>
+              <FileName>board.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+              <FilePath>..\..\src\board.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Dependientes</GroupName>
           <Files>
-            <File>
-              <FileName>board_lpc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src_lpc\board_lpc.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_gpio_lpc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_gpio_lpc.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo_lpc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_tiempo_lpc.c</FilePath>
-            </File>
-            <File>
-              <FileName>reserva_gpio_lpc2105.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src_lpc\reserva_gpio_lpc2105.h</FilePath>
-            </File>
             <File>
               <FileName>hal_consumo_lpc.c</FileName>
               <FileType>1</FileType>
@@ -1351,14 +1331,9 @@
               <FilePath>..\src_lpc\hal_ext_int_lpc.c</FilePath>
             </File>
             <File>
-              <FileName>hal_sc_lpc.c</FileName>
+              <FileName>hal_gpio_lpc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_sc_lpc.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_wdt_lpc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_lpc\hal_wdt_lpc.c</FilePath>
+              <FilePath>..\src_lpc\hal_gpio_lpc.c</FilePath>
             </File>
             <File>
               <FileName>hal_random_lpc.c</FileName>
@@ -1366,9 +1341,34 @@
               <FilePath>..\src_lpc\hal_random_lpc.c</FilePath>
             </File>
             <File>
+              <FileName>hal_sc_lpc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_lpc\hal_sc_lpc.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_tiempo_lpc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_lpc\hal_tiempo_lpc.c</FilePath>
+            </File>
+            <File>
               <FileName>hal_uart_lpc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src_lpc\hal_uart_lpc.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt_lpc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_lpc\hal_wdt_lpc.c</FilePath>
+            </File>
+            <File>
+              <FileName>reserva_gpio_lpc2105.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_lpc\reserva_gpio_lpc2105.h</FilePath>
+            </File>
+            <File>
+              <FileName>board_lpc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_lpc\board_lpc.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -57,7 +57,7 @@ void rt_FIFO_inicializar(MONITOR_id_t monitor)
 void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 {
 #ifdef DEBUG
-	//svc_estadisticas_set_tmp_fifo(ID_evento,e_TIEMPO_ENCOLAR);
+	svc_estadisticas_set_tmp_fifo(ID_evento,e_TIEMPO_ENCOLAR);
 #endif
 
     uint8_t siguiente = (fifo.siguiente_libre + 1) % RT_FIFO_TAMANO;
@@ -84,7 +84,16 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
     if ((uint32_t)ID_evento < EVENT_TYPES) {
         estadisticas_eventos[ID_evento]++;
     }
-    drv_sc_enable();  // Zona de exclusión mutua
+    drv_sc_enable();  
+		
+#ifdef DEBUG
+		/*
+			if (ID_evento != 1) {
+					char buf[64];
+					sprintf(buf, "Soy el evento: %d", ID_evento);
+					UART_LOG_DEBUG(buf);
+			}*/
+#endif
 
 }
 
@@ -93,7 +102,7 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 uint8_t rt_FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData, Tiempo_us_t *TS)
 {
 #ifdef DEBUG
-//	svc_estadisticas_set_tmp_fifo(*ID_evento,e_TIEMPO_DESENCOLAR);
+		svc_estadisticas_set_tmp_fifo(*ID_evento,e_TIEMPO_DESENCOLAR);
 #endif
 
     if (fifo.siguiente_a_tratar == fifo.siguiente_libre) 

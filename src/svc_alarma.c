@@ -77,7 +77,7 @@ void svc_alarma_activar(uint32_t alarma_flags, EVENTO_T ID_EVENTO, uint32_t aux_
     }
     // Reprogramar o crear alarma 
     for (int i = 0; i < svc_ALARMAS_MAX && !reprogramada; i++) {
-        if (!alarmas[i].activa || (alarmas[i].activa && alarmas[i].evento == ID_EVENTO && alarmas[i].auxData == aux_Data)) 
+        if (!alarmas[i].activa || (alarmas[i].activa && alarmas[i].evento == ID_EVENTO)) 
         {
             alarmas[i].activa = true;
             alarmas[i].periodica = periodica;
@@ -107,7 +107,7 @@ void svc_alarma_actualizar(EVENTO_T evento, uint32_t aux)
 {
     for (int i = 0; i < svc_ALARMAS_MAX; i++) {
         if (alarmas[i].activa) {
-            if (alarmas[i].contador_ms > svc_ALARMAS_PERIODO_MS)
+            if (alarmas[i].contador_ms >= svc_ALARMAS_PERIODO_MS)
                     alarmas[i].contador_ms -= svc_ALARMAS_PERIODO_MS;
             else {
                     if (f_cb) {

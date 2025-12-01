@@ -50,7 +50,7 @@ void drv_botones_iniciar(void (*callback)())
         svc_GE_suscribir((EVENTO_T)(ev_BOTON_DEBOUNCE + i), 0, drv_botones_actualizar);
     }
 
-    svc_GE_suscribir(ev_PULSAR_BOTON, 0, drv_botones_actualizar);
+    //svc_GE_suscribir(ev_PULSAR_BOTON, 0, drv_botones_actualizar);
 }
 
 // Retorna el id del índice del botón en el array
@@ -96,14 +96,14 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
 			if (hal_gpio_leer_in(boton_id) == 1) {
                 UART_LOG_DEBUG("MUESTREO PARA SALIRME");
 								// Esto no deberia ser necesario
-								alarma_flags = svc_alarma_codificar(false , 0, 0);
-								svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
+								//alarma_flags = svc_alarma_codificar(false , 0, 0);
+								//svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
 				
                 alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_RETARDO_REBOTE_MS, 0);
                 svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
                 boton->estado = e_salida;
             }
-        break;
+        break; 
 
     case e_salida:	
             pin_to_eint(boton_id);
@@ -114,7 +114,6 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
                 svc_alarma_activar(alarma_flags, ev_FIN_GUITAR_HERO, 0);
 						}
             boton->estado = e_esperando;
-
         break;
 
     default:

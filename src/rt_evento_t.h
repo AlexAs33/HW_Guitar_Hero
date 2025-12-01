@@ -33,6 +33,6 @@ typedef enum {
 		ev_ACT_INACTIVIDAD = 13,
 } EVENTO_T;  // mapea a uint32_t
 
-#define EVENT_TYPES 15
+#define EVENT_TYPES 14
 
 #endif /* RT_EVENTO_T_H */

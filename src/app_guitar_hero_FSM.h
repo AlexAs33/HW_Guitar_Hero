@@ -9,8 +9,8 @@
 #include "rt_evento_t.h"
 #include <stdlib.h>
 
-#define PERIODO_LEDS  50     //ms
-#define MARGEN_PULSAR 10       
+#define PERIODO_LEDS  100     //ms
+#define MARGEN_PULSAR 0       
 #define ACIERTO       20      //puntos por acierto
 #define FALLO         10      //puntos por fallo
 #define PERIODO_WDT   10      // 1 segundos 
