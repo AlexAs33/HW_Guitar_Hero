@@ -1,13 +1,16 @@
 /*
- *  VERSIÓN NO FUNCIONAL, SIMPLEMENTE ILUSTRA UNA IMPLEMENTACIÓN 
- *  DEL JUEGO GUITAR HERO CON UNA MÁQUINA DE ESTADOS
+ *  VERSIï¿½N NO FUNCIONAL, SIMPLEMENTE ILUSTRA UNA IMPLEMENTACIï¿½N 
+ *  DEL JUEGO GUITAR HERO CON UNA Mï¿½QUINA DE ESTADOS
  */ 
 
 #ifndef GUITAR_HERO_H
 #define GUITAR_HERO_H
 
-#define PERIODO_LEDS  300     //ms
-#define MARGEN_PULSAR 100       
+#include "rt_evento_t.h"
+#include <stdlib.h>
+
+#define PERIODO_LEDS  50     //ms
+#define MARGEN_PULSAR 10       
 #define ACIERTO       20      //puntos por acierto
 #define FALLO         10      //puntos por fallo
 #define PERIODO_WDT   10      // 1 segundos 
@@ -15,6 +18,10 @@
 #define T_RESET_MS    3000
 #define NOTAS_INIT    2
 
-void guitar_hero(unsigned int num_leds);
+void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton);
+
+void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux);
+
+void app_guitar_hero_iniciar(unsigned int num_leds);
 
 #endif	//GUITAR_HERO_H

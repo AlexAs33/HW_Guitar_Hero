@@ -5,7 +5,7 @@
  * - Pablo Plumed
  * - Alex Asensio
  *************************************************************************************** */
-
+/*
 #include "app_guitar_hero.h"
 
 #include "rt_fifo.h"
@@ -127,19 +127,18 @@ void sec_inicio_gh(EVENTO_T ev, uint32_t auxData){
 
 //------------------------------ ESTADO SHIFT LEDS ------------------------------//
 
-/*registro estados_notas
+registro estados_notas
     estados_notas[0] --> nota que se obtine y enciende 1 || 2
     estados_notas[1] --> enciende 3 || 4
     estados_notas[2] --> lo que se debe pulsar
 
     codif: 00, 01, 10, 11 --> bit + signf leds 1,3 boton 1
                           --> bit - signf leds 2,4 boton 2
-*/
-/**
 (led 1) (led 2)     FETCH   0
 (led 3) (led 4)     PREVIO  1
 (bot 1) (bot 2)     JUEGO   2
-**/
+
+
 void evento_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
 
@@ -357,3 +356,4 @@ void guitar_hero(unsigned int num_leds){
 	
 		rt_GE_lanzador();
 }
+*/

@@ -46,7 +46,7 @@
 #include "board.h"
 #include "random.h"
 
-#include "app_guitar_hero.h"
+#include "app_guitar_hero_FSM.h"
 #include "app_bit_counter_strike.h"
 
 #ifdef DEBUG 
@@ -67,6 +67,10 @@
 #define BCS     6
 #define GH		  7
 #define VERSION GH
+
+#define MONITOR_CONSUMO 1
+#define MONITOR_FIFO 2
+#define MONITOR_GE 3
 
 /* Prototipos */
 void blink_v1(LED_id_t id);
@@ -334,7 +338,19 @@ int main(void){
         bit_counter_strike(Num_Leds);
 
 #elif VERSION == GH
-				guitar_hero(Num_Leds);
+				// Inicialización de módulos necesarios
+				drv_monitor_iniciar();
+				drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
+				rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
+				rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
+				random_iniciar(drv_tiempo_actual_us());
+
+				drv_wdt_iniciar(PERIODO_WDT);
+
+				drv_botones_iniciar(manejador_botones_guitar_hero);
+
+				drv_uart_init(9600);
+				app_guitar_hero_iniciar(Num_Leds);
 		
 #else
 	#ifdef DEBUG

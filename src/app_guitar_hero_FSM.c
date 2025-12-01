@@ -3,7 +3,6 @@
  *  DEL JUEGO GUITAR HERO CON UNA MÁQUINA DE ESTADOS
  */ 
 
-/*
 #include "app_guitar_hero_FSM.h"
 
 #include "rt_fifo.h"
@@ -22,12 +21,6 @@
 #include "random.h"
 
 #include <stdio.h>
-#include <stdlib.h>
-
-//Monitores Overflow
-#define MONITOR_CONSUMO 1
-#define MONITOR_FIFO 2
-#define MONITOR_GE 3
 
 #define BIT_TO_LED(x) ((x) ? LED_ON : LED_OFF)
 
@@ -90,7 +83,7 @@ void modificar_puntuacion(uint32_t boton){
 								
 				// Modificar puntuación dependiendo de la racha
 				if(++racha >= 5) puntuacion += ACIERTO * racha;
-				else           puntuacion += ACIERTO;
+				else             puntuacion += ACIERTO;
 				aciertos++;    
 		}
 }
@@ -101,8 +94,7 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
     (void)ev;
     (void)auxData;
 
-// Omitir secuencia de inicio en debug
-#ifndef DEBUG
+
     for (int palpitaciones = 1; palpitaciones <= leds; palpitaciones++) {
         drv_led_establecer(palpitaciones, LED_ON);
         drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS);
@@ -113,7 +105,7 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
     drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
     drv_leds_apagar_todos();
 		drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
-#endif
+
 
     estado_actual = e_SHOW_SEQUENCE;
     encolar_EM(ev_GUITAR_HERO, 0);
@@ -184,12 +176,10 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
     drv_botones_actualizar(ev_PULSAR_BOTON, id_pin);		//Actualiza el estado a bajo nivel del pin
     encolar_EM(ev_ACT_INACTIVIDAD, 0);
-	
-#ifdef DEBUG
-		char buf[64];
-		sprintf(buf, "Soy el botón %d", id_boton);
-		UART_LOG_DEBUG(buf);
-#endif
+			
+    //cancelar alarma timeout
+    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
+		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 	
     if(id_boton == 0 || id_boton == 1)	
 				encolar_EM(ev_GUITAR_HERO, id_boton + 1);
@@ -203,11 +193,7 @@ void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
 void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
 
-    drv_consumo_esperar();
-
-    //cancelar alarma timeout
-    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
+//    drv_consumo_esperar();
 
     uint32_t boton = auxData;
 	
@@ -273,7 +259,7 @@ void estado_fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
 //------------------------------ MÁQUINA DE ESTADOS ------------------------------//
 
-void estados_guitar_hero(EVENTO_T ev, uint32_t aux)
+void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux)
 {
     switch (estado_actual)
     {
@@ -302,28 +288,14 @@ void estados_guitar_hero(EVENTO_T ev, uint32_t aux)
 
 //------------------------------ MAIN ------------------------------//
 
-void guitar_hero(unsigned int num_leds){
+void app_guitar_hero_iniciar(unsigned int num_leds){
     leds = num_leds;
 
-    //Poner en marcha lo necesario del background
-    drv_monitor_iniciar();
-    drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
-    rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
-    rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
-    random_iniciar(drv_tiempo_actual_us());
-
-    drv_wdt_iniciar(PERIODO_WDT);
-
-    drv_botones_iniciar(manejador_botones_guitar_hero);
-
     svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, estado_fin_partida_guitar_hero);
-    svc_GE_suscribir(ev_GUITAR_HERO, 0, estados_guitar_hero);
+    svc_GE_suscribir(ev_GUITAR_HERO, 0, app_guitar_hero_actualizar);
     svc_GE_suscribir(ev_TIMEOUT_LED, 0, estado_timeout_guitar_hero);
-		
-    drv_uart_init(9600);
 	
 		// Empezamos el juego
     encolar_EM(ev_GUITAR_HERO, 0);
     rt_GE_lanzador();
 }
-*/
