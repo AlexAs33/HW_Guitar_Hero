@@ -21,7 +21,7 @@
 
 /* Tiempos de la FSM antirebote (en ms) */
 #define DRV_BOTONES_RETARDO_REBOTE_MS  20
-#define DRV_BOTONES_PERIODO_MUESTREO_MS 40
+#define DRV_BOTONES_PERIODO_MUESTREO_MS 20
 
 /* Identificadores de eventos internos para alarmas */
 typedef enum {

@@ -167,6 +167,9 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 #endif
 			
 				//codificar alarma timeout
+				uint32_t flags_boton = svc_alarma_codificar(false, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
+				svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
+			
 				uint32_t flags_timeout = svc_alarma_codificar(false, PERIODO_LEDS - MARGEN_PULSAR, 0);  //tienes hasta el siguiente para darle
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 				estado_actual = e_BEAT;
@@ -175,10 +178,13 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 		else {
 				estado_actual = e_SHOW_SEQUENCE;
 				encolar_EM(ev_GUITAR_HERO, 0);
+			  drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
 		}
 		
 		// Esperamos tiempo entre leds
-		drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
+     //   uint32_t flags_timeout = svc_alarma_codificar(false, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
+		//svc_alarma_activar(flags_timeout, ev_GUITAR_HERO, 0);
+		//drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
 }
 
 //------------------------------ ESTADO DE BOTONES ------------------------------//
@@ -208,8 +214,6 @@ void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
 void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
 
-//    drv_consumo_esperar();
-
     uint32_t boton = auxData;
 	
 #ifdef DEBUG
@@ -222,7 +226,6 @@ void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
     // Pasamos a representar siguiente compás
     estado_actual = e_SHOW_SEQUENCE;
-    encolar_EM(ev_GUITAR_HERO, 0);
 }
 
 //------------------------------ ESTADO DE TIMEOUT ------------------------------//
@@ -230,6 +233,10 @@ void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
 void estado_timeout_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
     UART_LOG_DEBUG("TIMOUT, APRIETA EL BOTON!!");
+	
+		// Cancelamos alarma boton
+		uint32_t flags_boton = svc_alarma_codificar(false, 0, 0);  //tienes hasta el siguiente para darle
+		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
 	
     // Informamos que el botón no se ha pulsado
     modificar_puntuacion(255);

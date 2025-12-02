@@ -86,7 +86,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
         break;
     
     case e_rebotes:
-            alarma_flags = svc_alarma_codificar(true, DRV_BOTONES_PERIODO_MUESTREO_MS, 0);
+            alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_PERIODO_MUESTREO_MS, 0);
             pin_to_gpio(boton_id);
             svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
             boton->estado = e_muestreo;
@@ -95,13 +95,14 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
     case e_muestreo:
 			if (hal_gpio_leer_in(boton_id) == 1) {
                 UART_LOG_DEBUG("MUESTREO PARA SALIRME");
-								// Esto no deberia ser necesario
-								//alarma_flags = svc_alarma_codificar(false , 0, 0);
-								//svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
-				
+			
                 alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_RETARDO_REBOTE_MS, 0);
                 svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
                 boton->estado = e_salida;
+            }
+            else {
+                alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_PERIODO_MUESTREO_MS, 0);
+                svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
             }
         break; 
 
@@ -111,7 +112,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
             hal_ext_int_habilitar_int(boton_id);
             if (i == 2) {
                 alarma_flags = svc_alarma_codificar(false, 0, 0);
-                svc_alarma_activar(alarma_flags, ev_FIN_GUITAR_HERO, 0);
+                svc_alarma_activar(alarma_flags, ev_GUITAR_HERO, 0);
 						}
             boton->estado = e_esperando;
         break;
