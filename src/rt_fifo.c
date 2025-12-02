@@ -85,16 +85,6 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
         estadisticas_eventos[ID_evento]++;
     }
     drv_sc_enable();  
-		
-#ifdef DEBUG
-		/*
-			if (ID_evento != 1) {
-					char buf[64];
-					sprintf(buf, "Soy el evento: %d", ID_evento);
-					UART_LOG_DEBUG(buf);
-			}*/
-#endif
-
 }
 
 /* Extrae el siguiente evento pendiente, devuelve 0 si no hay */

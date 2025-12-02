@@ -25,6 +25,10 @@
 
 #include <string.h>
 
+#ifdef DEBUG
+		#include <stdio.h>
+#endif
+
 /* Máscaras para codificación de alarma_flags */
 #define svc_ALARMA_PERIODICA_MASK   0x80000000U  // Bit 31
 #define svc_ALARMA_FLAGS_MASK       0x7F000000U  // Bits 30-24
@@ -41,7 +45,6 @@ void svc_alarma_iniciar(MONITOR_id_t M_overflow, void (*cb_a_llamar)(EVENTO_T, u
 {
     monitor_overflow = M_overflow;
     f_cb = cb_a_llamar;
-    //periodo_evento_ms = rt_GE_TIMEOUT_INACTIVIDAD_MS;
 
     for (int i = 0; i < svc_ALARMAS_MAX; i++) alarmas[i].activa = false;
 
@@ -86,10 +89,6 @@ void svc_alarma_activar(uint32_t alarma_flags, EVENTO_T ID_EVENTO, uint32_t aux_
             alarmas[i].evento = ID_EVENTO;
             alarmas[i].auxData = aux_Data;
 
-            // se actualiza el periodo global del ev_T_PERIODICO
-            //periodo_evento_ms = mCD(periodo_evento_ms, retardo_ms); 
-            //drv_tiempo_periodico_ms(periodo_evento_ms, rt_FIFO_encolar, ev_T_PERIODICO);
-
             reprogramada = true;
         }
     }   
@@ -112,6 +111,13 @@ void svc_alarma_actualizar(EVENTO_T evento, uint32_t aux)
             else {
                     if (f_cb) {
                         f_cb(alarmas[i].evento, alarmas[i].auxData);
+#ifdef DEBUG
+												if (alarmas[i].evento != 1) {
+														char buf[64];
+														sprintf(buf, "Soy el evento: %d", alarmas[i].evento);
+														UART_LOG_DEBUG(buf);
+												}
+#endif
                     }
 
                     if (alarmas[i].periodica)
