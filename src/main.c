@@ -299,6 +299,7 @@ void crear_partitura_aleatoria() {
 
 
 
+
 int main(void){
 	
 #ifdef DEBUG 

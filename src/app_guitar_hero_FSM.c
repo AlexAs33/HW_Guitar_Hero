@@ -25,6 +25,8 @@
     #include "svc_estadisticas.h"
 #endif
 
+#define TIMEOUT 255
+
 #define BIT_TO_LED(x) ((x) ? LED_ON : LED_OFF)
 
 //----------DEFINICIONES DE STATICS----------
@@ -71,11 +73,11 @@ int comprobar_acierto(uint32_t boton)
 //Pre: boton = 255 --> venimos de no haber pulsado boton
 void modificar_puntuacion(uint32_t boton){
 		//ver acierto / fallo y modificar puntuación
-		if (boton == 255 || !comprobar_acierto(boton)) {
+		if (boton == TIMEOUT || !comprobar_acierto(boton)) {
 				UART_LOG_INFO("A LA PROXIMA SERA...");
 
 				//Fallo de no pulsar nada cuenta por dos
-				if(boton == 255) puntuacion -= FALLO * 2;
+				if(boton == TIMEOUT) puntuacion -= FALLO * 2;
 				else             puntuacion -= FALLO;
 
 				racha = 0;
@@ -204,30 +206,22 @@ void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
 void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
 
-    uint32_t boton = auxData;
-	
+	uint32_t boton;
+	if (evento == ev_TIMEOUT_LED) {
+		UART_LOG_DEBUG("TIMEOUT, APRIETA EL BOTON!!");
+		boton = TIMEOUT; // No se ha pulsado ningún botón
+	}
+	else {
 #ifdef DEBUG
 		char buf[64];
 		sprintf(buf, "Soy el botón %d", boton);
 		UART_LOG_DEBUG(buf);
 #endif
-					
+		boton = auxData;
+	}
     modificar_puntuacion(boton);
 
     // Pasamos a representar siguiente compás
-    estado_actual = e_SHOW_SEQUENCE;
-}
-
-//------------------------------ ESTADO DE TIMEOUT ------------------------------//
-
-void estado_timeout_guitar_hero(EVENTO_T evento, uint32_t auxData){
-    (void) auxData; (void) evento;
-    UART_LOG_DEBUG("TIMOUT, APRIETA EL BOTON!!");
-	
-    // Informamos que el botón no se ha pulsado
-    modificar_puntuacion(255);
-
-    // Representamos siguiente compás
     estado_actual = e_SHOW_SEQUENCE;
 }
 
@@ -289,7 +283,6 @@ void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux)
             break;
 				
 				case e_TIMEOUT: 
-						estado_timeout_guitar_hero(ev, aux);
 						break;
 
         case e_FIN:
@@ -305,7 +298,7 @@ void app_guitar_hero_iniciar(unsigned int num_leds){
 
     svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, estado_fin_partida_guitar_hero);
     svc_GE_suscribir(ev_GUITAR_HERO, 0, app_guitar_hero_actualizar);
-    svc_GE_suscribir(ev_TIMEOUT_LED, 0, estado_timeout_guitar_hero);
+    svc_GE_suscribir(ev_TIMEOUT_LED, 0, estado_boton_guitar_hero);
 	
 		// Empezamos el juego
     encolar_EM(ev_GUITAR_HERO, 0);
