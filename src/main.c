@@ -297,6 +297,8 @@ void crear_partitura_aleatoria() {
  * para la entrega final se debe incocar blink_v2
  */
 
+
+
 int main(void){
 	
 #ifdef DEBUG 

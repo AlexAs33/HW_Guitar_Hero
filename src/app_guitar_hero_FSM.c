@@ -97,7 +97,7 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
     (void)ev;
     (void)auxData;
 
-
+#ifndef DEBUG
     for (int palpitaciones = 1; palpitaciones <= leds; palpitaciones++) {
         drv_led_establecer(palpitaciones, LED_ON);
         drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS);
@@ -108,10 +108,11 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
     drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
     drv_leds_apagar_todos();
 		drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
-
+#endif
 
     estado_actual = e_SHOW_SEQUENCE;
-    encolar_EM(ev_GUITAR_HERO, 0);
+		uint32_t flags_boton = svc_alarma_codificar(true, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
+		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
 }
 
 //------------------------------ ESTADO SHIFT LEDS ------------------------------//
@@ -158,7 +159,10 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
         estado_actual = e_FIN;
 				return;
 		}
-		else if(notas_tocadas > NOTAS_INIT) {
+		else if (notas_tocadas <= NOTAS_INIT) {
+				estado_actual = e_SHOW_SEQUENCE;
+		}
+		else {
 			
 #ifdef DEBUG
 				char buf[64];
@@ -167,24 +171,10 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 #endif
 			
 				//codificar alarma timeout
-				uint32_t flags_boton = svc_alarma_codificar(false, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
-				svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
-			
 				uint32_t flags_timeout = svc_alarma_codificar(false, PERIODO_LEDS - MARGEN_PULSAR, 0);  //tienes hasta el siguiente para darle
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 				estado_actual = e_BEAT;
 		}
-		// Poblar los primeros compases
-		else {
-				estado_actual = e_SHOW_SEQUENCE;
-				encolar_EM(ev_GUITAR_HERO, 0);
-			  drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
-		}
-		
-		// Esperamos tiempo entre leds
-     //   uint32_t flags_timeout = svc_alarma_codificar(false, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
-		//svc_alarma_activar(flags_timeout, ev_GUITAR_HERO, 0);
-		//drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
 }
 
 //------------------------------ ESTADO DE BOTONES ------------------------------//
@@ -234,21 +224,15 @@ void estado_timeout_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
     UART_LOG_DEBUG("TIMOUT, APRIETA EL BOTON!!");
 	
-		// Cancelamos alarma boton
-		uint32_t flags_boton = svc_alarma_codificar(false, 0, 0);  //tienes hasta el siguiente para darle
-		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
-	
     // Informamos que el botón no se ha pulsado
     modificar_puntuacion(255);
 
     // Representamos siguiente compás
     estado_actual = e_SHOW_SEQUENCE;
-    encolar_EM(ev_GUITAR_HERO, 0);
 }
 
 //------------------------------ ESTADO DE FIN ------------------------------//
 
-//? solo esto o  separar de puntuacion
 void estadisticas_guitar_hero(){
 		drv_uart_puts("Tu desempegno en esta partida ha sido el siguiente\r\n");
 		drv_uart_puts("Con "); drv_uart_putint(aciertos); drv_uart_puts(" aciertos\r\n");
@@ -265,6 +249,9 @@ void estado_fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) evento;
     (void) auxData;
 
+		uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);  //tienes hasta el siguiente para darle
+		svc_alarma_activar(flags_cancelar, ev_GUITAR_HERO, 0);
+	
     num_partidas ++;
     puntuacion_total += puntuacion;
 		notas_tocadas = 0;
