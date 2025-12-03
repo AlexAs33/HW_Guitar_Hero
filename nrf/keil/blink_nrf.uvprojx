@@ -388,39 +388,24 @@
               <FilePath>..\..\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>drv_leds.c</FileName>
+              <FileName>app_guitar_hero_FSM.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\drv_leds.c</FilePath>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
             </File>
             <File>
-              <FileName>drv_leds.h</FileName>
+              <FileName>app_guitar_hero_FSM.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_leds.h</FilePath>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
             </File>
             <File>
-              <FileName>drv_tiempo.c</FileName>
+              <FileName>drv_botones.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\drv_tiempo.c</FilePath>
+              <FilePath>..\..\src\drv_botones.c</FilePath>
             </File>
             <File>
-              <FileName>drv_tiempo.h</FileName>
+              <FileName>drv_botones.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_tiempo.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_tiempo.h</FilePath>
-            </File>
-            <File>
-              <FileName>board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\board.h</FilePath>
+              <FilePath>..\..\src\drv_botones.h</FilePath>
             </File>
             <File>
               <FileName>drv_consumo.c</FileName>
@@ -433,9 +418,14 @@
               <FilePath>..\..\src\drv_consumo.h</FilePath>
             </File>
             <File>
-              <FileName>hal_consumo.h</FileName>
+              <FileName>drv_leds.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_leds.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_leds.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\hal_consumo.h</FilePath>
+              <FilePath>..\..\src\drv_leds.h</FilePath>
             </File>
             <File>
               <FileName>drv_monitor.c</FileName>
@@ -443,64 +433,9 @@
               <FilePath>..\..\src\drv_monitor.c</FilePath>
             </File>
             <File>
-              <FileName>rt_fifo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\rt_fifo.c</FilePath>
-            </File>
-            <File>
               <FileName>drv_monitor.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\drv_monitor.h</FilePath>
-            </File>
-            <File>
-              <FileName>rt_evento_t.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\rt_evento_t.h</FilePath>
-            </File>
-            <File>
-              <FileName>rt_fifo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\rt_fifo.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_botones.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_botones.c</FilePath>
-            </File>
-            <File>
-              <FileName>rt_GE.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\rt_GE.c</FilePath>
-            </File>
-            <File>
-              <FileName>svc_alarma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_alarma.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_botones.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_botones.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_ext_int.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_ext_int.h</FilePath>
-            </File>
-            <File>
-              <FileName>rt_GE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\rt_GE.h</FilePath>
-            </File>
-            <File>
-              <FileName>svc_alarma.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\svc_alarma.h</FilePath>
-            </File>
-            <File>
-              <FileName>svc_GE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
               <FileName>drv_sc.c</FileName>
@@ -508,29 +443,19 @@
               <FilePath>..\..\src\drv_sc.c</FilePath>
             </File>
             <File>
-              <FileName>drv_wdt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_wdt.c</FilePath>
-            </File>
-            <File>
               <FileName>drv_sc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\drv_sc.h</FilePath>
             </File>
             <File>
-              <FileName>drv_wdt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_wdt.h</FilePath>
+              <FileName>drv_tiempo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_tiempo.c</FilePath>
             </File>
             <File>
-              <FileName>hal_wdt.h</FileName>
+              <FileName>drv_tiempo.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\hal_wdt.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_sc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_sc.h</FilePath>
+              <FilePath>..\..\src\drv_tiempo.h</FilePath>
             </File>
             <File>
               <FileName>drv_uart.c</FileName>
@@ -543,14 +468,104 @@
               <FilePath>..\..\src\drv_uart.h</FilePath>
             </File>
             <File>
-              <FileName>hal_uart.h</FileName>
+              <FileName>drv_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_wdt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\hal_uart.h</FilePath>
+              <FilePath>..\..\src\drv_wdt.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_alarma.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_alarma.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_GE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
               <FileName>random.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\random.h</FilePath>
+            </File>
+            <File>
+              <FileName>rt_evento_t.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\rt_evento_t.h</FilePath>
+            </File>
+            <File>
+              <FileName>rt_fifo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\rt_fifo.c</FilePath>
+            </File>
+            <File>
+              <FileName>rt_fifo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\rt_fifo.h</FilePath>
+            </File>
+            <File>
+              <FileName>rt_GE.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\rt_GE.c</FilePath>
+            </File>
+            <File>
+              <FileName>rt_GE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\rt_GE.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_consumo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_consumo.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_ext_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_ext_int.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_tiempo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_tiempo.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_sc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_sc.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_wdt.h</FilePath>
             </File>
             <File>
               <FileName>app_bit_counter_strike.h</FileName>
@@ -563,11 +578,6 @@
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
             </File>
             <File>
-              <FileName>svc_estadisticas.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
-            </File>
-            <File>
               <FileName>app_bit_counter_strike.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
@@ -577,45 +587,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
-            <File>
-              <FileName>svc_estadisticas.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Dependientes</GroupName>
           <Files>
             <File>
-              <FileName>hal_gpio_nrf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_gpio_nrf.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo_nrf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_tiempo_nrf.c</FilePath>
-            </File>
-            <File>
-              <FileName>board_nrf52840dk.h</FileName>
+              <FileName>board.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\src_nrf\board_nrf52840dk.h</FilePath>
-            </File>
-            <File>
-              <FileName>board_nrf52840_dongle.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src_nrf\board_nrf52840_dongle.h</FilePath>
+              <FilePath>..\..\src\board.h</FilePath>
             </File>
             <File>
               <FileName>hal_consumo_nrf.c</FileName>
@@ -628,14 +608,9 @@
               <FilePath>..\src_nrf\hal_ext_int_nrf.c</FilePath>
             </File>
             <File>
-              <FileName>hal_sc_nrf.c</FileName>
+              <FileName>hal_gpio_nrf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_sc_nrf.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_wdt_nrf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_wdt_nrf.c</FilePath>
+              <FilePath>..\src_nrf\hal_gpio_nrf.c</FilePath>
             </File>
             <File>
               <FileName>hal_random_nrf.c</FileName>
@@ -643,9 +618,34 @@
               <FilePath>..\src_nrf\hal_random_nrf.c</FilePath>
             </File>
             <File>
+              <FileName>hal_sc_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_sc_nrf.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_tiempo_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_tiempo_nrf.c</FilePath>
+            </File>
+            <File>
               <FileName>hal_uart_nrf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src_nrf\hal_uart_nrf.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_wdt_nrf.c</FilePath>
+            </File>
+            <File>
+              <FileName>board_nrf52840dk.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_nrf\board_nrf52840dk.h</FilePath>
+            </File>
+            <File>
+              <FileName>board_nrf52840_dongle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_nrf\board_nrf52840_dongle.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1039,39 +1039,24 @@
               <FilePath>..\..\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>drv_leds.c</FileName>
+              <FileName>app_guitar_hero_FSM.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\drv_leds.c</FilePath>
+              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
             </File>
             <File>
-              <FileName>drv_leds.h</FileName>
+              <FileName>app_guitar_hero_FSM.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_leds.h</FilePath>
+              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
             </File>
             <File>
-              <FileName>drv_tiempo.c</FileName>
+              <FileName>drv_botones.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\drv_tiempo.c</FilePath>
+              <FilePath>..\..\src\drv_botones.c</FilePath>
             </File>
             <File>
-              <FileName>drv_tiempo.h</FileName>
+              <FileName>drv_botones.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\drv_tiempo.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_gpio.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_tiempo.h</FilePath>
-            </File>
-            <File>
-              <FileName>board.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\board.h</FilePath>
+              <FilePath>..\..\src\drv_botones.h</FilePath>
             </File>
             <File>
               <FileName>drv_consumo.c</FileName>
@@ -1084,9 +1069,14 @@
               <FilePath>..\..\src\drv_consumo.h</FilePath>
             </File>
             <File>
-              <FileName>hal_consumo.h</FileName>
+              <FileName>drv_leds.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_leds.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_leds.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\hal_consumo.h</FilePath>
+              <FilePath>..\..\src\drv_leds.h</FilePath>
             </File>
             <File>
               <FileName>drv_monitor.c</FileName>
@@ -1094,64 +1084,9 @@
               <FilePath>..\..\src\drv_monitor.c</FilePath>
             </File>
             <File>
-              <FileName>rt_fifo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\rt_fifo.c</FilePath>
-            </File>
-            <File>
               <FileName>drv_monitor.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\drv_monitor.h</FilePath>
-            </File>
-            <File>
-              <FileName>rt_evento_t.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\rt_evento_t.h</FilePath>
-            </File>
-            <File>
-              <FileName>rt_fifo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\rt_fifo.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_botones.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_botones.c</FilePath>
-            </File>
-            <File>
-              <FileName>rt_GE.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\rt_GE.c</FilePath>
-            </File>
-            <File>
-              <FileName>svc_alarma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_alarma.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_botones.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_botones.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_ext_int.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_ext_int.h</FilePath>
-            </File>
-            <File>
-              <FileName>rt_GE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\rt_GE.h</FilePath>
-            </File>
-            <File>
-              <FileName>svc_alarma.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\svc_alarma.h</FilePath>
-            </File>
-            <File>
-              <FileName>svc_GE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
               <FileName>drv_sc.c</FileName>
@@ -1159,29 +1094,19 @@
               <FilePath>..\..\src\drv_sc.c</FilePath>
             </File>
             <File>
-              <FileName>drv_wdt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv_wdt.c</FilePath>
-            </File>
-            <File>
               <FileName>drv_sc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\drv_sc.h</FilePath>
             </File>
             <File>
-              <FileName>drv_wdt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\drv_wdt.h</FilePath>
+              <FileName>drv_tiempo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_tiempo.c</FilePath>
             </File>
             <File>
-              <FileName>hal_wdt.h</FileName>
+              <FileName>drv_tiempo.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\hal_wdt.h</FilePath>
-            </File>
-            <File>
-              <FileName>hal_sc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\hal_sc.h</FilePath>
+              <FilePath>..\..\src\drv_tiempo.h</FilePath>
             </File>
             <File>
               <FileName>drv_uart.c</FileName>
@@ -1194,14 +1119,104 @@
               <FilePath>..\..\src\drv_uart.h</FilePath>
             </File>
             <File>
-              <FileName>hal_uart.h</FileName>
+              <FileName>drv_wdt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv_wdt.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_wdt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\hal_uart.h</FilePath>
+              <FilePath>..\..\src\drv_wdt.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_alarma.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_alarma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_alarma.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_estadisticas.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
+            </File>
+            <File>
+              <FileName>svc_GE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
               <FileName>random.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\random.h</FilePath>
+            </File>
+            <File>
+              <FileName>rt_evento_t.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\rt_evento_t.h</FilePath>
+            </File>
+            <File>
+              <FileName>rt_fifo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\rt_fifo.c</FilePath>
+            </File>
+            <File>
+              <FileName>rt_fifo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\rt_fifo.h</FilePath>
+            </File>
+            <File>
+              <FileName>rt_GE.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\rt_GE.c</FilePath>
+            </File>
+            <File>
+              <FileName>rt_GE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\rt_GE.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_consumo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_consumo.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_ext_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_ext_int.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_tiempo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_tiempo.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_sc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_sc.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_wdt.h</FilePath>
             </File>
             <File>
               <FileName>app_bit_counter_strike.h</FileName>
@@ -1214,11 +1229,6 @@
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
             </File>
             <File>
-              <FileName>svc_estadisticas.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\svc_estadisticas.h</FilePath>
-            </File>
-            <File>
               <FileName>app_bit_counter_strike.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
@@ -1228,45 +1238,15 @@
               <FileType>1</FileType>
               <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
-            <File>
-              <FileName>svc_estadisticas.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\svc_estadisticas.c</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero_FSM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Dependientes</GroupName>
           <Files>
             <File>
-              <FileName>hal_gpio_nrf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_gpio_nrf.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_tiempo_nrf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_tiempo_nrf.c</FilePath>
-            </File>
-            <File>
-              <FileName>board_nrf52840dk.h</FileName>
+              <FileName>board.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\src_nrf\board_nrf52840dk.h</FilePath>
-            </File>
-            <File>
-              <FileName>board_nrf52840_dongle.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src_nrf\board_nrf52840_dongle.h</FilePath>
+              <FilePath>..\..\src\board.h</FilePath>
             </File>
             <File>
               <FileName>hal_consumo_nrf.c</FileName>
@@ -1279,14 +1259,9 @@
               <FilePath>..\src_nrf\hal_ext_int_nrf.c</FilePath>
             </File>
             <File>
-              <FileName>hal_sc_nrf.c</FileName>
+              <FileName>hal_gpio_nrf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_sc_nrf.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_wdt_nrf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_nrf\hal_wdt_nrf.c</FilePath>
+              <FilePath>..\src_nrf\hal_gpio_nrf.c</FilePath>
             </File>
             <File>
               <FileName>hal_random_nrf.c</FileName>
@@ -1294,9 +1269,34 @@
               <FilePath>..\src_nrf\hal_random_nrf.c</FilePath>
             </File>
             <File>
+              <FileName>hal_sc_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_sc_nrf.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_tiempo_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_tiempo_nrf.c</FilePath>
+            </File>
+            <File>
               <FileName>hal_uart_nrf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src_nrf\hal_uart_nrf.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_wdt_nrf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_nrf\hal_wdt_nrf.c</FilePath>
+            </File>
+            <File>
+              <FileName>board_nrf52840dk.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_nrf\board_nrf52840dk.h</FilePath>
+            </File>
+            <File>
+              <FileName>board_nrf52840_dongle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src_nrf\board_nrf52840_dongle.h</FilePath>
             </File>
           </Files>
         </Group>
