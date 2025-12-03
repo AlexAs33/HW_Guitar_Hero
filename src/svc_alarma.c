@@ -23,6 +23,8 @@
 #include "rt_GE.h"
 #include "drv_uart.h"
 
+#include "drv_sc.h"
+
 #include <string.h>
 
 #ifdef DEBUG
@@ -73,8 +75,14 @@ void svc_alarma_activar(uint32_t alarma_flags, EVENTO_T ID_EVENTO, uint32_t aux_
     // Si el retardo es 0, desactivar alarma si existe
     if (retardo_ms == 0) {
         for (int i = 0; i < svc_ALARMAS_MAX; i++) {
-            if (alarmas[i].activa && alarmas[i].evento == ID_EVENTO && alarmas[i].auxData == aux_Data) 
+            if (alarmas[i].activa && alarmas[i].evento == ID_EVENTO && alarmas[i].auxData == aux_Data) {
                 alarmas[i].activa = false;
+#ifdef DEBUG				
+								//drv_sc_disable();
+                //drv_uart_putint(alarmas[i].evento);
+								//drv_sc_enable();
+#endif
+			}
         }
         return;
     }
@@ -122,10 +130,16 @@ void svc_alarma_actualizar(EVENTO_T evento, uint32_t aux)
 
                     if (alarmas[i].periodica)
                         alarmas[i].contador_ms = alarmas[i].retardo_ms;
-                    else
+                    else {
                         alarmas[i].activa = false;
+#ifdef DEBUG										
+												char buf[64];
+												sprintf(buf, "Quito periodicidad al evento: %d", alarmas[i].evento);
+												UART_LOG_DEBUG(buf);
+#endif
+										}
             }
-			}
+				}
     }
 }
 

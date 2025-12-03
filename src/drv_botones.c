@@ -110,7 +110,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
             pin_to_eint(boton_id);
             hal_ext_int_clear_flag(boton_id);
             hal_ext_int_habilitar_int(boton_id);
-            if (i == 2) {
+            if (i == drv_botones_cantidad()) {
                 alarma_flags = svc_alarma_codificar(false, 0, 0);
                 svc_alarma_activar(alarma_flags, ev_GUITAR_HERO, 0);
 						}
