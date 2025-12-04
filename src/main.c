@@ -46,7 +46,7 @@
 #include "board.h"
 #include "random.h"
 
-#include "app_guitar_hero_FSM.h"
+#include "app_guitar_hero.h"
 #include "app_bit_counter_strike.h"
 
 #ifdef DEBUG 
@@ -188,7 +188,7 @@ void blink_v3_bis(LED_id_t id)
 
 	drv_consumo_iniciar((MONITOR_id_t)3);
 		
-	drv_botones_iniciar(drv_boton_estado_actualizar);
+	drv_botones_iniciar(drv_boton_estado_actualizar, ev_VOID);
 		
 	drv_tiempo_periodico_ms(RETARDO_MS, leds_c, id);
 	
@@ -242,7 +242,7 @@ void test_botones() {
 		rt_GE_iniciar((MONITOR_id_t) 1);
     rt_FIFO_inicializar((MONITOR_id_t)3);
 
-		drv_botones_iniciar(boton_pulsado);
+		drv_botones_iniciar(boton_pulsado, ev_VOID);
 
     rt_GE_lanzador();
 }
@@ -350,7 +350,7 @@ int main(void){
 
 				drv_wdt_iniciar(PERIODO_WDT);
 
-				drv_botones_iniciar(manejador_botones_guitar_hero);
+				drv_botones_iniciar(manejador_botones_guitar_hero, ev_FIN_GUITAR_HERO);
 
 				drv_uart_init(9600);
 				app_guitar_hero_iniciar(Num_Leds);

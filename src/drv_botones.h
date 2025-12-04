@@ -37,7 +37,7 @@ typedef enum {
 // Post: Los botones quedan configurados como entradas, con interrupciones
 //       habilitadas y capaces de despertar el sistema. Se suscriben todos los
 //       eventos necesarios y su estado interno queda en e_esperando.
-void drv_botones_iniciar(void (*callback)());
+void drv_botones_iniciar(void (*callback)(), EVENTO_T evento);
 
 // Pre:  Debe haber sido llamado antes drv_botones_iniciar().
 //       'evento' será uno de los esperados por la MSF del driver.

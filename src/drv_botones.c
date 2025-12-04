@@ -28,11 +28,14 @@ typedef struct {
 // Array de botones y lista que mapea id's con pines
 static Boton botones[BUTTONS_NUMBER];
 static const uint32_t lista_botones[BUTTONS_NUMBER] = BUTTONS_LIST;
+static EVENTO_T evento_ult_boton;
 
 // Habilitar los botones e inicializar su estado e id.
-void drv_botones_iniciar(void (*callback)())
+void drv_botones_iniciar(void (*callback)(), EVENTO_T evento)
 {
     hal_ext_int_iniciar(callback);
+	
+		evento_ult_boton = evento;
     
     svc_alarma_iniciar((MONITOR_id_t)4, rt_FIFO_encolar, ev_T_PERIODICO);
 	
@@ -112,7 +115,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
             hal_ext_int_habilitar_int(boton_id);
             if (i == drv_botones_cantidad()) {
                 alarma_flags = svc_alarma_codificar(false, 0, 0);
-                svc_alarma_activar(alarma_flags, ev_GUITAR_HERO, 0);
+                svc_alarma_activar(alarma_flags, evento_ult_boton, 0);
 						}
             boton->estado = e_esperando;
         break;
