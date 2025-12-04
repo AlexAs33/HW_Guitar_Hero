@@ -113,8 +113,9 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
 #endif
 
     estado_actual = e_SHOW_SEQUENCE;
-		uint32_t flags_boton = svc_alarma_codificar(true, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
-		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
+		encolar_EM(ev_GUITAR_HERO, 0);
+//		uint32_t flags_boton = svc_alarma_codificar(true, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
+//		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
 }
 
 //------------------------------ ESTADO SHIFT LEDS ------------------------------//
@@ -163,6 +164,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 		}
 		else if (notas_tocadas <= NOTAS_INIT) {
 				estado_actual = e_SHOW_SEQUENCE;
+
 		}
 		else {
 			
@@ -177,6 +179,8 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 				estado_actual = e_BEAT;
 		}
+		uint32_t flags_boton = svc_alarma_codificar(false, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
+		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
 }
 
 //------------------------------ ESTADO DE BOTONES ------------------------------//
@@ -243,8 +247,8 @@ void estado_fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) evento;
     (void) auxData;
 
-		uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);  //tienes hasta el siguiente para darle
-		svc_alarma_activar(flags_cancelar, ev_GUITAR_HERO, 0);
+//		uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);  //tienes hasta el siguiente para darle
+//		svc_alarma_activar(flags_cancelar, ev_GUITAR_HERO, 0);
 	
     num_partidas ++;
     puntuacion_total += puntuacion;
