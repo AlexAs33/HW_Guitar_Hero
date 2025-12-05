@@ -32,6 +32,7 @@
 //----------DEFINICIONES DE STATICS----------
 //Control de leds
 static volatile int leds = 0;                        //Numero de leds
+static int min = 1, max = 2;
 static uint8_t estados_notas[3] = {0, 0, 0};  
 //Control partida
 static int notas_tocadas = 0; //Acordes que tiene una partitura
@@ -42,12 +43,6 @@ static int aciertos = 0;                    //aciertos en una partida
 static int fallos = 0;                      //fallos en una partida
 static int puntuacion_total = 0;            //puntuacion total
 static int racha = 0;                       //aciertos encadenados en una partida
-
-//Partitura
-// #ifdef DEBUG
-static uint8_t partitura[TAM_PARTITURA] = { 
-    0b01, 0b10, 0b01, 0b10, 0b01};
-// #endif
 
 // Estados Guitar Hero
 typedef enum {
@@ -114,6 +109,7 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
 
     estado_actual = e_SHOW_SEQUENCE;
 		encolar_EM(ev_GUITAR_HERO, 0);
+	UART_LOG_INFO("COMIENZA EL BEAT!! PODRAS SEGUIRLO?");
 }
 
 //------------------------------ ESTADO SHIFT LEDS ------------------------------//
@@ -130,14 +126,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 			estados_notas[0] = 0;
 
 		else {
-/*
-#ifdef DEBUG 
-		estados_notas[0] = partitura[notas_tocadas];
-#else
-		estados_notas[0] = svc_random_value(0, 2);
-#endif 
-*/
-					estados_notas[0] = partitura[notas_tocadas];
+			estados_notas[0] = svc_random_value(min, max);;
 		}
 
 		drv_led_establecer((LED_id_t)1, BIT_TO_LED(estados_notas[0] & 0b10));
@@ -184,17 +173,17 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 //------------------------------ ESTADO DE BOTONES ------------------------------//
 
 void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
-	#ifdef DEBUG 
+#ifdef DEBUG 
 				svc_estadisticas_set_tmp(e_ATIENDE_IRQ);
 				svc_estadisticas_set_tmp(e_EMPIEZA_PULSAR);
 #endif
-	
+
     drv_botones_actualizar(ev_PULSAR_BOTON, id_pin);		//Actualiza el estado a bajo nivel del pin
     encolar_EM(ev_ACT_INACTIVIDAD, 0);
 			
     //cancelar alarma timeout
     uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
+	svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 	
     if(id_boton == 0 || id_boton == 1)	
 				encolar_EM(ev_GUITAR_HERO, id_boton + 1);

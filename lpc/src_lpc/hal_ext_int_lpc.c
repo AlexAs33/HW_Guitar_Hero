@@ -72,8 +72,17 @@ void EINT_Handler(void) __irq
     // Limpiar flag de interrupción correspondiente
     hal_ext_int_clear_flag(pin);
 
+		// Reordenacion de pines
+		int8_t var;
+		 switch (pin) {
+        case EINT0_PIN: var = 2; break;
+        case EINT1_PIN: var = 0; break;
+        case EINT2_PIN: var = 1; break;
+        default:        var = -1; break;
+    }
+				
     // LLamar a la función de callback asociada con el pin
-    if (f_cb) f_cb(pin, pin_a_eint(pin));
+    if (f_cb && var != -1) f_cb(pin, var);
 	
     // Indicar al VIC que la IRQ se ha atendido
     VICVectAddr = 0;
