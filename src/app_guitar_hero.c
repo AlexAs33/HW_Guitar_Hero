@@ -18,7 +18,7 @@
 #include "drv_uart.h"
 #include "drv_sc.h"
 
-#include "random.h"
+#include "svc_random.h"
 #include <stdio.h>
 
 #ifdef DEBUG
@@ -134,7 +134,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 #ifdef DEBUG 
 		estados_notas[0] = partitura[notas_tocadas];
 #else
-		estados_notas[0] = random_value(0, 2);
+		estados_notas[0] = svc_random_value(0, 2);
 #endif 
 */
 					estados_notas[0] = partitura[notas_tocadas];

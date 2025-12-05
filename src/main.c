@@ -44,7 +44,7 @@
 #include "hal_gpio.h"
 
 #include "board.h"
-#include "random.h"
+#include "svc_random.h"
 
 #include "app_guitar_hero.h"
 #include "app_bit_counter_strike.h"
@@ -267,7 +267,7 @@ void test_uart() {
 
 void crear_partitura_aleatoria() {
     drv_uart_init(9600);
-    random_iniciar(drv_tiempo_actual_us());
+    svc_random_iniciar(drv_tiempo_actual_us());
 
     uint8_t partitura[TAM_PARTITURA] = {};
 		for(int j = 1; j < 6; j++) 
@@ -276,7 +276,7 @@ void crear_partitura_aleatoria() {
 			sprintf(msg, "PARTITURA NUMERO: %d\r\n===========================", j);
 		  UART_LOG_INFO(msg);
 			for (int i = 0; i < TAM_PARTITURA; i++) {
-					partitura[i] = random_value(0, 3);   // notas entre 0 y 3
+					partitura[i] = svc_random_value(0, 3);   // notas entre 0 y 3
 
 					char msg[8];
 					sprintf(msg, "%c%c ",
@@ -346,7 +346,7 @@ int main(void){
 				drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
 				rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
 				rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
-				random_iniciar(drv_tiempo_actual_us());
+				svc_random_iniciar(drv_tiempo_actual_us());
 
 				drv_wdt_iniciar(PERIODO_WDT);
 

@@ -388,14 +388,24 @@
               <FilePath>..\..\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileName>app_guitar_hero.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
+              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
             <File>
-              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileName>app_guitar_hero.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+              <FilePath>..\..\src\app_guitar_hero.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_bit_counter_strike.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_bit_counter_strike.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
             </File>
             <File>
               <FileName>drv_botones.c</FileName>
@@ -503,9 +513,14 @@
               <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
-              <FileName>random.h</FileName>
+              <FileName>svc_random.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_random.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_random.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\random.h</FilePath>
+              <FilePath>..\..\src\svc_random.h</FilePath>
             </File>
             <File>
               <FileName>rt_evento_t.h</FileName>
@@ -553,6 +568,11 @@
               <FilePath>..\..\src\hal_tiempo.h</FilePath>
             </File>
             <File>
+              <FileName>hal_random.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_random.h</FilePath>
+            </File>
+            <File>
               <FileName>hal_sc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_sc.h</FilePath>
@@ -566,26 +586,6 @@
               <FileName>hal_wdt.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_wdt.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_bit_counter_strike.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_bit_counter_strike.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1039,14 +1039,24 @@
               <FilePath>..\..\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>app_guitar_hero_FSM.c</FileName>
+              <FileName>app_guitar_hero.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.c</FilePath>
+              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
             <File>
-              <FileName>app_guitar_hero_FSM.h</FileName>
+              <FileName>app_guitar_hero.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero_FSM.h</FilePath>
+              <FilePath>..\..\src\app_guitar_hero.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_bit_counter_strike.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_bit_counter_strike.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
             </File>
             <File>
               <FileName>drv_botones.c</FileName>
@@ -1154,9 +1164,14 @@
               <FilePath>..\..\src\svc_GE.h</FilePath>
             </File>
             <File>
-              <FileName>random.h</FileName>
+              <FileName>svc_random.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\svc_random.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_random.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\src\random.h</FilePath>
+              <FilePath>..\..\src\svc_random.h</FilePath>
             </File>
             <File>
               <FileName>rt_evento_t.h</FileName>
@@ -1204,6 +1219,11 @@
               <FilePath>..\..\src\hal_tiempo.h</FilePath>
             </File>
             <File>
+              <FileName>hal_random.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\hal_random.h</FilePath>
+            </File>
+            <File>
               <FileName>hal_sc.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_sc.h</FilePath>
@@ -1217,26 +1237,6 @@
               <FileName>hal_wdt.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\hal_wdt.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_bit_counter_strike.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_bit_counter_strike.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\src\app_guitar_hero.h</FilePath>
-            </File>
-            <File>
-              <FileName>app_bit_counter_strike.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
-            </File>
-            <File>
-              <FileName>app_guitar_hero.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\app_guitar_hero.c</FilePath>
             </File>
           </Files>
         </Group>

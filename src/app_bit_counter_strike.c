@@ -26,7 +26,7 @@
 #include "drv_leds.h"
 #include "drv_wdt.h"
 
-#include "random.h"
+#include "svc_random.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,7 +63,7 @@ void actualizar_bit_counter_strike(EVENTO_T evento, uint32_t auxData) {
 										//Ignoramos pulsaciones de botón si el juego no ha empezado un turno.
     if (auxData != 0) return;
     
-    led = random_value((uint32_t)1, numLeds);
+    led = svc_random_value((uint32_t)1, numLeds);
     
     drv_led_establecer(led, LED_ON);
     boton = 0; //Reinicia el registro del último botón pulsado
@@ -135,14 +135,14 @@ void bit_counter_strike(unsigned int num_leds) {
     rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
     rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
 	
-    drv_botones_iniciar(manejador_interrupcion_botones);	//Asociar botones a lógica local
+    drv_botones_iniciar(manejador_interrupcion_botones, ev_VOID);	//Asociar botones a lógica local
 	
 		uint32_t alarmaBCS = svc_alarma_codificar(true, PERIODO_BIT_COUNTER, 0);
     svc_alarma_activar(alarmaBCS, ev_LEDS_BIT_COUNTER_STRIKE, 0);	//Encender led cada PERIODO_BIT_COUNTER
     svc_GE_suscribir(ev_LEDS_BIT_COUNTER_STRIKE, 0, actualizar_bit_counter_strike);	//Atender a eventos del juego
 		svc_GE_suscribir(ev_TIMEOUT_LED, 0, timeout_led);	//evento para pulsar boton antes de x tiempo
 	
-    random_iniciar(drv_tiempo_actual_us());
+    svc_random_iniciar(drv_tiempo_actual_us());
     drv_wdt_iniciar(PERIODO_WD);
 	
 	  iniciarBCS();

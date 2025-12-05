@@ -8,10 +8,10 @@
  * Este fichero utiliza la API ofrecida por el hardware dedicado del procesador
  */
 
-#include "random.h"
+#include "hal_random.h"
 #include "nrf.h"
 
-void random_iniciar(uint64_t seed)
+void hal_random_iniciar(uint64_t seed)
 {
 		// no es necesaria la seed en nrf
     (void)seed;
@@ -29,7 +29,7 @@ static uint8_t random8(void)
     return NRF_RNG->VALUE;          
 }
 
-uint32_t random_value(uint32_t min, uint32_t max)
+uint32_t hal_random_value(uint32_t min, uint32_t max)
 {
     // intercambiamos para q el rango no de problemas
     if (min > max) {

@@ -13,17 +13,17 @@
  * - Pablo Plumed
  * - Alex Asensio
  *************************************************************************************** */
-#ifndef RANDOM
-#define RANDOM
+#ifndef SVC_RANDOM
+#define SVC_RANDOM
 
 #include <stdint.h>
 
 //Pre:  Se recibe un valor seed cualquiera de 64 bits.
 //Post: El generador queda inicializado con el seed proporcionado
-void random_iniciar(uint64_t seed);
+void svc_random_iniciar(uint64_t seed);
 
 //Pre:  min <= max. El generador debe haber sido inicializado previamente con random_iniciar().
 //Post: Devuelve un número pseudoaleatorio en el rango [min, max]
-uint32_t random_value(uint32_t min, uint32_t max);
+uint32_t svc_random_value(uint32_t min, uint32_t max);
 
-#endif // RANDOM
+#endif // SVC_RANDOM

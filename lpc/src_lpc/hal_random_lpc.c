@@ -3,16 +3,16 @@
  * Este fichero utiliza la API ofrecida opr la standard library de C
  */
 
-#include "random.h"
+#include "hal_random.h"
 #include <stdlib.h>
 
-void random_iniciar(uint64_t seed)
+void hal_random_iniciar(uint64_t seed)
 {
     // Inicializa la semilla
     srand(seed);
 }
 
-uint32_t random_value(uint32_t min, uint32_t max)
+uint32_t hal_random_value(uint32_t min, uint32_t max)
 {
     // Intercambia valores si están las revés
     if (min > max) {
