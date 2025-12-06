@@ -138,6 +138,10 @@ unsigned int drv_botones_cantidad() {
 }
 
 static void callback_wrapper_interna(uint32_t auxData) {
+#ifdef DEBUG 
+				svc_estadisticas_set_tmp(e_ATIENDE_IRQ);
+				svc_estadisticas_set_tmp(e_EMPIEZA_PULSAR);
+#endif
 		f_cb(evento_a_notificar, auxData);
 }
 

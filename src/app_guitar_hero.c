@@ -173,10 +173,6 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 //------------------------------ ESTADO DE BOTONES ------------------------------//
 
 void manejador_botones_guitar_hero(EVENTO_T evento, uint32_t auxData) {
-#ifdef DEBUG 
-				svc_estadisticas_set_tmp(e_ATIENDE_IRQ);
-				svc_estadisticas_set_tmp(e_EMPIEZA_PULSAR);
-#endif
 			
 		uint32_t id_boton = drv_botones_encontrar_indice(auxData);
 	
