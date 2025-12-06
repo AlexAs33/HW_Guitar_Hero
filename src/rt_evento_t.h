@@ -13,7 +13,7 @@
 #include "drv_tiempo.h" 
 
 #define ev_NUM_EV_USUARIO 1
-#define ev_USUARIO  {ev_ACT_INACTIVIDAD}
+#define ev_USUARIO  {ev_PULSAR_BOTON}
 
 /* Enum de eventos para encolar */
 typedef enum {
@@ -30,9 +30,8 @@ typedef enum {
 		ev_LEDS_GUITAR_HERO = 10,
     ev_FIN_GUITAR_HERO = 11,
     ev_GUITAR_HERO = 12,
-		ev_ACT_INACTIVIDAD = 13,
 } EVENTO_T;  // mapea a uint32_t
 
-#define EVENT_TYPES 14
+#define EVENT_TYPES 13
 
 #endif /* RT_EVENTO_T_H */

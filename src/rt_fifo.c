@@ -69,6 +69,8 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 			for(LED_id_t id = 1; id <= LEDS_NUMBER; id++){
 				drv_led_establecer(id, LED_ON);
 			}
+			
+			UART_LOG_DEBUG("OVERFLOW DE LA FIFO!!");
       while(1);  // bucle infinito 
     }
 

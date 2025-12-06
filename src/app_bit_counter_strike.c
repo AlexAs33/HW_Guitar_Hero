@@ -135,7 +135,7 @@ void bit_counter_strike(unsigned int num_leds) {
     rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
     rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
 	
-    drv_botones_iniciar(manejador_interrupcion_botones, ev_VOID);	//Asociar botones a lógica local
+    drv_botones_iniciar(manejador_interrupcion_botones, ev_PULSAR_BOTON, ev_VOID);	//Asociar botones a lógica local
 	
 		uint32_t alarmaBCS = svc_alarma_codificar(true, PERIODO_BIT_COUNTER, 0);
     svc_alarma_activar(alarmaBCS, ev_LEDS_BIT_COUNTER_STRIKE, 0);	//Encender led cada PERIODO_BIT_COUNTER

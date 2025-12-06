@@ -7,6 +7,9 @@
 #include "hal_gpio.h"
 #include "board.h"
 
+#include "rt_fifo.h"
+#include "rt_evento_t.h"
+
 #ifdef DEBUG
     #include "svc_estadisticas.h"
 #endif
@@ -59,31 +62,25 @@ static int8_t vic_channel(uint32_t pin)
 // ISRs para las interrupciones externas
 void EINT_Handler(void) __irq 
 {
+#ifdef DEBUG 
+				svc_estadisticas_set_tmp(e_LANZA_IRQ);
+#endif
+	
     uint32_t pin;
     if (EXTINT & (1UL << 0))      pin = EINT0_PIN;
     else if (EXTINT & (1UL << 1)) pin = EINT1_PIN;
     else if (EXTINT & (1UL << 2)) pin = EINT2_PIN;
     else return;
-
-#ifdef DEBUG 
-				svc_estadisticas_set_tmp(e_LANZA_IRQ);
-#endif
 	
     // Limpiar flag de interrupción correspondiente
     hal_ext_int_clear_flag(pin);
-
-		// Reordenacion de pines
-		int8_t var;
-		 switch (pin) {
-        case EINT0_PIN: var = 2; break;
-        case EINT1_PIN: var = 0; break;
-        case EINT2_PIN: var = 1; break;
-        default:        var = -1; break;
-    }
-				
-    // LLamar a la función de callback asociada con el pin
-    if (f_cb && var != -1) f_cb(pin, var);
 	
+		// Deshabilitamos interrupciones para evitar falsos positivos
+	  hal_ext_int_deshabilitar_int(pin);
+
+    // LLamar a la función de callback asociada con el pin
+    if (f_cb) f_cb(pin);
+
     // Indicar al VIC que la IRQ se ha atendido
     VICVectAddr = 0;
 }

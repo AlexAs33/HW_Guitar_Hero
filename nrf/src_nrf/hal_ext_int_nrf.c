@@ -54,8 +54,9 @@ void GPIOTE_IRQHandler(void)
         int canal = pin_a_eint(pines_eint[i]);
         if (canal >= 0 && NRF_GPIOTE->EVENTS_IN[canal])
         {
-            if (f_cb)
-                f_cb(pines_eint[i], canal); 
+						// Llamamos a funcion de callback
+            if (f_cb) f_cb(pines_eint[i]); 
+						// Informamos que la eirq ha sido tomada
             hal_ext_int_clear_flag(pines_eint[i]);
         }
     }

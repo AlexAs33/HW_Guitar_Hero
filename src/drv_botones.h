@@ -37,7 +37,7 @@ typedef enum {
 // Post: Los botones quedan configurados como entradas, con interrupciones
 //       habilitadas y capaces de despertar el sistema. Se suscriben todos los
 //       eventos necesarios y su estado interno queda en e_esperando.
-void drv_botones_iniciar(void (*callback)(), EVENTO_T evento);
+void drv_botones_iniciar(void (*callback)(), EVENTO_T _evento_a_notificar, EVENTO_T _evento_ult_boton);
 
 // Pre:  Debe haber sido llamado antes drv_botones_iniciar().
 //       'evento' será uno de los esperados por la MSF del driver.
@@ -53,6 +53,9 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t boton_id);
 //       pudiendo activar alarmas, deshabilitar o habilitar interrupciones
 //       y generar eventos derivados.
 void drv_boton_estado_actualizar(EVENTO_T evento, uint32_t boton_id);
+
+int drv_botones_encontrar_indice(uint32_t boton_id);
+
 
 // Retorna la cantidad de botones activos disponibles
 unsigned int drv_botones_cantidad(void);

@@ -46,9 +46,6 @@ void rt_GE_iniciar(MONITOR_id_t M_overflow)
         tabla_suscripciones[i].callbacks[0] = NULL;
     }
 
-    // Suscribir rt_GE_actualizar al evento de inactividad
-    svc_GE_suscribir(ev_INACTIVIDAD, 0 , rt_GE_actualizar);
-
     // Suscribir rt_GE_actualizar a todos los eventos de usuario
     EVENTO_T eventos_usuario[] = ev_USUARIO;
     for (int i = 0; i < ev_NUM_EV_USUARIO; i++) {

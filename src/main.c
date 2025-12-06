@@ -188,7 +188,7 @@ void blink_v3_bis(LED_id_t id)
 
 	drv_consumo_iniciar((MONITOR_id_t)3);
 		
-	drv_botones_iniciar(drv_boton_estado_actualizar, ev_VOID);
+	drv_botones_iniciar(drv_boton_estado_actualizar, ev_VOID, ev_VOID);
 		
 	drv_tiempo_periodico_ms(RETARDO_MS, leds_c, id);
 	
@@ -242,7 +242,7 @@ void test_botones() {
 		rt_GE_iniciar((MONITOR_id_t) 1);
     rt_FIFO_inicializar((MONITOR_id_t)3);
 
-		drv_botones_iniciar(boton_pulsado, ev_VOID);
+		drv_botones_iniciar(boton_pulsado, ev_PULSAR_BOTON, ev_VOID);
 
     rt_GE_lanzador();
 }
@@ -342,6 +342,7 @@ int main(void){
 
 #elif VERSION == GH
 				// Inicialización de módulos necesarios
+				drv_uart_init(9600);
 				drv_monitor_iniciar();
 				drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
 				rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
@@ -350,9 +351,8 @@ int main(void){
 
 				drv_wdt_iniciar(PERIODO_WDT);
 
-				drv_botones_iniciar(manejador_botones_guitar_hero, ev_FIN_GUITAR_HERO);
-
-				drv_uart_init(9600);
+				drv_botones_iniciar(rt_FIFO_encolar, ev_PULSAR_BOTON, ev_FIN_GUITAR_HERO);
+				
 				app_guitar_hero_iniciar(Num_Leds);
 		
 #else

@@ -172,18 +172,17 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
 //------------------------------ ESTADO DE BOTONES ------------------------------//
 
-void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
+void manejador_botones_guitar_hero(EVENTO_T evento, uint32_t auxData) {
 #ifdef DEBUG 
 				svc_estadisticas_set_tmp(e_ATIENDE_IRQ);
 				svc_estadisticas_set_tmp(e_EMPIEZA_PULSAR);
 #endif
-
-    drv_botones_actualizar(ev_PULSAR_BOTON, id_pin);		//Actualiza el estado a bajo nivel del pin
-    encolar_EM(ev_ACT_INACTIVIDAD, 0);
 			
+		uint32_t id_boton = drv_botones_encontrar_indice(auxData);
+	
     //cancelar alarma timeout
     uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-	svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
+		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
 	
     if(id_boton == 0 || id_boton == 1)	
 				encolar_EM(ev_GUITAR_HERO, id_boton + 1);
@@ -284,6 +283,7 @@ void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux)
 void app_guitar_hero_iniciar(unsigned int num_leds){
     leds = num_leds;
 
+		svc_GE_suscribir(ev_PULSAR_BOTON, 0, manejador_botones_guitar_hero);
     svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, estado_fin_partida_guitar_hero);
     svc_GE_suscribir(ev_GUITAR_HERO, 0, app_guitar_hero_actualizar);
     svc_GE_suscribir(ev_TIMEOUT_LED, 0, estado_boton_guitar_hero);

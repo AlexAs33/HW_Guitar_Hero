@@ -18,7 +18,7 @@
 #define T_RESET_MS    3000
 #define NOTAS_INIT    2
 
-void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton);
+void manejador_botones_guitar_hero(EVENTO_T evento, uint32_t auxData);
 
 void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux);
 

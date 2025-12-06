@@ -19,6 +19,10 @@
 #include "board.h"
 #include "drv_uart.h"
 
+#ifdef DEBUG
+	#include <stdio.h>
+#endif
+
 // Estructura que define un botón (estado e identificador)
 typedef struct {
     Estado_boton estado;
@@ -28,14 +32,18 @@ typedef struct {
 // Array de botones y lista que mapea id's con pines
 static Boton botones[BUTTONS_NUMBER];
 static const uint32_t lista_botones[BUTTONS_NUMBER] = BUTTONS_LIST;
-static EVENTO_T evento_ult_boton;
+static EVENTO_T evento_ult_boton, evento_a_notificar;
+static void (*f_cb)(EVENTO_T, uint32_t) = 0;
+static void callback_wrapper_interna(uint32_t);
 
 // Habilitar los botones e inicializar su estado e id.
-void drv_botones_iniciar(void (*callback)(), EVENTO_T evento)
+void drv_botones_iniciar(void (*callback)(), EVENTO_T _evento_a_notificar, EVENTO_T _evento_ult_boton)
 {
-    hal_ext_int_iniciar(callback);
+    hal_ext_int_iniciar(callback_wrapper_interna);
 	
-		evento_ult_boton = evento;
+		f_cb = callback;
+        evento_a_notificar = _evento_a_notificar;
+        evento_ult_boton = _evento_ult_boton;
     
     svc_alarma_iniciar((MONITOR_id_t)4, rt_FIFO_encolar, ev_T_PERIODICO);
 	
@@ -53,11 +61,11 @@ void drv_botones_iniciar(void (*callback)(), EVENTO_T evento)
         svc_GE_suscribir((EVENTO_T)(ev_BOTON_DEBOUNCE + i), 0, drv_botones_actualizar);
     }
 
-    //svc_GE_suscribir(ev_PULSAR_BOTON, 0, drv_botones_actualizar);
+    svc_GE_suscribir(ev_PULSAR_BOTON, 0, drv_botones_actualizar);
 }
 
 // Retorna el id del índice del botón en el array
-static int drv_botones_encontrar_indice(uint32_t boton_id)
+int drv_botones_encontrar_indice(uint32_t boton_id)
 {
     for (int i = 0; i < BUTTONS_NUMBER; i++) {
         if (botones[i].id == boton_id) {
@@ -81,7 +89,7 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
     switch (boton->estado)
     {
     case e_esperando:
-            hal_ext_int_deshabilitar_int(boton_id);
+            //hal_ext_int_deshabilitar_int(boton_id);
             alarma_flags = svc_alarma_codificar(false, DRV_BOTONES_RETARDO_REBOTE_MS, 0);
             svc_alarma_activar(alarma_flags, (EVENTO_T)(ev_BOTON_DEBOUNCE + i), boton_id);
             boton->estado = e_rebotes;
@@ -127,5 +135,9 @@ void drv_botones_actualizar(EVENTO_T evento, uint32_t auxData)
 
 unsigned int drv_botones_cantidad() {
     return (unsigned int) BUTTONS_NUMBER;
+}
+
+static void callback_wrapper_interna(uint32_t auxData) {
+		f_cb(evento_a_notificar, auxData);
 }
 

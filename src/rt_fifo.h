@@ -26,7 +26,7 @@
 #include "drv_tiempo.h"
 #include "drv_monitor.h"
 
-#define RT_FIFO_TAMANO 1500
+#define RT_FIFO_TAMANO 64
 
 
 /* Estructura de un evento almacenado en la cola */
