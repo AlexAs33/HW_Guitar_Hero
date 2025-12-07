@@ -23,12 +23,12 @@ I (..\..\src\drv_sc.h)(0x692044AB)
 I (..\..\src\drv_wdt.h)(0x692044AB)
 I (..\..\src\drv_uart.h)(0x692D50B7)
 I (..\..\src\svc_random.h)(0x693472FB)
-I (..\..\src\app_guitar_hero.h)(0x69347577)
+I (..\..\src\app_guitar_hero.h)(0x6935595B)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F3DAC)
 I (..\..\src\app_bit_counter_strike.h)(0x692D50B7)
 I (..\..\src\svc_estadisticas.h)(0x693472FB)
-F (..\..\src\app_guitar_hero.c)(0x69354FA4)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador -DDEBUG-o .\objects\app_guitar_hero.o --omf_browse .\objects\app_guitar_hero.crf --depend .\objects\app_guitar_hero.d)
-I (..\..\src\app_guitar_hero.h)(0x69347577)
+F (..\..\src\app_guitar_hero.c)(0x69355D34)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador -DDEBUG-o .\objects\app_guitar_hero.o --omf_browse .\objects\app_guitar_hero.crf --depend .\objects\app_guitar_hero.d)
+I (..\..\src\app_guitar_hero.h)(0x6935595B)
 I (..\..\src\rt_evento_t.h)(0x69347EEE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F3DAE)
 I (..\..\src\drv_tiempo.h)(0x692044AB)
@@ -54,7 +54,7 @@ I (..\..\src\drv_sc.h)(0x692044AB)
 I (..\..\src\svc_random.h)(0x693472FB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F3DAC)
 I (..\..\src\svc_estadisticas.h)(0x693472FB)
-F (..\..\src\app_guitar_hero.h)(0x69347577)()
+F (..\..\src\app_guitar_hero.h)(0x6935595B)()
 F (..\..\src\app_bit_counter_strike.c)(0x693472FB)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador -DDEBUG-o .\objects\app_bit_counter_strike.o --omf_browse .\objects\app_bit_counter_strike.crf --depend .\objects\app_bit_counter_strike.d)
 I (..\..\src\app_bit_counter_strike.h)(0x692D50B7)
 I (..\..\src\rt_fifo.h)(0x693472FB)

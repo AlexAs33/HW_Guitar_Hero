@@ -35,6 +35,7 @@ static volatile int leds = 0;                        //Numero de leds
 static int min = 1, max = 2;
 static uint8_t estados_notas[3] = {0, 0, 0};  
 static int palpitaciones = 0;						//palipitaciones de leds secuencias
+static int periodo_leds = 0;
 //Control partida
 static int notas_tocadas = 0; //Acordes que tiene una partitura
 static int num_partidas = 0;                //num partidas jugadas
@@ -49,6 +50,7 @@ static int racha = 0;                       //aciertos encadenados en una partid
 typedef enum {
 	e_SEC_INI,
     e_INICIO,
+	e_ELEG_DIFICC,
     e_SHOW_SEQUENCE,
     e_BEAT,
     e_TIMEOUT,
@@ -124,6 +126,21 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
 	svc_alarma_activar(flags_cancelar, ev_SEC_INI_FIN, 0);
 	svc_GE_cancelar(ev_SEC_INI_FIN, secuencia_inicio);
 
+	estado_actual = e_ELEG_DIFICC;
+	encolar_EM(ev_GUITAR_HERO, 0);
+	UART_LOG_INFO("PULSA UN BOTON PARA ELEGIR DIFICULTAD. \n Cuanto mayor el boton mayor la dificultad:");
+}
+
+//------------------------------ ESTADO DE ELEGIR DIFICULTAD ------------------------------//
+
+void elegir_dificultad(uint32_t boton){
+	boton ++;
+	if(boton == 1){min = 1; max = 2;}
+
+	else if(boton == 2){min = 0; max = 2;}
+
+	else if(boton == 3){min = 0; max = 3;}
+
 	estado_actual = e_SHOW_SEQUENCE;
 	encolar_EM(ev_GUITAR_HERO, 0);
 	UART_LOG_INFO("COMIENZA EL BEAT!! PODRAS SEGUIRLO?");
@@ -143,7 +160,8 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 			estados_notas[0] = 0;
 
 		else {
-			estados_notas[0] = svc_random_value(min, max);;
+			//estados_notas[0] = svc_random_value(min, max);
+			estados_notas[0] = 1;
 		}
 
 		drv_led_establecer((LED_id_t)1, BIT_TO_LED(estados_notas[0] & 0b10));
@@ -178,12 +196,12 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 #endif
 			
 				//codificar alarma timeout
-				uint32_t flags_timeout = svc_alarma_codificar(false, PERIODO_LEDS - MARGEN_PULSAR, 0);  //tienes hasta el siguiente para darle
+				uint32_t flags_timeout = svc_alarma_codificar(false, periodo_leds - MARGEN_PULSAR, 0);  //tienes hasta el siguiente para darle
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 				estado_actual = e_BEAT;
 		}
 		// Programamos el siguiente compás
-		uint32_t flags_boton = svc_alarma_codificar(false, PERIODO_LEDS, 0);  //tienes hasta el siguiente para darle
+		uint32_t flags_boton = svc_alarma_codificar(false, periodo_leds, 0);  //tienes hasta el siguiente para darle
 		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
 }
 
@@ -192,18 +210,23 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 void manejador_botones_guitar_hero(EVENTO_T evento, uint32_t auxData) {
 			
 		uint32_t id_boton = drv_botones_encontrar_indice(auxData);
-	
-    //cancelar alarma timeout
-    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
-		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
-	
-    if(id_boton == 0 || id_boton == 1)	
-				encolar_EM(ev_GUITAR_HERO, id_boton + 1);
-    
-    else if (id_boton == drv_botones_cantidad() - 1) {
-        uint32_t flags = svc_alarma_codificar(false, T_RESET_MS, 0);
-        svc_alarma_activar(flags, ev_FIN_GUITAR_HERO, 0);
-    }
+
+	if(estado_actual == e_ELEG_DIFICC){
+		elegir_dificultad(id_boton);
+	}
+	else{
+		//cancelar alarma timeout
+    	uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
+			svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
+		
+    	if(id_boton == 0 || id_boton == 1)	
+					encolar_EM(ev_GUITAR_HERO, id_boton + 1);
+		
+    	else if (id_boton == drv_botones_cantidad() - 1) {
+    	    uint32_t flags = svc_alarma_codificar(false, T_RESET_MS, 0);
+    	    svc_alarma_activar(flags, ev_FIN_GUITAR_HERO, 0);
+    	}
+	}  
 }
 
 void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
@@ -284,7 +307,12 @@ void estado_fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
 	  // Reiniciamos estado de las notas
 		estados_notas[0] = 0;
 		estados_notas[1] = 0;
-		estados_notas[2] = 0;	
+		estados_notas[2] = 0;
+		
+	//aumento dificultad
+	if(periodo_leds > MARGEN_PULSAR * 2){
+		periodo_leds /= 2;
+	}
 	
     // Volvemos a empezar una nueva partida
     estado_actual = e_SEC_INI;
@@ -304,6 +332,10 @@ void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux)
         case e_INICIO:
 			estado_inicio_gh(ev, aux);
             break;
+
+		case e_ELEG_DIFICC:
+			//evento asincrono q depende de pulsar un boton
+			break;
 
         case e_SHOW_SEQUENCE:
             estado_leds_guitar_hero(ev, aux);
@@ -337,6 +369,7 @@ void app_guitar_hero_iniciar(unsigned int num_leds){
     svc_GE_suscribir(ev_TIMEOUT_LED, 0, estado_boton_guitar_hero);
 	
 		// Empezamos el juego
+	periodo_leds = PERIODO_LEDS;
     encolar_EM(ev_GUITAR_HERO, 0);
     rt_GE_lanzador();
 }

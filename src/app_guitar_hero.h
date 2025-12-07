@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 #define T_SECS_INI_FIN  250
-#define PERIODO_LEDS    800     //ms
+#define PERIODO_LEDS    2000     //ms
 #define MARGEN_PULSAR   100       
 #define ACIERTO         20      //puntos por acierto
 #define FALLO           10      //puntos por fallo
