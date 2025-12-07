@@ -164,23 +164,7 @@ void app_guitar_hero_estado_shift_leds(EVENTO_T evento, uint32_t auxData){
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 				estado_actual = e_BEAT;
 		}
-<<<<<<< Updated upstream
-		// Poblar los primeros compases
-		else {
-				estado_actual = e_SHOW_SEQUENCE;
-				encolar_EM(ev_GUITAR_HERO, 0);
-		}
-		
-		// Esperamos tiempo entre leds
-		drv_tiempo_esperar_hasta_ms(drv_tiempo_actual_ms() + PERIODO_LEDS); 
-}
 
-//------------------------------ ESTADO DE BOTONES ------------------------------//
-
-void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
-    drv_botones_actualizar(ev_PULSAR_BOTON, id_pin);		//Actualiza el estado a bajo nivel del pin
-    encolar_EM(ev_ACT_INACTIVIDAD, 0);
-=======
 		// Programamos el siguiente compás
 		uint32_t flags_boton = svc_alarma_codificar(false, PERIODO_LEDS, 0); 
 		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
@@ -191,7 +175,6 @@ void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
 void app_guitar_hero_manejador_botones(EVENTO_T evento, uint32_t auxData) {
 			
 		uint32_t id_boton = drv_botones_encontrar_indice(auxData);
->>>>>>> Stashed changes
 	
 #ifdef DEBUG
 		char buf[64];
@@ -208,6 +191,7 @@ void app_guitar_hero_manejador_botones(EVENTO_T evento, uint32_t auxData) {
     }
 }
 */
+
 void app_guitar_hero_cancelar_timeout(EVENTO_T evento, uint32_t auxData) {
 	    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
 		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
@@ -259,7 +243,6 @@ void app_guitar_hero_estado_boton(EVENTO_T evento, uint32_t auxData){
 
 void estado_timeout_guitar_hero(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
-    //! bug --> notas_restantes < 30 || < 29 (depende version)
     UART_LOG_DEBUG("TIMOUT, APRIETA EL BOTON!!");
 	
     // Informamos que el botón no se ha pulsado
@@ -276,18 +259,17 @@ void app_guitar_hero_estadisticas(){
 		drv_uart_puts("Tu desempegno en esta partida ha sido el siguiente\r\n");
 		drv_uart_puts("Con "); drv_uart_putint(aciertos); drv_uart_puts(" aciertos\r\n");
 		drv_uart_puts("Y "); drv_uart_putint(fallos); drv_uart_puts(" fallos\r\n");
-		//TODO contar rachas y poner
+
 		drv_uart_puts("Has conseguido una puntuacion de "); drv_uart_putint(puntuacion); drv_uart_puts(" puntos\r\n");
 		drv_uart_puts("Lo que en tus "); drv_uart_putint(num_partidas); drv_uart_puts(" partidas, suma un total de "); drv_uart_putint(puntuacion_total); drv_uart_puts(" puntos\r\n");
-	
-    //TODO hay que poner cosas de estadistica de rendimiento???
+
 }
 
 void app_guitar_hero_estado_fin(EVENTO_T evento, uint32_t auxData){
     (void) evento;
     (void) auxData;
 
-    // acabar cosas de partida --> //? podría meterse en la funcion de partida en el caso base
+    // acabar cosas de partida 
     num_partidas ++;
     puntuacion_total += puntuacion;
 		notas_tocadas = 0;
@@ -296,7 +278,7 @@ void app_guitar_hero_estado_fin(EVENTO_T evento, uint32_t auxData){
 		aciertos = 0;
 		fallos = 0;
 		puntuacion = 0;
-    //TODO definir características nueva partida
+
 	  // Reiniciamos estado de las notas
 		estados_notas[0] = 0;
 		estados_notas[1] = 0;
@@ -309,7 +291,7 @@ void app_guitar_hero_estado_fin(EVENTO_T evento, uint32_t auxData){
 
 //------------------------------ MÁQUINA DE ESTADOS ------------------------------//
 
-void estados_guitar_hero(EVENTO_T ev, uint32_t aux)
+void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux)
 {
     switch (estado_actual)
     {
