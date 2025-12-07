@@ -1,7 +1,7 @@
 .\objects\drv_consumo.o: ..\..\src\drv_consumo.c
 .\objects\drv_consumo.o: ..\..\src\drv_consumo.h
-.\objects\drv_consumo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
-.\objects\drv_consumo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\drv_consumo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\drv_consumo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\drv_consumo.o: ..\..\src\drv_monitor.h
 .\objects\drv_consumo.o: ..\..\src\board.h
 .\objects\drv_consumo.o: ../src_lpc/board_lpc.h

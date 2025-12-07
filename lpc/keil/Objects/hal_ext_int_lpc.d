@@ -1,6 +1,6 @@
 .\objects\hal_ext_int_lpc.o: ..\src_lpc\hal_ext_int_lpc.c
 .\objects\hal_ext_int_lpc.o: ../../src/hal_ext_int.h
-.\objects\hal_ext_int_lpc.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\hal_ext_int_lpc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\hal_ext_int_lpc.o: ../../src/board.h
 .\objects\hal_ext_int_lpc.o: ../src_lpc/board_lpc.h
 .\objects\hal_ext_int_lpc.o: C:\Keil_v5\ARM\INC\Philips\LPC210x.H
@@ -9,7 +9,7 @@
 .\objects\hal_ext_int_lpc.o: ../../src/rt_fifo.h
 .\objects\hal_ext_int_lpc.o: ../../src/rt_evento_t.h
 .\objects\hal_ext_int_lpc.o: ../../src/drv_tiempo.h
-.\objects\hal_ext_int_lpc.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\hal_ext_int_lpc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\hal_ext_int_lpc.o: ../../src/drv_monitor.h
 .\objects\hal_ext_int_lpc.o: ../../src/svc_estadisticas.h
 .\objects\hal_ext_int_lpc.o: ../../src/drv_uart.h

@@ -1,7 +1,7 @@
 .\objects\main.o: ..\..\src\main.c
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\..\src\svc_alarma.h
 .\objects\main.o: ..\..\src\rt_evento_t.h
 .\objects\main.o: ..\..\src\drv_tiempo.h
@@ -15,7 +15,7 @@
 .\objects\main.o: ..\..\src\svc_GE.h
 .\objects\main.o: ..\..\src\rt_GE.h
 .\objects\main.o: ..\..\src\drv_leds.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stddef.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\main.o: ..\..\src\drv_consumo.h
 .\objects\main.o: ..\..\src\drv_botones.h
 .\objects\main.o: ..\..\src\drv_sc.h
@@ -23,6 +23,6 @@
 .\objects\main.o: ..\..\src\drv_uart.h
 .\objects\main.o: ..\..\src\svc_random.h
 .\objects\main.o: ..\..\src\app_guitar_hero.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: ..\..\src\app_bit_counter_strike.h
 .\objects\main.o: ..\..\src\svc_estadisticas.h

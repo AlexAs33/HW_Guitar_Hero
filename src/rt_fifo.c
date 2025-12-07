@@ -19,6 +19,7 @@
 #include "rt_fifo.h"
 #include "drv_leds.h"
 #include "drv_sc.h"
+#include "drv_uart.h"
 #include <stdio.h>
 
 

@@ -1,10 +1,10 @@
 .\objects\app_bit_counter_strike.o: ..\..\src\app_bit_counter_strike.c
 .\objects\app_bit_counter_strike.o: ..\..\src\app_bit_counter_strike.h
 .\objects\app_bit_counter_strike.o: ..\..\src\rt_fifo.h
-.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\app_bit_counter_strike.o: ..\..\src\rt_evento_t.h
 .\objects\app_bit_counter_strike.o: ..\..\src\drv_tiempo.h
-.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\app_bit_counter_strike.o: ..\..\src\drv_monitor.h
 .\objects\app_bit_counter_strike.o: ..\..\src\board.h
 .\objects\app_bit_counter_strike.o: ../src_lpc/board_lpc.h
@@ -17,8 +17,8 @@
 .\objects\app_bit_counter_strike.o: ..\..\src\drv_botones.h
 .\objects\app_bit_counter_strike.o: ..\..\src\drv_consumo.h
 .\objects\app_bit_counter_strike.o: ..\..\src\drv_leds.h
-.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stddef.h
+.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\app_bit_counter_strike.o: ..\..\src\drv_wdt.h
 .\objects\app_bit_counter_strike.o: ..\..\src\svc_random.h
-.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
-.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h
+.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\app_bit_counter_strike.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

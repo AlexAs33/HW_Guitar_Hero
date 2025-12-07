@@ -1,9 +1,9 @@
 .\objects\drv_botones.o: ..\..\src\drv_botones.c
 .\objects\drv_botones.o: ..\..\src\drv_botones.h
-.\objects\drv_botones.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\objects\drv_botones.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\drv_botones.o: ..\..\src\rt_evento_t.h
 .\objects\drv_botones.o: ..\..\src\drv_tiempo.h
-.\objects\drv_botones.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
+.\objects\drv_botones.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\drv_botones.o: ..\..\src\hal_ext_int.h
 .\objects\drv_botones.o: ..\..\src\board.h
 .\objects\drv_botones.o: ../src_lpc/board_lpc.h
@@ -15,4 +15,5 @@
 .\objects\drv_botones.o: ..\..\src\hal_gpio.h
 .\objects\drv_botones.o: ..\..\src\svc_GE.h
 .\objects\drv_botones.o: ..\..\src\drv_uart.h
-.\objects\drv_botones.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\objects\drv_botones.o: ..\..\src\svc_estadisticas.h
+.\objects\drv_botones.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
