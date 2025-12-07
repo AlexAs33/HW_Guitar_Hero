@@ -1,6 +1,7 @@
 --cpu=Cortex-M4.fp
 ".\objects\main.o"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ".\objects\drv_leds.o"
 ".\objects\drv_tiempo.o"
 ".\objects\drv_consumo.o"
@@ -23,6 +24,8 @@
 ".\objects\hal_random_nrf.o"
 ".\objects\hal_uart_nrf.o"
 =======
+=======
+>>>>>>> Stashed changes
 ".\objects\app_guitar_hero.o"
 ".\objects\app_bit_counter_strike.o"
 ".\objects\drv_botones.o"
@@ -46,6 +49,9 @@
 ".\objects\hal_tiempo_nrf.o"
 ".\objects\hal_uart_nrf.o"
 ".\objects\hal_wdt_nrf.o"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 ".\objects\arm_startup_nrf52840.o"
 ".\objects\system_nrf52.o"

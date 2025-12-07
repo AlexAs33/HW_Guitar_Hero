@@ -9,12 +9,18 @@
 .\objects\rt_fifo.o: ../src_nrf/board_nrf52840dk.h
 .\objects\rt_fifo.o: ..\..\src\hal_gpio.h
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .\objects\rt_fifo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 .\objects\rt_fifo.o: ..\..\src\drv_leds.h
 .\objects\rt_fifo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stddef.h
 =======
+=======
+>>>>>>> Stashed changes
 .\objects\rt_fifo.o: ..\..\src\drv_leds.h
 .\objects\rt_fifo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stddef.h
 .\objects\rt_fifo.o: ..\..\src\drv_sc.h
 .\objects\rt_fifo.o: ..\..\src\drv_uart.h
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

@@ -1,6 +1,10 @@
 Dependencies for Project 'blink_lpc', Target 'Debug_LPC': (DO NOT MODIFY !)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 F (..\..\src\main.c)(0x692A251C)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador -DDEBUG-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+=======
+F (..\..\src\main.c)(0x69347354)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador -DDEBUG-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+>>>>>>> Stashed changes
 =======
 F (..\..\src\main.c)(0x69347354)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador -DDEBUG-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 >>>>>>> Stashed changes
@@ -11,9 +15,12 @@ I (..\..\src\svc_alarma.h)(0x692A251C)
 I (..\..\src\rt_evento_t.h)(0x692A251C)
 I (..\..\src\drv_tiempo.h)(0x692879E0)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 I (..\..\src\rt_fifo.h)(0x692879E0)
 I (..\..\src\drv_monitor.h)(0x692879E0)
 =======
+=======
+>>>>>>> Stashed changes
 I (..\..\src\rt_fifo.h)(0x6934790D)
 I (..\..\src\drv_monitor.h)(0x692DBAAD)
 >>>>>>> Stashed changes
@@ -307,7 +314,10 @@ F (..\..\src\bit_counter_strike.h)(0x692879E0)()
 F (..\..\src\drv_sc.h)(0x692879E0)()
 F (..\..\src\drv_wdt.h)(0x692879E0)()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 F (..\..\src\svc_alarma.c)(0x693475CD)(--c99 --gnu -c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections -I ../../src -I ../src_lpc-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\INC\Philips-D__UVISION_VERSION="526" -DLPC2105_simulador -DDEBUG-o .\objects\svc_alarma.o --omf_browse .\objects\svc_alarma.crf --depend .\objects\svc_alarma.d)
 I (..\..\src\svc_alarma.h)(0x692EB1C2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
@@ -450,8 +460,11 @@ I (C:\Keil_v5\ARM\INC\Philips\LPC210x.H)(0x559D2F68)
 I (../src_lpc/reserva_gpio_lpc2105.h)(0x692879DA)
 I (../../src/hal_gpio.h)(0x692885F0)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 I (../../src/drv_uart.h)(0x692885F0)
 =======
+=======
+>>>>>>> Stashed changes
 I (../../src/rt_fifo.h)(0x6934790D)
 I (../../src/rt_evento_t.h)(0x69346A98)
 I (../../src/drv_tiempo.h)(0x692879E0)

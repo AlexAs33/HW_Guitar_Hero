@@ -6,6 +6,7 @@
 #include "svc_estadisticas.h"
 
 
+
 // Estructura que define un botón (estado e identificador)
 typedef struct {
     Estado_boton estado;

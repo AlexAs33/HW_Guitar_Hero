@@ -18,4 +18,7 @@
 .\objects\rt_fifo.o: ..\..\src\drv_sc.h
 .\objects\rt_fifo.o: ..\..\src\drv_uart.h
 .\objects\rt_fifo.o: ..\..\src\svc_estadisticas.h
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

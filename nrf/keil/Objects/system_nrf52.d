@@ -1,5 +1,6 @@
 .\objects\system_nrf52.o: RTE\Device\nRF52840_xxAA\system_nrf52.c
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .\objects\system_nrf52.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\system_nrf52.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\system_nrf52.o: C:\Programas-Practicas\Simuladores\Keil\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\nrf.h
@@ -20,6 +21,8 @@
 .\objects\system_nrf52.o: C:\Programas-Practicas\Simuladores\Keil\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\system_nrf52.h
 .\objects\system_nrf52.o: C:\Programas-Practicas\Simuladores\Keil\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\system_nrf52_approtect.h
 =======
+=======
+>>>>>>> Stashed changes
 .\objects\system_nrf52.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
 .\objects\system_nrf52.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
 .\objects\system_nrf52.o: C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\nrf.h
@@ -39,4 +42,7 @@
 .\objects\system_nrf52.o: C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\nrf52_erratas.h
 .\objects\system_nrf52.o: C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\system_nrf52.h
 .\objects\system_nrf52.o: C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\system_nrf52_approtect.h
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

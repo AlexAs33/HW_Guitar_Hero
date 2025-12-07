@@ -16,7 +16,10 @@
 .\objects\drv_botones.o: ..\..\src\svc_GE.h
 .\objects\drv_botones.o: ..\..\src\drv_uart.h
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 .\objects\drv_botones.o: ..\..\src\svc_estadisticas.h
 .\objects\drv_botones.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 >>>>>>> Stashed changes

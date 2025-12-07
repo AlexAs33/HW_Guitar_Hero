@@ -1,6 +1,7 @@
 .\objects\hal_ext_int_nrf.o: ..\src_nrf\hal_ext_int_nrf.c
 .\objects\hal_ext_int_nrf.o: ../../src/hal_ext_int.h
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .\objects\hal_ext_int_nrf.o: C:\Programas-Practicas\Simuladores\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\hal_ext_int_nrf.o: ../../src/board.h
 .\objects\hal_ext_int_nrf.o: ../src_nrf/board_nrf52840dk.h
@@ -19,6 +20,8 @@
 .\objects\hal_ext_int_nrf.o: C:\Programas-Practicas\Simuladores\Keil\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\nrf52_to_nrf52840.h
 .\objects\hal_ext_int_nrf.o: C:\Programas-Practicas\Simuladores\Keil\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\compiler_abstraction.h
 =======
+=======
+>>>>>>> Stashed changes
 .\objects\hal_ext_int_nrf.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
 .\objects\hal_ext_int_nrf.o: ../../src/board.h
 .\objects\hal_ext_int_nrf.o: ../src_nrf/board_nrf52840dk.h
@@ -36,4 +39,7 @@
 .\objects\hal_ext_int_nrf.o: C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\nrf51_to_nrf52840.h
 .\objects\hal_ext_int_nrf.o: C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\nrf52_to_nrf52840.h
 .\objects\hal_ext_int_nrf.o: C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.44.1\Device\Include\compiler_abstraction.h
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

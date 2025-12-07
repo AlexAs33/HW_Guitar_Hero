@@ -20,12 +20,18 @@
 .\objects\main.o: ..\..\src\drv_wdt.h
 .\objects\main.o: ..\..\src\drv_uart.h
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .\objects\main.o: ..\..\src\random.h
 .\objects\main.o: ..\..\src\guitar_hero.h
 .\objects\main.o: ..\..\src\bit_counter_strike.h
 =======
+=======
+>>>>>>> Stashed changes
 .\objects\main.o: ..\..\src\svc_random.h
 .\objects\main.o: ..\..\src\app_guitar_hero.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h
 .\objects\main.o: ..\..\src\app_bit_counter_strike.h
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
