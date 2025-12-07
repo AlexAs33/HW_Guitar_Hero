@@ -160,8 +160,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 			estados_notas[0] = 0;
 
 		else {
-			//estados_notas[0] = svc_random_value(min, max);
-			estados_notas[0] = 1;
+			estados_notas[0] = svc_random_value(min, max);
 		}
 
 		drv_led_establecer((LED_id_t)1, BIT_TO_LED(estados_notas[0] & 0b10));
