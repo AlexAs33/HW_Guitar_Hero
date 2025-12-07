@@ -13,3 +13,9 @@
 .\objects\rt_fifo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 .\objects\rt_fifo.o: ..\..\src\drv_leds.h
 .\objects\rt_fifo.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stddef.h
+<<<<<<< Updated upstream
+=======
+.\objects\rt_fifo.o: ..\..\src\drv_sc.h
+.\objects\rt_fifo.o: ..\..\src\drv_uart.h
+.\objects\rt_fifo.o: ..\..\src\svc_estadisticas.h
+>>>>>>> Stashed changes

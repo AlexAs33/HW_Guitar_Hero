@@ -137,6 +137,7 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+<<<<<<< Updated upstream
           <LineNumber>89</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>2784</Address>
@@ -281,6 +282,8 @@
         <Bp>
           <Number>9</Number>
           <Type>0</Type>
+=======
+>>>>>>> Stashed changes
           <LineNumber>67</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
@@ -290,6 +293,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
+<<<<<<< Updated upstream
           <Filename>&lt;1&gt;..\..\src\drv_botones.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
@@ -307,6 +311,9 @@
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
           <Filename>&lt;1&gt;..\..\src\svc_alarma.c</Filename>
+=======
+          <Filename>&lt;1&gt;..\..\src\drv_tiempo.c</Filename>
+>>>>>>> Stashed changes
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -472,9 +479,15 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+<<<<<<< Updated upstream
           <LineNumber>226</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>6380</Address>
+=======
+          <LineNumber>278</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>3096</Address>
+>>>>>>> Stashed changes
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -483,14 +496,24 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>&lt;1&gt;..\..\src\app_guitar_hero.c</Filename>
           <ExecCommand></ExecCommand>
+<<<<<<< Updated upstream
           <Expression>\\blink_lpc\../../src/app_guitar_hero.c\226</Expression>
+=======
+          <Expression></Expression>
+>>>>>>> Stashed changes
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
+<<<<<<< Updated upstream
           <LineNumber>217</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>5608</Address>
+=======
+          <LineNumber>285</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>3160</Address>
+>>>>>>> Stashed changes
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -499,14 +522,24 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>&lt;1&gt;..\..\src\app_guitar_hero.c</Filename>
           <ExecCommand></ExecCommand>
+<<<<<<< Updated upstream
           <Expression>\\blink_lpc\../../src/app_guitar_hero.c\217</Expression>
+=======
+          <Expression>\\blink_lpc\../../src/app_guitar_hero.c\285</Expression>
+>>>>>>> Stashed changes
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
+<<<<<<< Updated upstream
           <LineNumber>200</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>5508</Address>
+=======
+          <LineNumber>170</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>4652</Address>
+>>>>>>> Stashed changes
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -515,11 +548,16 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>&lt;1&gt;..\..\src\app_guitar_hero.c</Filename>
           <ExecCommand></ExecCommand>
+<<<<<<< Updated upstream
           <Expression>\\blink_lpc\../../src/app_guitar_hero.c\200</Expression>
+=======
+          <Expression>\\blink_lpc\../../src/app_guitar_hero.c\170</Expression>
+>>>>>>> Stashed changes
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
+<<<<<<< Updated upstream
           <LineNumber>179</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>8644</Address>
@@ -634,6 +672,10 @@
           <Type>0</Type>
           <LineNumber>129</LineNumber>
           <EnabledFlag>1</EnabledFlag>
+=======
+          <LineNumber>67</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+>>>>>>> Stashed changes
           <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
@@ -641,11 +683,30 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
+<<<<<<< Updated upstream
           <Filename>&lt;1&gt;..\..\src\svc_alarma.c</Filename>
+=======
+          <Filename>&lt;1&gt;..\..\src\drv_tiempo.c</Filename>
+>>>>>>> Stashed changes
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
       </Breakpoint>
+<<<<<<< Updated upstream
+=======
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>estados_notas</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>notas_restantes</ItemText>
+        </Ww>
+      </WatchWindow1>
+>>>>>>> Stashed changes
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>

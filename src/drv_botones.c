@@ -3,6 +3,8 @@
 #include "svc_alarma.h"
 #include "board.h"
 #include "drv_uart.h"
+#include "svc_estadisticas.h"
+
 
 // Estructura que define un botón (estado e identificador)
 typedef struct {

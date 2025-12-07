@@ -51,6 +51,7 @@
 
 
 #define RETARDO_MS 500u
+#define BAUD_RATE  9600
 
 #define TEST_WATCHDOG  1
 #define TEST_BOTONES   2
@@ -332,7 +333,23 @@ int main(void){
         bit_counter_strike(Num_Leds);
 
 #elif VERSION == GH
+<<<<<<< Updated upstream
 				guitar_hero(Num_Leds);
+=======
+				// Inicialización de módulos necesarios
+				drv_uart_init(BAUD_RATE);
+				drv_monitor_iniciar();
+				drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
+				rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  
+				rt_GE_iniciar((MONITOR_id_t)MONITOR_GE);
+				svc_random_iniciar(drv_tiempo_actual_us());
+
+				drv_wdt_iniciar(PERIODO_WDT);
+
+				drv_botones_iniciar(rt_FIFO_encolar, ev_PULSAR_BOTON, ev_FIN_GUITAR_HERO);
+				
+				app_guitar_hero_iniciar(Num_Leds);
+>>>>>>> Stashed changes
 		
 #else
 	#ifdef DEBUG

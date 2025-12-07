@@ -91,7 +91,7 @@ void modificar_puntuacion(uint32_t boton){
 
 //------------------------------ ESTADO DE INICIO ------------------------------//
 
-void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
+void app_guitar_hero_estado_inicio(EVENTO_T ev, uint32_t auxData) {
     (void)ev;
     (void)auxData;
 
@@ -115,7 +115,7 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
 
 //------------------------------ ESTADO SHIFT LEDS ------------------------------//
 
-void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
+void app_guitar_hero_estado_shift_leds(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
 
     //shift desde iteracion anterior
@@ -144,6 +144,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
     //JUEGO
     //esta codificado. usar estados_notas[2] para comprobar resultado
 		notas_tocadas++;
+		
 		// He terminado la partitura
 		if(notas_tocadas > TAM_PARTITURA + NOTAS_INIT){    
 				encolar_EM(ev_GUITAR_HERO, 0);
@@ -163,6 +164,7 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 				svc_alarma_activar(flags_timeout, ev_TIMEOUT_LED, 0);
 				estado_actual = e_BEAT;
 		}
+<<<<<<< Updated upstream
 		// Poblar los primeros compases
 		else {
 				estado_actual = e_SHOW_SEQUENCE;
@@ -178,6 +180,18 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
     drv_botones_actualizar(ev_PULSAR_BOTON, id_pin);		//Actualiza el estado a bajo nivel del pin
     encolar_EM(ev_ACT_INACTIVIDAD, 0);
+=======
+		// Programamos el siguiente compás
+		uint32_t flags_boton = svc_alarma_codificar(false, PERIODO_LEDS, 0); 
+		svc_alarma_activar(flags_boton, ev_GUITAR_HERO, 0);
+}
+
+//------------------------------ ESTADO DE BOTONES ------------------------------//
+/*
+void app_guitar_hero_manejador_botones(EVENTO_T evento, uint32_t auxData) {
+			
+		uint32_t id_boton = drv_botones_encontrar_indice(auxData);
+>>>>>>> Stashed changes
 	
 #ifdef DEBUG
 		char buf[64];
@@ -193,8 +207,31 @@ void manejador_botones_guitar_hero(int32_t id_pin, int32_t id_boton) {
         svc_alarma_activar(flags, ev_FIN_GUITAR_HERO, 0);
     }
 }
+*/
+void app_guitar_hero_cancelar_timeout(EVENTO_T evento, uint32_t auxData) {
+	    uint32_t flags_cancelar = svc_alarma_codificar(false, 0, 0);
+		svc_alarma_activar(flags_cancelar, ev_TIMEOUT_LED, 0);
+}
 
-void estado_boton_guitar_hero(EVENTO_T evento, uint32_t auxData){
+void app_guitar_hero_manejar_beat(EVENTO_T evento, uint32_t auxData) {
+	// Pasamos a estado de espera de botón
+	encolar_EM(ev_GUITAR_HERO, evento - ev_BOTON_DEBOUNCE);
+	
+#ifdef DEBUG
+				char buf[64];
+				sprintf(buf, "Voy a manejar al boton %d", evento - ev_BOTON_DEBOUNCE);
+				UART_LOG_DEBUG(buf);
+#endif
+}
+
+void app_guitar_hero_boton_terminar(EVENTO_T evento, uint32_t auxData) {
+	    uint32_t flags = svc_alarma_codificar(false, T_RESET_MS, 0);
+        svc_alarma_activar(flags, ev_FIN_GUITAR_HERO, 0);
+}
+
+
+
+void app_guitar_hero_estado_boton(EVENTO_T evento, uint32_t auxData){
     (void) auxData; (void) evento;
 
     drv_consumo_esperar();
@@ -235,8 +272,12 @@ void estado_timeout_guitar_hero(EVENTO_T evento, uint32_t auxData){
 
 //------------------------------ ESTADO DE FIN ------------------------------//
 
+<<<<<<< Updated upstream
 //? solo esto o  separar de puntuacion
 void estadisticas_guitar_hero(){
+=======
+void app_guitar_hero_estadisticas(){
+>>>>>>> Stashed changes
 		drv_uart_puts("Tu desempegno en esta partida ha sido el siguiente\r\n");
 		drv_uart_puts("Con "); drv_uart_putint(aciertos); drv_uart_puts(" aciertos\r\n");
 		drv_uart_puts("Y "); drv_uart_putint(fallos); drv_uart_puts(" fallos\r\n");
@@ -247,7 +288,7 @@ void estadisticas_guitar_hero(){
     //TODO hay que poner cosas de estadistica de rendimiento???
 }
 
-void estado_fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
+void app_guitar_hero_estado_fin(EVENTO_T evento, uint32_t auxData){
     (void) evento;
     (void) auxData;
 
@@ -256,7 +297,11 @@ void estado_fin_partida_guitar_hero(EVENTO_T evento, uint32_t auxData){
     puntuacion_total += puntuacion;
 		notas_tocadas = 0;
 
+<<<<<<< Updated upstream
     estadisticas_guitar_hero();  //TODO
+=======
+    app_guitar_hero_estadisticas();  
+>>>>>>> Stashed changes
 		aciertos = 0;
 		fallos = 0;
 		puntuacion = 0;
@@ -278,15 +323,15 @@ void estados_guitar_hero(EVENTO_T ev, uint32_t aux)
     switch (estado_actual)
     {
         case e_INICIO:
-            estado_inicio_gh(ev, aux);
+            app_guitar_hero_estado_inicio(ev, aux);
             break;
 
         case e_SHOW_SEQUENCE:
-            estado_leds_guitar_hero(ev, aux);
+            app_guitar_hero_estado_shift_leds(ev, aux);
             break;
 
         case e_BEAT:
-            estado_boton_guitar_hero(ev, aux);
+            app_guitar_hero_estado_boton(ev, aux);
             break;
 				
 				case e_TIMEOUT: 
@@ -294,7 +339,7 @@ void estados_guitar_hero(EVENTO_T ev, uint32_t aux)
 						break;
 
         case e_FIN:
-            estado_fin_partida_guitar_hero(ev, aux);
+            app_guitar_hero_estado_fin(ev, aux);
             break;
 				
     }
@@ -305,6 +350,7 @@ void estados_guitar_hero(EVENTO_T ev, uint32_t aux)
 void guitar_hero(unsigned int num_leds){
     leds = num_leds;
 
+<<<<<<< Updated upstream
     //Poner en marcha lo necesario del background
     drv_monitor_iniciar();
     drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
@@ -322,6 +368,18 @@ void guitar_hero(unsigned int num_leds){
 		
     drv_uart_init(9600);
 	
+=======
+    svc_GE_suscribir(ev_FIN_GUITAR_HERO, 0, app_guitar_hero_estado_fin);
+    svc_GE_suscribir(ev_GUITAR_HERO, 0, app_guitar_hero_actualizar);
+    svc_GE_suscribir(ev_TIMEOUT_LED, 0, app_guitar_hero_estado_boton);
+//	svc_GE_suscribir(ev_PULSAR_BOTON, 0, app_guitar_hero_manejador_botones);
+
+	svc_GE_suscribir(ev_PULSAR_BOTON, 0, app_guitar_hero_cancelar_timeout);
+	svc_GE_suscribir(ev_BOTON_DEBOUNCE, 0, app_guitar_hero_manejar_beat);
+	svc_GE_suscribir(ev_BOTON_DEBOUNCE_2, 0, app_guitar_hero_manejar_beat);
+	svc_GE_suscribir(ev_BOTON_DEBOUNCE + drv_botones_cantidad() - 1, 0, app_guitar_hero_boton_terminar);	
+
+>>>>>>> Stashed changes
 		// Empezamos el juego
     encolar_EM(ev_GUITAR_HERO, 0);
     rt_GE_lanzador();

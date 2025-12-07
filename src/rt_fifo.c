@@ -5,8 +5,18 @@
  */
  
 #include "rt_fifo.h"
+<<<<<<< Updated upstream
 #include <stdio.h>
 #include "drv_leds.h"
+=======
+#include "drv_leds.h"
+#include "drv_sc.h"
+#include "drv_uart.h"
+
+#ifdef DEBUG
+    #include "svc_estadisticas.h"
+#endif
+>>>>>>> Stashed changes
 
 static struct {
     EVENTO buffer[RT_FIFO_TAMANO];
