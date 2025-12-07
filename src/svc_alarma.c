@@ -142,7 +142,8 @@ void svc_alarma_actualizar(EVENTO_T evento, uint32_t aux)
                         alarmas[i].contador_ms = alarmas[i].retardo_ms;
                     else
                         alarmas[i].activa = false;
-			}
-        }
+										}
+            }
+				}
     }
 }
