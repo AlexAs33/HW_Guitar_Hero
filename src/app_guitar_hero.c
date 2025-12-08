@@ -70,7 +70,15 @@ int comprobar_acierto(uint32_t boton)
 //Pre: boton = 255 --> venimos de no haber pulsado boton
 void modificar_puntuacion(uint32_t boton){
 		//ver acierto / fallo y modificar puntuación
-		if (boton == TIMEOUT || (!comprobar_acierto(boton) && estados_notas[2] != 0)) {
+		if (comprobar_acierto(boton) || (estados_notas[2] == 0 && boton == TIMEOUT)) {
+				UART_LOG_INFO("MUY BIEN!!");
+								
+				// Modificar puntuación dependiendo de la racha
+				if(++racha >= 5) puntuacion += ACIERTO * racha;
+				else             puntuacion += ACIERTO;
+				aciertos++;    
+		}
+		else {
 				if (boton == TIMEOUT)
 							UART_LOG_DEBUG("APRIETA EL BOTON!!");
 				UART_LOG_INFO("A LA PROXIMA SERA...");
@@ -81,14 +89,6 @@ void modificar_puntuacion(uint32_t boton){
 
 				racha = 0;
 				fallos++;
-		}
-		else {
-				UART_LOG_INFO("MUY BIEN!!");
-								
-				// Modificar puntuación dependiendo de la racha
-				if(++racha >= 5) puntuacion += ACIERTO * racha;
-				else             puntuacion += ACIERTO;
-				aciertos++;    
 		}
 }
 
@@ -117,11 +117,11 @@ void estado_inicio_gh(EVENTO_T ev, uint32_t auxData) {
 		palpitaciones = 0;
 		estado_actual = e_ELEG_DIFIC;
 		encolar_EM(ev_GUITAR_HERO, 0);
-		UART_LOG_INFO("PULSA UN BOTON PARA ELEGIR DIFICULTAD: \n \
-		BOTON 1 - FACILITO\n\
-		BOTON 2 - STANDARD\n\
-		BOTON 3 - LA COSA SE PONE SERIA...\n\
-		BOTON 4 - PARA VERDADEROS BEAT HEROS!\n");
+		UART_LOG_INFO("PULSA UN BOTON PARA ELEGIR DIFICULTAD: \n\
+       BOTON 1 - FACILITO\n\
+       BOTON 2 - STANDARD\n\
+       BOTON 3 - LA COSA SE PONE SERIA...\n\
+       BOTON 4 - PARA VERDADEROS BEAT HEROS!\n");
 	}
 }
 
@@ -139,7 +139,8 @@ void estado_leds_guitar_hero(EVENTO_T evento, uint32_t auxData){
 			estados_notas[0] = 0;
 
 		else {
-			estados_notas[0] = svc_random_value(min, max);
+			//estados_notas[0] = svc_random_value(min, max);
+			estados_notas[0] = 0;
 		}
 
 		drv_led_establecer((LED_id_t)1, BIT_TO_LED(estados_notas[0] & 0b10));
