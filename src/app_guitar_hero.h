@@ -9,7 +9,7 @@
 #include "rt_evento_t.h"
 #include <stdlib.h>
 
-#define T_SECS_INI_FIN  250
+#define T_SECS_INI_FIN  260
 #define PERIODO_LEDS    1000     //ms
 #define MARGEN_PULSAR   100       
 #define ACIERTO         20      //puntos por acierto
