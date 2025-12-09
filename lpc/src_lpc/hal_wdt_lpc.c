@@ -19,8 +19,8 @@ void hal_wdt_iniciar(uint32_t tsec) {
 }
 
 void hal_wdt_feed(void) {
-	drv_sc_disable();
+	drv_sc_entrar();
   WDFEED = 0xAA; // Primera escritura requerida para alimentar el WDT.
   WDFEED = 0x55; // Segunda escritura requerida para alimentar el WDT.
-	drv_sc_enable();
+	drv_sc_salir();
 }

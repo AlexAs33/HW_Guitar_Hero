@@ -53,7 +53,10 @@
 	#include "svc_estadisticas.h"
 #endif
 
-#define RETARDO_MS 500u
+#define RETARDO_MS     500u
+#define PERIODO_WDT    10      // 1 segundos
+#define TAM_PARTITURA  30
+#define BAUD_RATE      9600
 
 #define TEST_WATCHDOG  1
 #define TEST_BOTONES   2
@@ -227,10 +230,10 @@ void test_watchdog(LED_id_t id) {
 void boton_pulsado(int32_t id_boton) {
     if (id_boton != -1) {
         drv_led_conmutar((LED_id_t)1);
-		drv_sc_disable();
+		drv_sc_entrar();
     // Llama a la lógica del juego directamente con el botón pulsado
 		drv_botones_actualizar(ev_PULSAR_BOTON, id_boton);
-		drv_sc_enable();
+		drv_sc_salir();
     }
 }
 
@@ -248,7 +251,7 @@ void test_botones() {
 }
 
 void test_uart() {
-    drv_uart_init(9600);
+    drv_uart_init(BAUD_RATE);
     drv_uart_puts("\r\nUART TEST INICIADO\r\n");
 		drv_uart_puts("\r\nESTOY EN MODO DEBUG\r\n\n");
 	
@@ -266,7 +269,7 @@ void test_uart() {
 }
 
 void crear_partitura_aleatoria() {
-    drv_uart_init(9600);
+    drv_uart_init(BAUD_RATE);
     svc_random_iniciar(drv_tiempo_actual_us());
 
     uint8_t partitura[TAM_PARTITURA] = {};
@@ -296,6 +299,7 @@ void crear_partitura_aleatoria() {
  * MAIN, Programa princ * para la primera sesion se debe usar la funcion de blink_v1 sin temporizadores
  * para la entrega final se debe incocar blink_v2
  */
+
 
 
 
@@ -342,7 +346,7 @@ int main(void){
 
 #elif VERSION == GH
 				// Inicialización de módulos necesarios
-				drv_uart_init(9600);
+				drv_uart_init(BAUD_RATE);
 				drv_monitor_iniciar();
 				drv_consumo_iniciar((MONITOR_id_t)MONITOR_CONSUMO);
 				rt_FIFO_inicializar((MONITOR_id_t)MONITOR_FIFO);  

@@ -17,14 +17,14 @@
 
 //Inicializar el WDT con un timeout de tsec segundos
 void drv_wdt_iniciar(uint32_t tsec){
-    drv_sc_disable();
+    drv_sc_entrar();
     hal_wdt_iniciar(tsec);
-    drv_sc_enable();
+    drv_sc_salir();
 }
 
 //Reiniciar el timeout del WDT
 void drv_wdt_feed(void){
-    drv_sc_disable();
+    drv_sc_entrar();
     hal_wdt_feed();
-    drv_sc_enable();
+    drv_sc_salir();
 }

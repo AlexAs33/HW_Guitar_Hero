@@ -6,11 +6,11 @@
 extern void enable_irq(void);  //habilita las interrupciones globales
 extern void disable_irq(void); //heshabilita las interrupciones globales
 
-uint32_t hal_sc_disable(void) {
+uint32_t hal_sc_entrar(void) {
     __disable_irq();
 	return 1;
 }
 
-void hal_sc_restaurar(void) {
+void hal_sc_salir(void) {
     __enable_irq();
 }

@@ -9,23 +9,6 @@
 #include "rt_evento_t.h"
 #include <stdlib.h>
 
-#define T_SECS_INI_FIN  260
-#define PERIODO_LEDS    1000     //ms
-#define MARGEN_PULSAR   100       
-#define ACIERTO         20      //puntos por acierto
-#define FALLO           10      //puntos por fallo
-#define PERIODO_WDT     10      // 1 segundos
-
-#ifdef DEBUG
-#define TAM_PARTITURA   5
-#else
-#define TAM_PARTITURA		30
-#endif
-
-#define T_RESET_MS      3000
-#define NOTAS_INIT      2
-
-void manejador_botones_guitar_hero(EVENTO_T evento, uint32_t auxData);
 
 void app_guitar_hero_actualizar(EVENTO_T ev, uint32_t aux);
 

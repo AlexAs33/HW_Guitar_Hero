@@ -30,8 +30,8 @@
 #include "svc_GE.h"
 
 //Variables de las alarmas
-#define svc_ALARMAS_MAX        4		// Máximas alarmas disponibles
-#define svc_ALARMAS_PERIODO_MS 20
+#define svc_ALARMAS_MAX        5		// Máximas alarmas disponibles
+#define svc_ALARMAS_PERIODO_MS 40
 
 //Estructura de las alarmas
 typedef struct {

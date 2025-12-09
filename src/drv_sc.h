@@ -20,11 +20,11 @@
 
 //Pre: --
 //Post: decrementa el anidamiento. Solo las habilita si el nivel es 0.
-void drv_sc_enable(void);
+void drv_sc_entrar(void);
 
 //Pre: --
 //Post: cuenta el nivel de anidamiento de zonas de exclusión.
 //			Solo deshabilita las interrupciones si el nivel es 0.
-void drv_sc_disable(void);
+void drv_sc_salir(void);
 
 #endif	//DRV_SC_H

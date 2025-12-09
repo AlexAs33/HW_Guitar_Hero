@@ -3,7 +3,7 @@
 #include "hal_sc.h"
 #include <NRF.H> /* Definiciones específicas del hardware nRF */
 
-uint32_t hal_sc_disable(void) {
+uint32_t hal_sc_entrar(void) {
     uint32_t primask;  //valor actual del PRIMASK.
     uint32_t state;
 
@@ -16,6 +16,6 @@ uint32_t hal_sc_disable(void) {
 	return state;
 }
 
-void hal_sc_restaurar(void) {	
+void hal_sc_salir(void) {	
     __enable_irq();   //habilita las interrupciones globales escribiendo 0 en PRIMASK.
 }

@@ -1,12 +1,12 @@
 /* ***************************************************************************************
  * P.H.2025: Interfaz HAL para la Sclusion Zone
- * Este archivo define la interfaz HAL para la gestión de una zona de esclusión.
- * Abstrae las operaciones que permite activar y desactivar interrupciones críticas
- * de forma segura en el contexto de una ejecución concurrente.
+ * Este archivo define la interfaz HAL para la gestiï¿½n de una zona de esclusiï¿½n.
+ * Abstrae las operaciones que permite activar y desactivar interrupciones crï¿½ticas
+ * de forma segura en el contexto de una ejecuciï¿½n concurrente.
  *
  * Funciones:
- *  - Desabilitar las interrupciones para entrar en la zona de exclusión.
- *  - Restaurar el sistema al salir de la zona de exclusión.
+ *  - Desabilitar las interrupciones para entrar en la zona de exclusiï¿½n.
+ *  - Restaurar el sistema al salir de la zona de exclusiï¿½n.
  *
  * Autores:
  * - Pablo Plumed
@@ -20,11 +20,11 @@
 
 //Pre: --
 //Post: Asegura que no se van a procesar interrupciones.
-//			Devuelve 1 si las interrupciones esán habilitadas. 0 en caso contrario
-uint32_t hal_sc_disable(void);
+//			Devuelve 1 si las interrupciones esï¿½n habilitadas. 0 en caso contrario
+uint32_t hal_sc_entrar(void);
 
 //Pre: --
-//Post: Devuelve el el sistema al estado anterior. Se procesarán interrupciones
-void hal_sc_restaurar(void);
+//Post: Devuelve el el sistema al estado anterior. Se procesarï¿½n interrupciones
+void hal_sc_salir(void);
 
 #endif	//HAL_SC_H

@@ -61,6 +61,8 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 	svc_estadisticas_set_tmp_fifo(ID_evento,e_TIEMPO_ENCOLAR);
 #endif
 
+    drv_sc_entrar();  // Zona de exclusión mutua
+
     uint8_t siguiente = (fifo.siguiente_libre + 1) % RT_FIFO_TAMANO;
 
     /* Overflow: la cola se llenó */
@@ -74,8 +76,6 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
 			UART_LOG_DEBUG("OVERFLOW DE LA FIFO!!");
       while(1);  // bucle infinito 
     }
-
-    drv_sc_disable();  // Zona de exclusión mutua
     EVENTO *evt    = &fifo.buffer[fifo.siguiente_libre];
     evt->ID_EVENTO = ID_evento;
     evt->auxData   = auxData;
@@ -87,7 +87,7 @@ void rt_FIFO_encolar(EVENTO_T ID_evento, uint32_t auxData)
     if ((uint32_t)ID_evento < EVENT_TYPES) {
         estadisticas_eventos[ID_evento]++;
     }
-    drv_sc_enable();  
+    drv_sc_salir();  
 }
 
 /* Extrae el siguiente evento pendiente, devuelve 0 si no hay */
@@ -97,18 +97,19 @@ uint8_t rt_FIFO_extraer(EVENTO_T *ID_evento, uint32_t *auxData, Tiempo_us_t *TS)
 #ifdef DEBUG
 		svc_estadisticas_set_tmp_fifo(*ID_evento,e_TIEMPO_DESENCOLAR);
 #endif
-
+		 drv_sc_entrar();  // Zona de exclusión mutua
+	
     if (fifo.siguiente_a_tratar == fifo.siguiente_libre) 
         return 0;  // No había eventos
 
-    drv_sc_disable();  // Zona de exclusión mutua
     EVENTO *evt = &fifo.buffer[fifo.siguiente_a_tratar];
     *ID_evento = evt->ID_EVENTO;
     *auxData   = evt->auxData;
     *TS        = evt->TS;
 
     fifo.siguiente_a_tratar = (fifo.siguiente_a_tratar + 1) % RT_FIFO_TAMANO;
-    drv_sc_enable();
+		
+    drv_sc_salir();
 
     return 1;  // Devuelve 1 si extrajo algo (independiente de cuántos quedan)
 }
