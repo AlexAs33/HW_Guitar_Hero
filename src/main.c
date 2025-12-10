@@ -309,7 +309,6 @@ int main(void){
 #ifdef DEBUG 
 				svc_estadisticas_set_tmp(e_TIEMPO_INICIO_DESPIERTO);
 #endif
-
 	
 	uint32_t Num_Leds;
 	volatile uint8_t timer_iniciado;

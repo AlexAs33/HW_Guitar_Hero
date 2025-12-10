@@ -398,6 +398,11 @@
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
             </File>
             <File>
+              <FileName>app_guitar_hero_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_config.h</FilePath>
+            </File>
+            <File>
               <FileName>app_bit_counter_strike.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\app_bit_counter_strike.c</FilePath>
@@ -1047,6 +1052,11 @@
               <FileName>app_guitar_hero.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\src\app_guitar_hero.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_guitar_hero_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\src\app_guitar_hero_config.h</FilePath>
             </File>
             <File>
               <FileName>app_bit_counter_strike.c</FileName>
